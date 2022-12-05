@@ -1,12 +1,27 @@
 # Mobile System - Ring
 
+
 The project to control all the others...
 
 Ring regroups elements for playing with the mobile robots of IMT Nord. Its is the master project on the top off sub-project dedicated to robots platform, software modul or scenario application.
 
-Curent version for **Ubuntu-20.04 LTS** / **ROS noetic**
+Curent version for **Ubuntu-20.04 LTS** / **ROS noetic** + **ROS foxy**
+
 
 ## Install
+
+Ring is a meta-package. It didn't require to be installed, just, clone me sommewhere, potentially as your ros-workspace.
+For an installation of ROS and everithing, refert to the robots you want to play with.
+
+## Les robots:
+
+Ensuite chaque base Robotique suit ça propre voix:
+
+- Le **drone volant**: [mb6-playload](./alpaga/) 
+- Les **TurtleBots** + RealSense: [mb6-tbot](https://bitbucket.org/imt-mobisyst/mb6-tbot)
+- Le **ftech**: 
+- Le **drone flottant**: 
+
 
 ### The machine
 
@@ -45,6 +60,7 @@ sudo apt update
 sudo apt upgrade
 sudo apt autoremove
 ```
+
 
 ### Classical tools
 
