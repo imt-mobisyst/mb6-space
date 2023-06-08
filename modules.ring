@@ -1,4 +1,4 @@
 pkg-tbot
-- origin: git@bitbucket.org:imt-mobisyst/mb6-tbot.git
-pkg-tonr
-- origin: git@bitbucket.org:imt-mobisyst/mb6-tonr.git
+- origin: git@bitbucket.org:imt-mobisyst/pkg-tbot.git
+pkg-toons
+- origin: git@bitbucket.org:imt-mobisyst/pkg-toons.git

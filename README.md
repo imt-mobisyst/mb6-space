@@ -1,127 +1,98 @@
-# Mobile System - Ring
-
+# Mobile System - Master for Robotics Packages
 
 The project to control all the others...
 
-Ring regroups elements for playing with the mobile robots of IMT Nord. Its is the master project on the top off sub-project dedicated to robots platform, software modul or scenario application.
+_mb6-space_ regroups elements for playing with the mobile robots of IMT Nord Europe.
+Its is the master project on the top off sub-project dedicated to robots platform, software modules or scenario application.
 
-Curent version for **Ubuntu-20.04 LTS** / **ROS noetic** + **ROS foxy**
+It does not include code but mostly documentation and tools.
 
+Curent version: **Ubuntu-22.04 LTS** / **ROS2 iron**
 
 ## Install
 
-Ring is a meta-package. It didn't require to be installed, just, clone me sommewhere, potentially as your ros-workspace.
+_mb6-space_ is a meta-package.
+It didn't require to be installed, just, clone me sommewhere, potentially as your ros-workspace.
 For an installation of ROS and everithing, refert to the robots you want to play with.
 
-## Les robots:
-
-Ensuite chaque base Robotique suit ça propre voix:
-
-- Le **drone volant**: [mb6-playload](./alpaga/) 
-- Les **TurtleBots** + RealSense: [mb6-tbot](https://bitbucket.org/imt-mobisyst/mb6-tbot)
-- Le **ftech**: 
-- Le **drone flottant**: 
-
-
-### The machine
-
-Configure the computer to have an homogene confs...
-
-Install **Ubuntu-20.04 LTS** or derivate (**POP!_OS**) with *bot* user (password *bot*)
-
-Change machine name (cf. Robot Names section)
-
-```bash
-sudo nano /etc/hostname
+```sh
+git clone https://bitbucket.org/imt-mobisyst/mb6-space
+cd mb6-space
 ```
 
-Grant _bot_ with some access: 
+### Ubuntu-22.04 LTS
 
-```bash
-sudo usermod -a -G dialout bot 
-```
+First install the OS on your machine: 
 
-Configure Wifi:
+- On a _Raspberry Pi_ you can follows the guides: [Ubuntu22.04 on the Pi3](./docs/configure-pi3.md)
+- On a _x86_ machine get help from the communty: [official website](https://ubuntu.com/) - [french community](https://www.ubuntu-fr.org/)
 
-**fleury** wifi, password: _72Hin@R*_
+You can go through the manual instructions or execute the appropriate install scrips:
 
-optional: **robot** wifi:
+- `bin/initialize-pi3.sh` - for a fresh pibot version of Ubuntu Server 22.04.
+- `bin/initialize-station.sh` - for a fresh desktop Ubuntu 22.04 for PC Station.
+- `bin/initialize-ros.sh` - install ROS iron from the official repo.
+- `bin/initialize-extra.sh` - install classical modules: RealSense, Hokuyo-LaserRange
 
-- password: robotsdesmines
-- ip : 10.1.16.XX, 20 < xx < 255
-- mask: 255.255.0.0
-- Passerel: 10.1.1.1, 
-- DNS 10.1.2.110,10.1.2.111
+### ROS2 Installation
 
-Update the machine:
+Follow the instruction on [docs.ros.org](https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html)
 
-```bash
+In short:
+
+```sh
+sudo apt install -y curl software-properties-common
+sudo add-apt-repository universe -y
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
 sudo apt update
-sudo apt upgrade
-sudo apt autoremove
+sudo apt install -y ros-dev-tools
 ```
 
+Then install: 
 
-### Classical tools
-
-```bash
-sudo apt -y install git ssh sshfs curl code build-essential
+```sh
+sudo apt install -y ros-iron-ros-base # for minimal install
+sudo apt install -y ros-iron-desktop # for developers install (include visualtization etc.)
+sudo apt install -y ros-iron-desktop-full # for not missing anything
 ```
 
-Initialize git:
+You can setup your terminal with ROS2 environment: 
 
-```bash
-git config --global user.email "imt-mobisyst@drods.net"
-git config --global user.name bot@`hostname`
+```sh
+source /opt/ros/iron/setup.bash
 ```
 
-### ROS
+### Dependancies
 
-Follow the instruction on [wiki.ros.org](https://wiki.ros.org)
+**Hokuyo Laser Range**
 
-- [Installation procedure](https://wiki.ros.org/noetic/Installation/Ubuntu)
 
-In short: 
 
-```bash
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-sudo apt install -y ros-noetic-desktop
-echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-sudo apt install -y python3-rosdep python3-rosinstall \
-python3-rosinstall-generator python3-wstool
-sudo rosdep init
-rosdep update
+**RealSense**
+
+
+**Cuda**
+
+
+
+### The robots
+
+The robot bases and modules are ros packages to install and built them: 
+
+```sh
 ```
 
-### RealSense
+**Bases:**
 
-Install RealSense drivers:
- * [github readme file](https://github.com/IntelRealSense/librealsense)
- * [Linux instruction](https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md)
+- The **TurtleBots**
+    * Package: [pkg-tbot](https://bitbucket.org/imt-mobisyst/pkg-tbot) (howevers, the packages are installed and configured on onboard Pi3 computer)
+    * Connect the Pi3 with an ethernet cable, the robot IP is `10.10.1.1` (`ssh bot@10.10.1.1`).
+- **AlpagaDrone** Refers to `mb6-playload/alpaga/` repositoty 
+- **fetch**: 
+- **drone playload**: 
 
+**Moduls:**
 
-## MobiSyst sub-module: 
-
-
-## Robot names
-
-[List of fictional robots and androids](https://en.wikipedia.org/wiki/List_of_fictional_robots_and_androids)
-[List of fictional AI](https://en.wikipedia.org/wiki/List_of_fictional_robots_and_androids)
-
-computer                 | hostname    | MAC | robot ip
--------------------------|-------------|-----|-----
-hp guillaume (40832)     | Marvin      |  | 41
-ldlc(1)				     | T-Bob       |  | 45
-ldlc(2)				     | Astro       |  | 46
-ldlc(3)				     | BB-8        |  | 47
-HP EliteBook 850 (38973) | K2000       |  | 57
-HP EliteBook 850 (38975) | Wall-E      |  | 44
-HP Spectre			     | nono        |  | 43
-Toshiba Satellite		 | David       |  | 49
-Toshiba Satellite		 | Baymax      |  | 50
-Asus				     | TARS        |  | 62
-dell 13''		         | deepthought |  | 42
-Freight100		         | freight100  |  | 68
-dell 13''		         | baymax      | 4c:1d:96:49:28:84 | 50
+- : [mb6-tbot](https://bitbucket.org/imt-mobisyst/mb6-tbot)
