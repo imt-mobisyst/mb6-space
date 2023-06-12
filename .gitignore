@@ -1,7 +1,8 @@
 # Light Submodules
 #-----------------
 publications/20*
-pkg-*
+pkg-tbot
+pkg-viscene
 
 # System
 #-----------------

@@ -66,23 +66,40 @@ source /opt/ros/iron/setup.bash
 
 ### Hello-World with ROS2
 
-Follow the instruction form the officail documentations: [docs.ros.org](https://docs.ros.org).
-You also find a lot of valuable information on the ROS1 wiki: [wiki.ros.org](https://wiki.ros.org) (typically the definition of the mesages).
+This workspace include a default simple ROS package `draft-mb6` into `pkg-draft` directory.
+You can build it with `colcon build`,
+inform your environment of the existance of new ROS ressources `source ./install/setup.bash`
+and finally launch a talker and a listerner in two terminal `ros2 run draft_mb6 py_listerner` and `ros2 run draft_mb6 cpp_talker`.
 
-you can build your first package: (we prefer cmake methode for both C++ and [python](https://docs.ros.org/en/rolling/How-To-Guides/Ament-CMake-Python-Documentation.html) packages)
+For going further follow the draft tutorirals:
 
-```sh
-ros2 pkg create --build-type ament_cmake_python draft
-colcon build --packages-select my_package
-source ./install/setup.bash
-```
-
+- [package create](./docs/tuto-draft-pkg.md)
+- [python node](./docs/tuto-draft-python.md)
+- [cpp node](./docs/tuto-draft-cpp.md)
 
 ### Modules:
 
-**Hokuyo Laser Range**
+
+**Hokuyo Laser Range** 
+
+Just use the `urg_node` form the ROS `urg_node` package.
+It requires that the linux user is in dialout group.
+
 
 **RealSense**
+
+Use the `vcpkg` tool as [recommended](https://github.com/IntelRealSense/librealsense).
+
+```sh
+cd 
+git clone https://github.com/Microsoft/vcpkg.git .vcpkg
+~/.vcpkg/bootstrap-vcpkg.sh
+~/.vcpkg/vcpkg install realsense2
+pip install pyrealsense2
+```
+
+You can connect the camera and test with `./bin/test-realsense-cam.py` script.
+
 
 **Cuda**
 
