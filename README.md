@@ -50,7 +50,7 @@ sudo apt update
 sudo apt install -y ros-dev-tools
 ```
 
-Then install: 
+Then install (use one of the options): 
 
 ```sh
 sudo apt install -y ros-iron-ros-base # for minimal install
@@ -64,14 +64,25 @@ You can setup your terminal with ROS2 environment:
 source /opt/ros/iron/setup.bash
 ```
 
-### Dependancies
+### Hello-World with ROS2
+
+Follow the instruction form the officail documentations: [docs.ros.org](https://docs.ros.org).
+You also find a lot of valuable information on the ROS1 wiki: [wiki.ros.org](https://wiki.ros.org) (typically the definition of the mesages).
+
+you can build your first package: (we prefer cmake methode for both C++ and [python](https://docs.ros.org/en/rolling/How-To-Guides/Ament-CMake-Python-Documentation.html) packages)
+
+```sh
+ros2 pkg create --build-type ament_cmake_python draft
+colcon build --packages-select my_package
+source ./install/setup.bash
+```
+
+
+### Modules:
 
 **Hokuyo Laser Range**
 
-
-
 **RealSense**
-
 
 **Cuda**
 
