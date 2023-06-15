@@ -23,10 +23,10 @@ sudo apt install -y ros-$ROSDISTRO-desktop
 #     ros-$ROSDISTRO-slam-toolbox \
 #     ros-$ROSDISTRO-navigation2 \
 #     ros-$ROSDISTRO-nav2-bringup \
-#     ros-$ROSDISTRO-xacro \
-#     ros-$ROSDISTRO-joint-state-publisher-gui \
-#     ros-$ROSDISTRO-gazebo-ros \
-#     ros-$ROSDISTRO-gazebo-ros-pkgs \
-#     ros-$ROSDISTRO-gazebo-dev \
-#     ros-$ROSDISTRO-gazebo-msgs \
-#     ros-$ROSDISTRO-gazebo-plugins \
+
+echo "
+                    --- Install laser (urg_node) ---
+"
+
+sudo apt install -y ros-$ROSDISTRO-urg-node
+sudo usermod -a -G dialout `whoami`

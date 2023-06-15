@@ -29,12 +29,14 @@ First install the OS on your machine:
 
 You can go through the manual instructions or execute the appropriate install scrips:
 
-- `bin/initialize-pi3.sh` - for a fresh pibot version of Ubuntu Server 22.04.
-- `bin/initialize-station.sh` - for a fresh desktop Ubuntu 22.04 for PC Station.
-- `bin/initialize-ros.sh` - install ROS iron from the official repo.
-- `bin/initialize-extra.sh` - install classical modules: RealSense, Hokuyo-LaserRange
+- `bin/install-pi3.sh` - for a fresh pibot version of Ubuntu Server 22.04.
+- `bin/install-station.sh` - for a fresh desktop Ubuntu 22.04 for PC Station.
+- `bin/install-ros.sh` - install ROS iron from the official repo.
+- `bin/install-realsense.sh` - install classical modules: RealSense, Hokuyo-LaserRange
 
 ### ROS2 Installation
+
+([install-ros.sh](./bin/install-ros.sh))
 
 Follow the instruction on [docs.ros.org](https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html)
 

@@ -19,6 +19,14 @@ git config --global credential.helper cache
 git config --global http.sslVerify false
 git-lfs install
 
-echo "# Tools"
-echo "#----------------------------"
-sudo dpkg -i dpd/code_1.73.1-1667967334_amd64.deb
+echo "
+                    --- ROS Environement ---
+"
+
+./install-ros.sh
+./install-realsense.sh
+./install-gazebo.sh
+
+#echo "# Tools"
+#echo "#----------------------------"
+#sudo dpkg -i dpd/code_1.73.1-1667967334_amd64.deb
