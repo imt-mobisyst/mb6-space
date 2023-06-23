@@ -24,17 +24,19 @@ cd mb6-space
 
 First install the OS on your machine: 
 
-- On a _Raspberry Pi_ you can follows the guides: [Ubuntu22.04 on the Pi3](./docs/configure-pi3.md)
+- On a _Raspberry Pi_ you can follows the guides: [Ubuntu22.04 on A Pi3 computer](./docs/configure-pi3.md)
 - On a _x86_ machine get help from the communty: [official website](https://ubuntu.com/) - [french community](https://www.ubuntu-fr.org/)
+- To configure a standard PC station: [Ubuntu22.04 on a PC Station](./docs/configure-station.md)
 
-You can go through the manual instructions or execute the appropriate install scrips:
+### ROS2 dev. environment-22.04 LTS
 
-- `bin/install-pi3.sh` - for a fresh pibot version of Ubuntu Server 22.04.
-- `bin/install-station.sh` - for a fresh desktop Ubuntu 22.04 for PC Station.
-- `bin/install-ros.sh` - install ROS iron from the official repo.
-- `bin/install-realsense.sh` - install classical modules: RealSense, Hokuyo-LaserRange
+Otherwize, you can go through the manual instructions or execute the appropriate install scrips in [bin](./bin) directory:
 
-### ROS2 Installation
+- [install-dev](./bin/install-ros.sh) - install ROS iron from the official repo.
+- [install-ros](./bin/install-ros.sh) - install ROS iron from the official repo.
+- [install-realsense](./bin/install-realsense.sh) - install dev. environement: RealSense
+
+## Manual Installation
 
 ([install-ros.sh](./bin/install-ros.sh))
 
@@ -80,7 +82,6 @@ For going further follow the draft tutorirals:
 - [cpp node](./docs/tuto-draft-cpp.md)
 
 ### Modules:
-
 
 **Hokuyo Laser Range** 
 
