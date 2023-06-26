@@ -50,9 +50,8 @@ colcon build
 
 # Configure the environemnt
 
-echo "\
-\
-# mb6 ROS environment:\
-source ~/mb6-space/run-command.bash\
-" >> ~/.bashrc
+echo "
+
+# mb6 ROS environment:
+source ~/mb6-space/run-command.bash" >> ~/.bashrc
 

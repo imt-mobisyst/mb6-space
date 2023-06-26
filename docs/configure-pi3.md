@@ -33,6 +33,7 @@ sudo date -s "2022-05-14 15:42:30"
 ```
 
 Then you can process a classical install from [install-pi3](../bin/install-pi3.sh) script or go on **Manual Install** section. 
+Attention, the script also install ROS in _ros-base_ configuration.
 
 ```sh
 cd

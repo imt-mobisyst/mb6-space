@@ -14,13 +14,16 @@ sudo apt install -y ros-$ROSDISTRO-desktop
 #     ros-$ROSDISTRO-navigation2 \
 #     ros-$ROSDISTRO-nav2-bringup \
 
-#echo "source "
+# Configure the environemnt
 
-echo "\
-\
-# mb6 ROS environment:\
-source ~/mb6-space/run-command.bash\
-" >> ~/.bashrc
+echo "
+
+# mb6 ROS environment:
+source ~/mb6-space/run-command.bash" >> ~/.bashrc
+
+source run-command.bash
+
+colcon build
 
 echo "
                     --- Install laser (urg_node) ---

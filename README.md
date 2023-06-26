@@ -7,7 +7,7 @@ Its is the master project on the top off sub-project dedicated to robots platfor
 
 It does not include code but mostly documentation and tools.
 
-Curent version: **Ubuntu-22.04 LTS** / **ROS2 iron**
+Curent version: **Ubuntu-22.install04 LTS** / **ROS2 iron**
 
 ## Install
 
@@ -22,23 +22,25 @@ cd mb6-space
 
 ### Ubuntu-22.04 LTS
 
-First install the OS on your machine: 
+First  the OS on your machine: 
 
 - On a _Raspberry Pi_ you can follows the guides: [Ubuntu22.04 on A Pi3 computer](./docs/configure-pi3.md)
 - On a _x86_ machine get help from the communty: [official website](https://ubuntu.com/) - [french community](https://www.ubuntu-fr.org/)
 - To configure a standard PC station: [Ubuntu22.04 on a PC Station](./docs/configure-station.md)
 
+
 ### ROS2 dev. environment-22.04 LTS
+
+Some install script for classical install:
+
+- [install-ros](./bin/install-ros.sh) - install ROS iron from the official repo in desktop mode.
+- [install-ros-setup](./bin/install-ros-setup.sh) - only setup `apt` to target offical ROS repo.
+- [install-realsense](./bin/install-realsense.sh) - install dev. environement: RealSense
 
 Otherwize, you can go through the manual instructions or execute the appropriate install scrips in [bin](./bin) directory:
 
-- [install-dev](./bin/install-ros.sh) - install ROS iron from the official repo.
-- [install-ros](./bin/install-ros.sh) - install ROS iron from the official repo.
-- [install-realsense](./bin/install-realsense.sh) - install dev. environement: RealSense
 
 ## Manual Installation
-
-([install-ros.sh](./bin/install-ros.sh))
 
 Follow the instruction on [docs.ros.org](https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html)
 
@@ -72,8 +74,19 @@ source /opt/ros/iron/setup.bash
 
 This workspace include a default simple ROS package `draft-mb6` into `pkg-draft` directory.
 You can build it with `colcon build`,
-inform your environment of the existance of new ROS ressources `source ./install/setup.bash`
-and finally launch a talker and a listerner in two terminal `ros2 run draft_mb6 py_listerner` and `ros2 run draft_mb6 cpp_talker`.
+then, inform your environment of the existance of new ROS resources `source ./install/setup.bash`.
+
+In fact, the `run-command.bash` would also do the job (`source ./install/setup.bash`).
+You can automitically source this on your terminal...
+
+```sh
+echo "
+
+# mb6 ROS environment:
+source ~/mb6-space/run-command.bash" >> ~/.bashrc
+```
+
+Finally launch a talker and a listerner in two terminals `ros2 run draft_mb6 py_listerner` and `ros2 run draft_mb6 cpp_talker`.
 
 For going further follow the draft tutorirals:
 
@@ -81,13 +94,17 @@ For going further follow the draft tutorirals:
 - [python node](./docs/tuto-draft-python.md)
 - [cpp node](./docs/tuto-draft-cpp.md)
 
-### Modules:
+### Sensors and Tools:
 
 **Hokuyo Laser Range** 
 
 Just use the `urg_node` form the ROS `urg_node` package.
 It requires that the linux user is in dialout group.
 
+```sh
+sudo apt install -y ros-iron-urg-node
+sudo usermod -a -G dialout `whoami`
+```
 
 **RealSense**
 
@@ -103,27 +120,23 @@ pip install pyrealsense2
 
 You can connect the camera and test with `./bin/test-realsense-cam.py` script.
 
-
 **Cuda**
 
 
+### Robots
 
-### The robots
-
-The robot bases and modules are ros packages to install and built them: 
+The robot bases and modules relies on ros packages to install and built them: 
 
 ```sh
+cd ~/mb6-space
+git clone https://bitbucket.org/imt-mobisyst/pkg-NAME
+pkg-NAME/bin/install.sh
+colcon build
 ```
-
-**Bases:**
-
-- The **TurtleBots**
-    * Package: [pkg-tbot](https://bitbucket.org/imt-mobisyst/pkg-tbot) (howevers, the packages are installed and configured on onboard Pi3 computer)
-    * Connect the Pi3 with an ethernet cable, the robot IP is `10.10.1.1` (`ssh bot@10.10.1.1`).
+- The **TurtleBots* : Package [pkg-tbot](https://bitbucket.org/imt-mobisyst/pkg-tbot) (howevers, the packages are installed and configured on onboard Pi3 computer)
 - **AlpagaDrone** Refers to `mb6-playload/alpaga/` repositoty 
 - **fetch**: 
 - **drone playload**: 
 
-**Moduls:**
 
-- : [mb6-tbot](https://bitbucket.org/imt-mobisyst/mb6-tbot)
+**Modules:**
