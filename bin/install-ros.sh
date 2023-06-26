@@ -31,4 +31,3 @@ echo "
 
 sudo apt install -y ros-$ROSDISTRO-urg-node
 sudo usermod -a -G dialout `whoami`
-
