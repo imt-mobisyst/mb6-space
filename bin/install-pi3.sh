@@ -3,7 +3,7 @@
 ## Clone  mb6-space
 
 cd
-if [ -d "mb6-space" ]; then
+if [ ! -d "mb6-space" ]; then
   git config --global http.sslverify false
   git clone https://bitbucket.org/imt-mobisyst/mb6-space.git
 fi
@@ -26,4 +26,4 @@ sudo service isc-dhcp-server restart
 
 ### install ROS2 :
 
-./bin/install-ros.sh
+../bin/install-ros.sh
