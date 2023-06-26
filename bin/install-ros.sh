@@ -16,9 +16,16 @@ sudo apt install -y ros-$ROSDISTRO-desktop
 
 #echo "source "
 
+echo "\
+\
+# mb6 ROS environment:\
+source ~/mb6-space/run-command.bash\
+" >> ~/.bashrc
+
 echo "
                     --- Install laser (urg_node) ---
 "
 
 sudo apt install -y ros-$ROSDISTRO-urg-node
 sudo usermod -a -G dialout `whoami`
+

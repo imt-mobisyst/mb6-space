@@ -38,8 +38,9 @@ Then you can process a classical install from [install-pi3](../bin/install-pi3.s
 cd
 curl https://bitbucket.org/imt-mobisyst/mb6-space/raw/master/bin/install-pi3.sh > install.sh
 bash install.sh
-rm instll.sh
+rm install.sh
 ```
+
 
 ## Manual Install:
 
@@ -52,6 +53,15 @@ git clone https://bitbucket.org/imt-mobisyst/mb6-space.git
 ```
 
 Update and get some soft: 
+
+First configure `apt` needrestart from "interactive" (that promt an interactive windows to specify which services to resart after an apt update) to "automatic".
+Edit the `/etc/needrestart/needrestart.conf` file, to change the line `#$nrconf{restart} = 'i';` to  `$nrconf{restart} = 'a';`.
+
+```sh
+## OR:
+sudo cp dep/install-pi3-needrestart.conf /etc/needrestart/needrestart.conf
+```
+You can now use `apt` in a more silent and autonomous mode...
 
 ```sh
 sudo apt update
@@ -144,7 +154,7 @@ nano /etc/netplan/40-wifi.yaml
 ### robotic workspace:
 
 You can return on [README.md](../README.md) to process regular install of the software.
-Don forget to install `pkg-tbot` to get turtlebot drivers.
+Don't forget to install `pkg-tbot` to get turtlebot drivers.
 
 
 
