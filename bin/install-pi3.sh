@@ -20,7 +20,8 @@ sudo apt install -y build-essential meld isc-dhcp-server
 sudo cp dep/install-pi3-60-static-eth0.yaml /etc/netplan/60-static-eth0.yaml
 sudo netplan apply
 
-sudo cp dep/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf`
+sudo cp dep/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf
+sudo cp dep/install-pi3-dhcp-server /etc/default/isc-dhcp-server
 sudo service isc-dhcp-server restart
 
 ### install ROS2 :

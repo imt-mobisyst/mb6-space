@@ -80,6 +80,15 @@ network:
 ```
 
 ```sh
+## OR:
+sudo cp dep/install-pi3-60-static-eth0.yaml /etc/netplan/60-static-eth0.yam
+```
+
+sudo netplan apply
+
+sudo cp dep/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf``)
+
+```sh
 sudo netplan apply
 ```
 
@@ -104,6 +113,12 @@ subnet 10.10.0.0 netmask 255.255.0.0 {
 Set `eth0` on `/etc/default/isc-dhcp-server` Interfaces v4.
 
 ```sh
+## OR:
+sudo cp dep/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf
+sudo cp dep/install-pi3-dhcp-server /etc/default/isc-dhcp-server
+```
+
+```sh
 sudo service isc-dhcp-server restart
 ```
 
@@ -118,7 +133,6 @@ journalctl _PID=2690
 
 The pibot is reachable in direct ethernet connexion (10.10.1.1 or pibotXX.local). 
 
-
 ### Wifi 
 
 To add Wifi
@@ -127,12 +141,10 @@ To add Wifi
 nano /etc/netplan/40-wifi.yaml
 ```
 
-### Todo
 
-- Configure/Install minimal Kobuki nodes
-- Configure on start launching
-- Capture Turtlebot buttons for on-the-go kobuki-node rebooting.
-- Ubuntu Server is based on `Cloud-Init`. Go deeper on this solution...
+
+
+
 
 
 ---
