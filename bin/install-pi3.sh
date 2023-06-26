@@ -1,4 +1,4 @@
-#!env bash
+#!/bin/bash
 
 ## Clone  mb6-space
 
@@ -26,4 +26,16 @@ sudo service isc-dhcp-server restart
 
 ### install ROS2 :
 
-../bin/install-ros.sh
+export ROSDISTRO=iron
+
+../bin/install-ros-setup.sh
+
+echo "
+                    --- Install ros-$ROSDISTRO for Pi3 ---
+"
+
+sudo apt install -y \
+  ros-$ROSDISTRO-desktop \
+  ros-$ROSDISTRO-urg-node
+
+sudo usermod -a -G dialout `whoami`
