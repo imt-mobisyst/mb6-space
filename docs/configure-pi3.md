@@ -60,7 +60,7 @@ Edit the `/etc/needrestart/needrestart.conf` file, to change the line `#$nrconf{
 
 ```sh
 ## OR:
-sudo cp dep/install-pi3-needrestart.conf /etc/needrestart/needrestart.conf
+sudo cp deps/install-pi3-needrestart.conf /etc/needrestart/needrestart.conf
 ```
 You can now use `apt` in a more silent and autonomous mode...
 
@@ -92,12 +92,12 @@ network:
 
 ```sh
 ## OR:
-sudo cp dep/install-pi3-60-static-eth0.yaml /etc/netplan/60-static-eth0.yam
+sudo cp deps/install-pi3-60-static-eth0.yaml /etc/netplan/60-static-eth0.yam
 ```
 
 sudo netplan apply
 
-sudo cp dep/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf``)
+sudo cp deps/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf``)
 
 ```sh
 sudo netplan apply
@@ -125,8 +125,8 @@ Set `eth0` on `/etc/default/isc-dhcp-server` Interfaces v4.
 
 ```sh
 ## OR:
-sudo cp dep/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf
-sudo cp dep/install-pi3-dhcp-server /etc/default/isc-dhcp-server
+sudo cp deps/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf
+sudo cp deps/install-pi3-dhcp-server /etc/default/isc-dhcp-server
 ```
 
 ```sh

@@ -86,10 +86,19 @@ echo "
 source ~/mb6-space/run-command.bash" >> ~/.bashrc
 ```
 
+(optional) you can add a `domain-id` to allow several ROS2 virtual networks to work on a same phisical network ([doc](https://docs.ros.org/en/humble/Concepts/About-Domain-ID.html))
+
+```
+export ROS_DOMAIN_ID=42
+```
+
+Push the `source` and `export` commands on your bashrc file.
+
 Finally launch a talker and a listerner in two terminals `ros2 run draft_mb6 py_listerner` and `ros2 run draft_mb6 cpp_talker`.
 
 For going further follow the draft tutorirals:
 
+- [ROS2 introduction](./docs/tuto-ros2-intro.md)
 - [package create](./docs/tuto-draft-pkg.md)
 - [python node](./docs/tuto-draft-python.md)
 - [cpp node](./docs/tuto-draft-cpp.md)

@@ -29,4 +29,4 @@ echo "
 
 #echo "# Tools"
 #echo "#----------------------------"
-#sudo dpkg -i dpd/code_1.73.1-1667967334_amd64.deb
+#sudo dpkg -i deps/code_1.73.1-1667967334_amd64.deb
