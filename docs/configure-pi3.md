@@ -32,14 +32,14 @@ date
 sudo date -s "2022-05-14 15:42:30"
 ```
 
-Then you can process a classical install from [install-pi3](../bin/install-pi3.sh) script or go on **Manual Install** section. 
+Then you can process a classical install from [install-pi3](../bin/install-pi3) script or go on **Manual Install** section. 
 Attention, the script also install ROS in _ros-base_ configuration.
 
 ```sh
 cd
-curl https://bitbucket.org/imt-mobisyst/mb6-space/raw/master/bin/install-pi3.sh > install.sh
-bash install.sh
-rm install.sh
+curl https://bitbucket.org/imt-mobisyst/mb6-space/raw/master/bin/install-pi3 > install.bash
+bash install.bash
+rm install.bash
 ```
 
 
@@ -155,7 +155,19 @@ nano /etc/netplan/40-wifi.yaml
 ### robotic workspace:
 
 You can return on [README.md](../README.md) to process regular install of the software.
-Don't forget to install `pkg-tbot` to get turtlebot drivers.
 
+Some specifics elements for Pi3:
 
+- The specific _run-commands_ to source is `./bin/run-commands-pibot.bash`. It permits to set a specific ROS domain to the _pibot_. 
+
+```sh
+echo "
+
+# mb6 ROS environment:
+source ~/mb6-space/bin/run-commands-pibot.bash" >> ~/.bashrc
+```
+
+###  configuration for turtlebot:
+
+Install `pkg-tbot` to get turtlebot drivers.
 

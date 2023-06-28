@@ -1,6 +1,6 @@
 #!env bash
 
-./install-ros-setup.sh
+./install-ros-setup
 
 export ROSDISTRO=iron
 echo "

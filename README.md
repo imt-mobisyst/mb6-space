@@ -33,9 +33,9 @@ First  the OS on your machine:
 
 Some install script for classical install:
 
-- [install-ros](./bin/install-ros.sh) - install ROS iron from the official repo in desktop mode.
-- [install-ros-setup](./bin/install-ros-setup.sh) - only setup `apt` to target offical ROS repo.
-- [install-realsense](./bin/install-realsense.sh) - install dev. environement: RealSense
+- [install-ros](./bin/install-ros) - install ROS iron from the official repo in desktop mode.
+- [install-ros-setup](./bin/install-ros-setup) - only setup `apt` to target offical ROS repo.
+- [install-realsense](./bin/install-realsense) - install dev. environement: RealSense
 
 Otherwize, you can go through the manual instructions or execute the appropriate install scrips in [bin](./bin) directory:
 
@@ -76,14 +76,15 @@ This workspace include a default simple ROS package `draft-mb6` into `pkg-draft`
 You can build it with `colcon build`,
 then, inform your environment of the existance of new ROS resources `source ./install/setup.bash`.
 
-In fact, the `run-command.bash` would also do the job (`source ./install/setup.bash`).
-You can automitically source this on your terminal...
+In fact, the `run-commands.bash` would also do the job (`source ./install/setup.bash`).
+You can make your own `run-commands.bash` and automitically source this on your terminal...
 
 ```sh
+cp ./bin/run-commands.bash .
 echo "
 
 # mb6 ROS environment:
-source ~/mb6-space/run-command.bash" >> ~/.bashrc
+source ~/mb6-space/run-commands.bash" >> ~/.bashrc
 ```
 
 (optional) you can add a `domain-id` to allow several ROS2 virtual networks to work on a same phisical network ([doc](https://docs.ros.org/en/humble/Concepts/About-Domain-ID.html))
@@ -105,6 +106,7 @@ For going further follow the draft tutorirals:
 
 ### Sensors and Tools:
 
+
 **Hokuyo Laser Range** 
 
 Just use the `urg_node` form the ROS `urg_node` package.
@@ -114,6 +116,7 @@ It requires that the linux user is in dialout group.
 sudo apt install -y ros-iron-urg-node
 sudo usermod -a -G dialout `whoami`
 ```
+
 
 **RealSense**
 
@@ -129,7 +132,15 @@ pip install pyrealsense2
 
 You can connect the camera and test with `./bin/test-realsense-cam.py` script.
 
+
+**Gazebo Simulation**
+
+ROS compliant version of gazebo can be installed from `ros-iron-gazebo-xxx` packeges.
+The [install-gazebo](./bin/install-gazebo) script provide the list of usefull packages.
+
+
 **Cuda**
+
 
 
 ### Robots
@@ -139,13 +150,14 @@ The robot bases and modules relies on ros packages to install and built them:
 ```sh
 cd ~/mb6-space
 git clone https://bitbucket.org/imt-mobisyst/pkg-NAME
-pkg-NAME/bin/install.sh
+pkg-NAME/bin/install
 colcon build
 ```
+
 - The **TurtleBots* : Package [pkg-tbot](https://bitbucket.org/imt-mobisyst/pkg-tbot) (howevers, the packages are installed and configured on onboard Pi3 computer)
 - **AlpagaDrone** Refers to `mb6-playload/alpaga/` repositoty 
 - **fetch**: 
 - **drone playload**: 
 
 
-**Modules:**
+### Modules:

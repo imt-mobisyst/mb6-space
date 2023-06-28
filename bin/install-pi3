@@ -33,7 +33,7 @@ sudo service isc-dhcp-server restart
 
 export ROSDISTRO=iron
 
-bin/install-ros-setup.sh
+bin/install-ros-setup
 
 echo "
                     --- Install ros-$ROSDISTRO for Pi3 ---
@@ -53,5 +53,9 @@ colcon build
 echo "
 
 # mb6 ROS environment:
-source ~/mb6-space/run-command.bash" >> ~/.bashrc
+source ~/mb6-space/bin/run-commands-pibot.bash" >> ~/.bashrc
 
+git clone https://GuillaumeLozenguez@bitbucket.org/imt-mobisyst/pkg-tbot.git
+cd pkg-tbot
+git checkout dev
+./bin/install

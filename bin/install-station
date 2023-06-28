@@ -23,9 +23,9 @@ echo "
                     --- ROS Environement ---
 "
 
-./install-ros.sh
-./install-realsense.sh
-./install-gazebo.sh
+./install-ros
+./install-realsense
+./install-gazebo
 
 #echo "# Tools"
 #echo "#----------------------------"
