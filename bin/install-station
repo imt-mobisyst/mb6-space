@@ -1,4 +1,4 @@
-#!env bash
+#!/bin/bash
 
 echo "
                     --- Tools: system and developement ---

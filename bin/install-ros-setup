@@ -1,4 +1,4 @@
-#!env bash
+#!/bin/bash
 
 echo "
                     --- Set-up Ros-Repos and dependancies ---

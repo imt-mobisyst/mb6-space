@@ -56,7 +56,7 @@ Then its define how to buid new resources (typically, librairies and programe/ex
 And finally the element to install and where.
 
 For instance, the simplest way to include Python-based ROS node depending on a specific [Python Package](https://docs.python.org/3/glossary.html#term-package) is to use `install` instruction in `CMakeLists.txt`.
-Considering that your work is in a `scripts` directory and knowing the ROS destination to make the ressource available for `ros2 run`,
+Considering that your work is in a `scripts` directory and knowing that the ROS destination to make the ressource available for `ros2 run` is `lib` (...),
 the install instructions would looklike:
 
 ```sh

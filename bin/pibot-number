@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export PIBOT_NAME=`hostname`
+echo ${PIBOT_NAME:5:2}
