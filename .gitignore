@@ -2,6 +2,7 @@
 #-----------------
 ovh-*
 pkg-tbot
+pkg-tsim
 pkg-viscene
 run-commands.bash
 

@@ -140,6 +140,14 @@ The [install-gazebo](./bin/install-gazebo) script provide the list of usefull pa
 
 More on Gazebo-Ros: [docs.ros.org](https://docs.ros.org/en/iron/Tutorials/Advanced/Simulators/Gazebo/Simulation-Gazebo.html)
 
+The IMT-MobiSyst simulated Robot is configured on a specific repo: `git clone https://bitbucket.org/imt-mobisyst/pkg-tsim`
+
+```sh
+git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
+colcon build
+```
+
+
 **Cuda**
 
 
