@@ -1,8 +1,9 @@
 # Light Submodules
 #-----------------
-publications/20*
+ovh-*
 pkg-tbot
 pkg-viscene
+run-commands.bash
 
 # System
 #-----------------

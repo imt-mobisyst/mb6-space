@@ -138,6 +138,7 @@ You can connect the camera and test with `./bin/test-realsense-cam.py` script.
 ROS compliant version of gazebo can be installed from `ros-iron-gazebo-xxx` packeges.
 The [install-gazebo](./bin/install-gazebo) script provide the list of usefull packages.
 
+More on Gazebo-Ros: [docs.ros.org](https://docs.ros.org/en/iron/Tutorials/Advanced/Simulators/Gazebo/Simulation-Gazebo.html)
 
 **Cuda**
 

@@ -60,10 +60,22 @@ Considering that your work is in a `scripts` directory and knowing that the ROS 
 the install instructions would looklike:
 
 ```sh
-# Python elements
+# Python scripts
 install( DIRECTORY scripts/myPythonPkg DESTINATION lib/${PROJECT_NAME})
 install( PROGRAMS scripts/myNode DESTINATION lib/${PROJECT_NAME})
 ```
 
+For launch file:
+
+```sh
+# Install launch files.
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
+)
+```
+
 Most of the primitive (`find_package`, `add_executable`, `install`) and macros (`PROJECT_NAME`, `REQUIRED`, ... ) are CMake primitives and macros.
 The `ament` tools provides some of primitive dedicated to [ROS build automation](https://docs.ros.org/en/foxy/How-To-Guides/Ament-CMake-Documentation.html).
+
+## The package.xml file
