@@ -39,7 +39,7 @@ sudo apt autoremove
 Some nice tools and libs:
 
 ```bash
-sudo apt -y install git ssh sshfs curl code build-essential
+sudo apt -y install git ssh sshfs curl build-essential
 ```
 
 Initialize git:
