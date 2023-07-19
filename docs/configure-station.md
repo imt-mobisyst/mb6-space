@@ -70,6 +70,15 @@ One last software:
 sudo dpkg -i deps/code_1.79.2-1686734195_amd64.deb
 ```
 
+You also have to configure the user environemnt (i.e. default bash configurations) :
+
+```shell
+echo "
+
+# mb6 ROS environment:
+source ~/mb6-space/bin/run-commands.bash" >> ~/.bashrc
+```
+
 For conveignance you can setup some particular git configuration:
 
 ```shell
@@ -81,3 +90,13 @@ git-lfs install
 ```
 
 That-it, you can return on the [README.md](../README.md) file and process to ROS, RealSense and Gazebo installations.
+
+(or: 
+
+```shell
+./bin/install-ros
+./bin/install-realsense
+./bin/install-gazebo
+```
+
+)
