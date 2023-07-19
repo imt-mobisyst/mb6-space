@@ -1,39 +1,58 @@
 #!/bin/bash
 
-echo "
-                    --- Tools: system and developement ---
-"
+## Some Softs:
 
-sudo apt install -y git gnome-tweaks git-lfs openssh-server sshfs \
-    tmux diodon meld \
-    build-essential default-jre cmake \
-    python3 python3-pip \
-    freecad prusa-slicer \
-    pandoc \
-    texlive texlive-base biber texlive-latex-recommended \
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y 
+
+sudo apt install -y zsh git git-lfs davfs2 openssh-server \
+    gnome-tweaks freecad prusa-slicer diodon \
+	git git-lfs meld \
+	build-essential check cmake default-jre \
+	python3 python3-pip spyder \
+	texlive texlive-base biber texlive-latex-recommended \
 	texlive-publishers texlive-bibtex-extra texlive-science texlive-luatex \
 	latexila pandoc wkhtmltopdf \
-	meld
-pip3 install beautifulsoup4 matplotlib
+	gimp steam inkscape \
+pip install zmq tqdm pytest beautifulsoup4 matplotlib
+
+## Clone  mb6-space
+
+cd
+if [ ! -d "mb6-space" ]; then
+  git config --global http.sslverify false
+  git clone https://bitbucket.org/imt-mobisyst/mb6-space.git
+fi
+cd mb6-space
+
+## Some softs not in the official Ubuntu repositories.
+
+sudo dpkg -i deps/code_1.79.2-1686734195_amd64.deb
+
+### install ROS2 :
+
+./install-ros
+./install-realsense
+./install-gazebo
+
+# Configure the user environemnt
+
+echo "
+                    --- Bash Configuration ---
+"
+
+echo "
+
+# mb6 ROS environment:
+source ~/mb6-space/bin/run-commands.bash" >> ~/.bashrc
 
 echo "
                     --- Git Configuration ---
 "
 
 git config --global user.name bot
-git config --global user.email bot@mb6.imt-nord-europe.fr
+git config --global user.email mobisyst@imt-nord-europe.fr
 git config --global credential.helper cache
 git config --global http.sslVerify false
 git-lfs install
-
-echo "
-                    --- ROS Environement ---
-"
-
-./install-ros
-./install-realsense
-./install-gazebo
-
-#echo "# Tools"
-#echo "#----------------------------"
-sudo dpkg -i deps/code_1.79.2-1686734195_amd64.deb
