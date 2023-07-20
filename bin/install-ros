@@ -13,20 +13,23 @@ sudo apt install -y ros-$ROSDISTRO-desktop \
                     ros-$ROSDISTRO-nav2-bringup
 
 
-# Configure the environemnt
-
-echo "
-
-# mb6 ROS environment:
-source ~/mb6-space/run-command.bash" >> ~/.bashrc
-
-source run-command.bash
-
-colcon build
-
 echo "
                     --- Install laser (urg_node) ---
 "
 
 sudo apt install -y ros-$ROSDISTRO-urg-node
 sudo usermod -a -G dialout `whoami`
+
+
+# Configure mb6-space environemnt
+cp ./bin/run-commands.bash .
+
+echo "
+
+# mb6 ROS environment:
+source ~/mb6-space/run-commands.bash" >> ~/.bashrc
+
+source run-commands.bash
+
+colcon build
+
