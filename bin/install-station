@@ -4,8 +4,6 @@
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y 
-
 sudo apt install -y zsh git git-lfs davfs2 openssh-server \
     gnome-tweaks freecad prusa-slicer diodon \
 	git git-lfs meld \
@@ -14,7 +12,7 @@ sudo apt install -y zsh git git-lfs davfs2 openssh-server \
 	texlive texlive-base biber texlive-latex-recommended \
 	texlive-publishers texlive-bibtex-extra texlive-science texlive-luatex \
 	latexila pandoc wkhtmltopdf \
-	gimp steam inkscape \
+	gimp steam inkscape
 pip install zmq tqdm pytest beautifulsoup4 matplotlib
 
 ## Clone  mb6-space
@@ -32,6 +30,7 @@ sudo dpkg -i deps/code_1.79.2-1686734195_amd64.deb
 
 ### install ROS2 :
 
+./bin/install-ros-setup
 ./bin/install-ros
 ./bin/install-realsense
 ./bin/install-gazebo

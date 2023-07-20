@@ -18,10 +18,11 @@ If necessary, fix manually the date:
 date
 sudo date -s "2022-05-14 15:42:30"
 sudo apt update
-sudo apt install-y openssh-server curl
+sudo apt upgrade
+sudo apt install -y openssh-server curl
 ```
 
-Then you can process a classical install from [install-station](../bin/install-station) script or go on **Manual Install** section. 
+You can restart the machine and process to a classical install from [install-station](../bin/install-station) script or go on **Manual Install** section. 
 Attention, the script also install ROS in _desktop_ configuration.
 
 ```sh
@@ -39,8 +40,6 @@ Install some usefull softs:
 ```shell
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y 
-
 sudo apt install -y zsh git git-lfs davfs2 openssh-server \
     gnome-tweaks freecad prusa-slicer diodon \
 	git git-lfs meld \
@@ -49,7 +48,7 @@ sudo apt install -y zsh git git-lfs davfs2 openssh-server \
 	texlive texlive-base biber texlive-latex-recommended \
 	texlive-publishers texlive-bibtex-extra texlive-science texlive-luatex \
 	latexila pandoc wkhtmltopdf \
-	gimp steam inkscape \
+	gimp steam inkscape
 pip install zmq tqdm pytest beautifulsoup4 matplotlib
 ```
 
@@ -94,6 +93,7 @@ That-it, you can return on the [README.md](../README.md) file and process to ROS
 (or: 
 
 ```shell
+./bin/install-ros-setup
 ./bin/install-ros
 ./bin/install-realsense
 ./bin/install-gazebo

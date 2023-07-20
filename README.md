@@ -33,8 +33,9 @@ First  the OS on your machine:
 
 Some install script for classical install:
 
-- [install-ros](./bin/install-ros) - install ROS iron from the official repo in desktop mode.
 - [install-ros-setup](./bin/install-ros-setup) - only setup `apt` to target offical ROS repo.
+- [install-ros](./bin/install-ros) - install ROS iron from the official repo in desktop mode.
+- [install-gazebo](./bin/install-gazebo) - install ROS-Gazebo
 - [install-realsense](./bin/install-realsense) - install dev. environement: RealSense
 
 Otherwize, you can go through the manual instructions or execute the appropriate install scrips in [bin](./bin) directory:
@@ -44,7 +45,7 @@ Otherwize, you can go through the manual instructions or execute the appropriate
 
 Follow the instruction on [docs.ros.org](https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html)
 
-In short:
+In short :
 
 ```sh
 sudo apt install -y curl software-properties-common
@@ -53,7 +54,7 @@ sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
 sudo apt update
-sudo apt install -y ros-dev-tools
+sudo apt install -y ros-dev-tools # ament-cmake-python
 ```
 
 Then install (use one of the options): 
