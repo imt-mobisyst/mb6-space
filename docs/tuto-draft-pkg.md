@@ -14,6 +14,7 @@ You can build your first package using the ros tool, with the build-type `ament_
 ros2 pkg create --build-type ament_cmake my_first_package
 colcon build --packages-select my_first_package
 ```
+
 Package creation generate the minimal files to identify `my_first_package` directory as a ROS package source.
 The file `package.xml` setup the ROS configuration, the name of the packages its dependanties in ROS ecosystem. 
 The file `CMakeLists.txt` is required to use [CMake](https://en.wikipedia.org/wiki/CMake) tool, a very famous cross platform tool for automatizing building processes.
@@ -55,17 +56,7 @@ The dependancies must be installed, reachable on the machine and with the approp
 Then its define how to buid new resources (typically, librairies and programe/executable).
 And finally the element to install and where.
 
-For instance, the simplest way to include Python-based ROS node depending on a specific [Python Package](https://docs.python.org/3/glossary.html#term-package) is to use `install` instruction in `CMakeLists.txt`.
-Considering that your work is in a `scripts` directory and knowing that the ROS destination to make the ressource available for `ros2 run` is `lib` (...),
-the install instructions would looklike:
-
-```sh
-# Python scripts
-install( DIRECTORY scripts/myPythonPkg DESTINATION lib/${PROJECT_NAME})
-install( PROGRAMS scripts/myNode DESTINATION lib/${PROJECT_NAME})
-```
-
-For launch file:
+For instance, all launchfile included in the `launch` driectory can be installed with the cmake command: 
 
 ```sh
 # Install launch files.
@@ -75,7 +66,19 @@ install(DIRECTORY
 )
 ```
 
+### Python scripts with Cmake
+
+Scripts are short executable code file, defining a ROS Node (in our context).
+
+The simplest way to include Python-based ROS node depending on a specific [Python Package](https://docs.python.org/3/glossary.html#term-package) is to use `install` instruction in `CMakeLists.txt`.
+Considering that your work is in a `scripts` directory and knowing that the ROS destination to make the ressource available for `ros2 run` is `lib` (...),
+the install instructions would looklike:
+
+```sh
+# Python scripts
+install( DIRECTORY scripts/myPythonPkg DESTINATION lib/${PROJECT_NAME})
+install( PROGRAMS scripts/myNode DESTINATION lib/${PROJECT_NAME})
+```
+
 Most of the primitive (`find_package`, `add_executable`, `install`) and macros (`PROJECT_NAME`, `REQUIRED`, ... ) are CMake primitives and macros.
 The `ament` tools provides some of primitive dedicated to [ROS build automation](https://docs.ros.org/en/foxy/How-To-Guides/Ament-CMake-Documentation.html).
-
-## The package.xml file
