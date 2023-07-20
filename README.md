@@ -152,14 +152,13 @@ colcon build
 **Cuda**
 
 
-
 ### Robots
 
 The robot bases and modules relies on ros packages to install and built them: 
 
 ```sh
 cd ~/mb6-space
-git clone https://bitbucket.org/imt-mobisyst/pkg-NAME
+git clone git@bitbucket.org:imt-mobisyst/pkg-NAME
 pkg-NAME/bin/install
 colcon build
 ```
@@ -171,3 +170,16 @@ colcon build
 
 
 ### Modules:
+
+The robot bases and modules relies on ros packages to install and built them: 
+
+```sh
+cd ~/mb6-space
+git clone git@bitbucket.org:imt-mobisyst/pkg-NAME
+pkg-NAME/bin/install
+colcon build
+```
+
+- [pkg-toons](https://bitbucket.org/imt-mobisyst/pkg-toons) **To**p**o**logical **N**avigation and **S**LAM regroups ROS2 packages that includes usefull elements for topological control of a mobile robot.
+- [pkg-viscene](https://bitbucket.org/imt-mobisyst/pkg-viscene) **Vi**sion based **Scene** regnition.
+
