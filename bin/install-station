@@ -28,23 +28,7 @@ cd mb6-space
 
 sudo dpkg -i deps/code_1.79.2-1686734195_amd64.deb
 
-### install ROS2 :
-
-./bin/install-ros-setup
-./bin/install-ros
-./bin/install-realsense
-./bin/install-gazebo
-
 # Configure the user environemnt
-
-echo "
-                    --- Bash Configuration ---
-"
-
-echo "
-
-# mb6 ROS environment:
-source ~/mb6-space/bin/run-commands.bash" >> ~/.bashrc
 
 echo "
                     --- Git Configuration ---
@@ -55,3 +39,18 @@ git config --global user.email mobisyst@imt-nord-europe.fr
 git config --global credential.helper cache
 git config --global http.sslVerify false
 git-lfs install
+
+### install Robot elements :
+
+./bin/install-ros-setup
+./bin/install-ros
+./bin/install-gazebo
+./bin/install-realsense
+
+### install mb6 pkg :
+
+git clone https://bitbucket.org/imt-mobisyst/pkg-tbot
+pkg-tbot/bin/install
+git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
+
+colcon build
