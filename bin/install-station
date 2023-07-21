@@ -55,3 +55,4 @@ git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
 
 source run-commands.bash
 colcon build
+colcon build
