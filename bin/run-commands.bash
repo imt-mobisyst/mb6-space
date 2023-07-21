@@ -2,8 +2,8 @@
 
 source /opt/ros/iron/setup.bash
 export ROS_WORKSPACE_NAME="iron"
-if [ -e ~/Projects/mb6-space/install/setup.bash ]; then
-  source ~/Projects/mb6-space/install/setup.bash
+if [ -e ~/mb6-space/install/setup.bash ]; then
+  source ~/mb6-space/install/setup.bash
   export ROS_WORKSPACE_NAME="mb6-space"
 fi
 

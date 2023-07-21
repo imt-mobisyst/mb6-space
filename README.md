@@ -148,7 +148,6 @@ git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
 colcon build
 ```
 
-
 **Cuda**
 
 

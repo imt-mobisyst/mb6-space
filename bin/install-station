@@ -53,4 +53,6 @@ git clone https://bitbucket.org/imt-mobisyst/pkg-tbot
 pkg-tbot/bin/install
 git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
 
+source run-commands.bash
+colcon build
 colcon build
