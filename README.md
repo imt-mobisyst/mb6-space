@@ -22,7 +22,7 @@ cd mb6-space
 
 ### Ubuntu-22.04 LTS
 
-First  the OS on your machine: 
+First the OS on your machine: 
 
 - On a _Raspberry Pi_ you can follows the guides: [Ubuntu22.04 on A Pi3 computer](./docs/configure-pi3.md)
 - On a _x86_ machine get help from the communty: [official website](https://ubuntu.com/) - [french community](https://www.ubuntu-fr.org/)
@@ -39,7 +39,6 @@ Some install script for classical install:
 - [install-realsense](./bin/install-realsense) - install dev. environement: RealSense
 
 Otherwize, you can go through the manual instructions or execute the appropriate install scrips in [bin](./bin) directory:
-
 
 ## Manual Installation
 
@@ -106,8 +105,11 @@ For going further follow the draft tutorirals:
 - [cpp node](./docs/tuto-draft-cpp.md)
 
 
+<<<<<<< HEAD
 ### Sensors and Tools:
 
+=======
+>>>>>>> afcd6059c2e8ec370c2caaae29b71e2eb8b02edc
 **Hokuyo Laser Range** 
 
 Just use the `urg_node` form the ROS `urg_node` package.
@@ -117,7 +119,6 @@ It requires that the linux user is in dialout group.
 sudo apt install -y ros-iron-urg-node
 sudo usermod -a -G dialout `whoami`
 ```
-
 
 **RealSense**
 
@@ -132,7 +133,6 @@ pip install pyrealsense2
 ```
 
 You can connect the camera and test with `./bin/test-realsense-cam.py` script.
-
 
 **Gazebo Simulation**
 
@@ -150,6 +150,10 @@ colcon build
 
 **Cuda**
 
+## IMT-Mobisyst packages
+
+Your _mb6-space_ workspace is now ready to welcome robotic packages.
+Depending of your need, you can install and build the relevant mb6' packages...
 
 ### Robots
 
