@@ -1,6 +1,7 @@
 # Light Submodules
 #-----------------
 ovh-*
+pkg-robulab
 pkg-tbot
 pkg-tsim
 pkg-toons
