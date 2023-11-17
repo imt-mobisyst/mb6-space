@@ -153,7 +153,7 @@ colcon build
 ## IMT-Mobisyst packages
 
 Your _mb6-space_ workspace is now ready to welcome robotic packages.
-Depending of your need, you can install and build the relevant mb6' packages...
+Depending of your need, you can install and build the relevant mb6's packages...
 
 ### Robots
 
