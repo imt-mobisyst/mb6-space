@@ -105,8 +105,8 @@ For going further follow the draft tutorirals:
 - [python node](./docs/tuto-draft-python.md)
 - [cpp node](./docs/tuto-draft-cpp.md)
 
-### Sensors and Tools:
 
+### Sensors and Tools:
 
 **Hokuyo Laser Range** 
 
@@ -162,8 +162,9 @@ pkg-NAME/bin/install
 colcon build
 ```
 
-- The **TurtleBots* : Package [pkg-tbot](https://bitbucket.org/imt-mobisyst/pkg-tbot) (howevers, the packages are installed and configured on onboard Pi3 computer)
-- **AlpagaDrone** Refers to `mb6-playload/alpaga/` repositoty 
+- **TurtleBots** : Package [pkg-tbot](https://bitbucket.org/imt-mobisyst/pkg-tbot) (howevers, the packages are installed and configured on onboard Pi3 computer)
+- **Robulab** : Package [pkg-robulab](https://bitbucket.org/imt-mobisyst/robulab) 
+- **AlpagaDrone** Refers to `mb6-playload/alpaga/` repositoty
 - **fetch**: 
 - **drone playload**: 
 
