@@ -105,11 +105,6 @@ For going further follow the draft tutorirals:
 - [cpp node](./docs/tuto-draft-cpp.md)
 
 
-<<<<<<< HEAD
-### Sensors and Tools:
-
-=======
->>>>>>> afcd6059c2e8ec370c2caaae29b71e2eb8b02edc
 **Hokuyo Laser Range** 
 
 Just use the `urg_node` form the ROS `urg_node` package.
@@ -156,7 +151,7 @@ Your _mb6-space_ workspace is now ready to welcome robotic packages.
 Depending of your need, you can install and build the relevant mb6's packages...
 
 ### Robots
-
+functions
 The robot bases and modules relies on ros packages to install and built them: 
 
 ```sh

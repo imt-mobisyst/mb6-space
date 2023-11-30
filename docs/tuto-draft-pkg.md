@@ -12,7 +12,7 @@ You can build your first package using the ros tool, with the build-type `ament_
 
 ```sh
 ros2 pkg create --build-type ament_cmake my_first_package
-colcon build --packages-select my_first_package
+colcon build --event-handlers console_direct+ --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON --packages-select my_first_package
 ```
 
 Package creation generate the minimal files to identify `my_first_package` directory as a ROS package source.

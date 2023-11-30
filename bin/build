@@ -3,4 +3,4 @@
 # Go at the root directory of the workspacehk hck 
 cd `dirname $0`/..
 
-colcon build --event-handlers console_direct+
+colcon build --event-handlers console_direct+ --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON
