@@ -14,7 +14,7 @@ alias log-all='git log --all --decorate --oneline --graph'
 alias diff='git difftool -t meld'
 
 # some other alias:
-alias mb6-build-pkg='colcon build --event-handlers console_direct+ --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON --packages-select'
+alias mb6-build-pkg='colcon build --parallel-workers 1 --executor sequential --event-handlers console_direct+ --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON --packages-select'
 
 # Tunned prompt:
 
