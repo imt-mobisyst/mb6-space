@@ -55,7 +55,7 @@ echo "
 # mb6 ROS environment:
 source ~/mb6-space/bin/run-commands-pibot.bash" >> ~/.bashrc
 
-git clone https://GuillaumeLozenguez@bitbucket.org/imt-mobisyst/pkg-tbot.git
+git clone https://bitbucket.org/imt-mobisyst/pkg-tbot.git
 cd pkg-tbot
 git checkout dev
 ./bin/install

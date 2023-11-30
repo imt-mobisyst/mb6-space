@@ -8,11 +8,13 @@ if [ -e ~/mb6-space/install/setup.bash ]; then
 fi
 
 # some Git alias:
-
 alias status='git status -sb .'
 alias log='git log -n 4'
 alias log-all='git log --all --decorate --oneline --graph'
 alias diff='git difftool -t meld'
+
+# some other alias:
+alias mb6-build-pkg='colcon build --event-handlers console_direct+ --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON --packages-select'
 
 # Tunned prompt:
 
@@ -24,7 +26,6 @@ export ROS_LOCALHOST_ONLY=1
 #export ROS_DOMAIN_ID=3
 
 # go message:
-
 if [ "$ROS_LOCALHOST_ONLY" = 1 ]; then
   echo "
     ---  `hostname`:$ROS_WORKSPACE_NAME ready on LocalHost ONLY  ---

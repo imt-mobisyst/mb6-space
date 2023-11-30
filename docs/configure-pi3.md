@@ -20,8 +20,9 @@ rpi-imager
   - username: bot 
   - password: bot
   - LAN:
-    * _Fleury_ : `72Hin@R*` 
-    * (in my dream) _IOT-IMT-Nord-Europe_ : `pass4Iot-Imt`
+    * _IoT IMT Nord Europe_ : `72Hin@R*`
+
+Try **Custom Image**: Section: _Modify existing image_ on https://opensource.com/article/21/7/custom-raspberry-pi-image
 
 ## First login:
 
@@ -30,6 +31,8 @@ If necessary, fix manually the date:
 ```sh
 date
 sudo date -s "2022-05-14 15:42:30"
+sudo apt update
+sudo apt upgrade
 ```
 
 Then you can process a classical install from [install-pi3](../bin/install-pi3) script or go on **Manual Install** section. 
@@ -41,7 +44,6 @@ curl https://bitbucket.org/imt-mobisyst/mb6-space/raw/master/bin/install-pi3 > i
 bash install.bash
 rm install.bash
 ```
-
 
 ## Manual Install:
 
@@ -72,6 +74,7 @@ sudo apt install -y build-essential meld
 
 ### DHCP Server on Eth0:
 
+The idea is to permit a direct connexion between a Suppervision-machine and the tbot-machin.
 First set up a static configuration on your PI:
 Set static `eth0` configuration, in  `/etc/netplan/`.
 
@@ -154,9 +157,30 @@ nano /etc/netplan/40-wifi.yaml
 
 ### robotic workspace:
 
-You can return on [README.md](../README.md) to process regular install of the software.
+You can return on [README.md](../README.md) for more detail on ROS2 install.
+The script `bin/install-ros-setup` configure ubuntu for ROS installation.
 
-Some specifics elements for Pi3:
+Then pibot relies on `ros-base` and `urg-node`.
+
+```sh
+bin/install-ros-setup
+
+export ROSDISTRO=iron
+sudo apt install -y \
+  ros-$ROSDISTRO-ros-base \
+  ros-$ROSDISTRO-urg-node
+
+sudo usermod -a -G dialout `whoami`
+```
+
+Your good to build mb6-space:
+
+```sh
+source /opt/ros/iron/setup.bash
+colcon build
+```
+
+### Some specifics elements for Pi3:
 
 - The specific _run-commands_ to source is `./bin/run-commands-pibot.bash`. It permits to set a specific ROS domain to the _pibot_. 
 
@@ -167,7 +191,9 @@ echo "
 source ~/mb6-space/bin/run-commands-pibot.bash" >> ~/.bashrc
 ```
 
-###  configuration for turtlebot:
+## Current use of pibot:
+
+###  Configuration for turtlebot:
 
 Install `pkg-tbot` to get turtlebot drivers.
 
