@@ -1,10 +1,10 @@
 # Setup ROS command environment:
 
 source /opt/ros/iron/setup.bash
-export ROS_WORKSPACE_NAME="iron"
-if [ -e ~/Projects/mb6-space/install/setup.bash ]; then
-  source ~/Projects/mb6-space/install/setup.bash
-  export ROS_WORKSPACE_NAME="mb6-space"
+export ROS_WORKSPACE="iron"
+if [ -e ~/mb6-space/install/setup.bash ]; then
+  source ~/mb6-space/install/setup.bash
+  export ROS_WORKSPACE="mb6-space"
 fi
 
 # some Git alias:
@@ -30,10 +30,10 @@ export ROS_DOMAIN_ID=`~/mb6-space/bin/pibot-number`
 
 if [ "$ROS_LOCALHOST_ONLY" = 1 ]; then
   echo "
-    ---  `hostname`:$ROS_WORKSPACE_NAME ready on LocalHost ONLY  ---
+    ---  `hostname`:$ROS_WORKSPACE ready on LocalHost ONLY  ---
   "
 else
   echo "
-    ---  `hostname`:$ROS_WORKSPACE_NAME ready on ROS domain: $ROS_DOMAIN_ID  ---
+    ---  `hostname`:$ROS_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
   "
 fi
