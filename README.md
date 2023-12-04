@@ -139,6 +139,8 @@ More on Gazebo-Ros: [docs.ros.org](https://docs.ros.org/en/iron/Tutorials/Advanc
 The IMT-MobiSyst simulated Robot is configured on a specific repo: `git clone https://bitbucket.org/imt-mobisyst/pkg-tsim`
 
 ```sh
+source ./bin/run-commands.bash
+./bin/install-gazebo
 git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
 colcon build
 ```
