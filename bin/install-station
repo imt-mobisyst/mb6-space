@@ -40,10 +40,19 @@ git config --global credential.helper cache
 git config --global http.sslVerify false
 git-lfs install
 
-### install Robot elements :
+### install ROS :
 
 ./bin/install-ros-setup
 ./bin/install-ros
+
+### build empty mb6 :
+
+source run-commands.bash
+colcon build
+
+### install Robot elements :
+
+source run-commands.bash
 ./bin/install-gazebo
 ./bin/install-realsense
 
@@ -53,6 +62,4 @@ git clone https://bitbucket.org/imt-mobisyst/pkg-tbot
 pkg-tbot/bin/install
 git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
 
-source run-commands.bash
-colcon build
 colcon build

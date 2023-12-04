@@ -182,13 +182,14 @@ colcon build
 
 ### Some specifics elements for Pi3:
 
-- The specific _run-commands_ to source is `./bin/run-commands-pibot.bash`. It permits to set a specific ROS domain to the _pibot_. 
+- The specific _run-commands_ to source is `./bin/pibot-run-commands.bash`. It permits to set a specific ROS domain to the _pibot_. 
+
+Edit `~/.bashrc`, and add: 
 
 ```sh
-echo "
 
 # mb6 ROS environment:
-source ~/mb6-space/bin/run-commands-pibot.bash" >> ~/.bashrc
+source ~/mb6-space/bin/pibot-run-commands.bash
 ```
 
 ## Current use of pibot:

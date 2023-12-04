@@ -53,7 +53,7 @@ colcon build
 echo "
 
 # mb6 ROS environment:
-source ~/mb6-space/bin/run-commands-pibot.bash" >> ~/.bashrc
+source ~/mb6-space/bin/pibot-run-commands.bash" >> ~/.bashrc
 
 git clone https://bitbucket.org/imt-mobisyst/pkg-tbot.git
 cd pkg-tbot
