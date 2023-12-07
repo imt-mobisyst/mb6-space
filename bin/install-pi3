@@ -9,15 +9,12 @@ if [ ! -d "mb6-space" ]; then
 fi
 cd mb6-space
 
-
 ## Some Softs:
 
 sudo cp deps/install-pi3-needrestart.conf /etc/needrestart/needrestart.conf
-
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y build-essential meld isc-dhcp-server
-
 
 ### DHCP Server on Eth0:
 
@@ -28,6 +25,11 @@ sudo cp deps/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf
 sudo cp deps/install-pi3-isc-dhcp-server /etc/default/isc-dhcp-server
 sudo service isc-dhcp-server restart
 
+
+### Disable the : networkd-wait-online.service
+
+sudo systemctl disable systemd-networkd-wait-online.service
+sudo systemctl mask systemd-networkd-wait-online.service
 
 ### install ROS2 :
 export ROSDISTRO=iron
@@ -47,7 +49,6 @@ source /opt/ros/iron/setup.bash
 colcon build
 
 # Configure the environemnt
-
 echo "
 
 # mb6 ROS environment:
@@ -55,5 +56,18 @@ source ~/mb6-space/bin/pibot-run-commands.bash" >> ~/.bashrc
 
 git clone https://bitbucket.org/imt-mobisyst/pkg-tbot.git
 cd pkg-tbot
-git checkout dev
 ./bin/install
+
+# Get prebuild pibot
+cd ..
+rm -fr install
+git checkout pibot
+
+# Init auto login: https://wiki.archlinux.org/title/Getty
+
+sudo mkdir /etc/systemd/system/getty@tty1.service.d
+echo "[Service]
+ExecStart=
+ExecStart=-/sbin/agetty -o '-p -f -- \\u' --noclear --autologin bot %I $TERM
+" > autologin.conf
+sudo mv autologin.conf /etc/systemd/system/getty@tty1.service.d/
