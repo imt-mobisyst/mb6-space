@@ -1,5 +1,4 @@
 # Setup ROS command environment:
-
 source /opt/ros/iron/setup.bash
 export ROS_WORKSPACE="iron"
 if [ -e ~/mb6-space/install/setup.bash ]; then
@@ -22,11 +21,18 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 
 # User configurations:
 
-export ROS_LOCALHOST_ONLY=1
-#export ROS_DOMAIN_ID=3
+if [ -e ~/Projects/mb6-space/config-ros.bash ]; then
+  source ~/Projects/mb6-space/config-ros.bash
+else
+  echo "# ROS configuration:
+export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
+export ROS_DOMAIN_ID=00
+" > ~/Projects/mb6-space/config-ros.bash
+  source ~/Projects/mb6-space/config-ros.bash
+fi
 
 # go message:
-if [ "$ROS_LOCALHOST_ONLY" = 1 ]; then
+if [ "$ROS_LOCALHOST_ONLY" = "LOCALHOST" ]; then
   echo "
     ---  `hostname`:$ROS_WORKSPACE ready on LocalHost ONLY  ---
   "

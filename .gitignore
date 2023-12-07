@@ -8,6 +8,10 @@ pkg-toons
 pkg-viscene
 run-commands.bash
 
+# Local config:
+#-----------------
+config-ros.bash
+
 # System
 #-----------------
 *.log
