@@ -17,19 +17,12 @@ alias diff='git difftool -t meld'
 alias mb6-build-pkg='colcon build --parallel-workers 1 --executor sequential --event-handlers console_direct+ --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON --packages-select'
 
 # Tunned prompt:
-
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:local($ROS_LOCALHOST_ONLY),domain($ROS_DOMAIN_ID):\[\033[01;34m\]\w\[\033[00m\]\n\$ '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:discovery($ROS_AUTOMATIC_DISCOVERY_RANGE),domain($ROS_DOMAIN_ID):\[\033[01;34m\]\w\[\033[00m\]\n\$ '
 
 # Pibot configurations:
 export ROS_DOMAIN_ID=`~/mb6-space/bin/pibot-number`
 
 # go message:
-if [ "$ROS_LOCALHOST_ONLY" = 1 ]; then
-  echo "
-    ---  `hostname`:$ROS_WORKSPACE ready on LocalHost ONLY  ---
-  "
-else
-  echo "
-    ---  `hostname`:$ROS_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
-  "
-fi
+echo "
+  ---  `hostname`:$ROS_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
+"

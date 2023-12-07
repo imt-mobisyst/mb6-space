@@ -80,11 +80,10 @@ In fact, the `run-commands.bash` would also do the job (`source ./install/setup.
 You can make your own `run-commands.bash` and automitically source this on your terminal...
 
 ```sh
-cp ./bin/run-commands.bash .
 echo "
 
 # mb6 ROS environment:
-source ~/mb6-space/run-commands.bash" >> ~/.bashrc
+source ~/mb6-space/bin/run-commands.bash" >> ~/.bashrc
 ```
 
 (optional) you can add a `domain-id` to allow several ROS2 virtual networks to work on a same phisical network ([doc](https://docs.ros.org/en/humble/Concepts/About-Domain-ID.html))

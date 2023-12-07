@@ -22,12 +22,10 @@ sudo usermod -a -G dialout `whoami`
 
 
 # Configure mb6-space environemnt
-cp ./bin/run-commands.bash .
-
 echo "
 
 # mb6 ROS environment:
-source ~/mb6-space/run-commands.bash" >> ~/.bashrc
+source ~/mb6-space/bin/run-commands.bash" >> ~/.bashrc
 
 source run-commands.bash
 
