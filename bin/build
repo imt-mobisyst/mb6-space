@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Go at the root directory of the workspacehk hck 
+# Go at the root directory of the workspace 
 cd `dirname $0`/..
 
 colcon build --event-handlers console_direct+ --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON

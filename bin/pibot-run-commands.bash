@@ -21,10 +21,7 @@ alias mb6-build-pkg='colcon build --parallel-workers 1 --executor sequential --e
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:local($ROS_LOCALHOST_ONLY),domain($ROS_DOMAIN_ID):\[\033[01;34m\]\w\[\033[00m\]\n\$ '
 
 # Pibot configurations:
-
-export ROS_LOCALHOST_ONLY=0
 export ROS_DOMAIN_ID=`~/mb6-space/bin/pibot-number`
-
 
 # go message:
 
