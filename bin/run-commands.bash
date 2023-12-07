@@ -1,13 +1,10 @@
-# Go at the root directory of the workspace
-cd `dirname $0`/..
-
 # Setup ROS command environment:
 if [ -e /opt/ros/iron/setup.bash ]; then
   source /opt/ros/iron/setup.bash
   export ROS_WORKSPACE="iron"
 fi
-if [ -e ./install/setup.bash ]; then
-  source ./install/setup.bash
+if [ -e ~/mb6-space/install/setup.bash ]; then
+  source ~/mb6-space/install/setup.bash
   export ROS_WORKSPACE="mb6-space"
 fi
 
@@ -24,14 +21,14 @@ alias mb6-build-pkg='colcon build --event-handlers console_direct+ --cmake-args 
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\].\n\$ '
 
 # User configurations:
-if [ -e ./config-ros.bash ]; then
-  source ./config-ros.bash
+if [ -e ~/mb6-space/config-ros.bash ]; then
+  source ~/mb6-space/config-ros.bash
 else
   echo "# ROS configuration:
 export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
 export ROS_DOMAIN_ID=00
-" > ./config-ros.bash
-  source ./config-ros.bash
+" > ~/mb6-space/config-ros.bash
+  source ~/mb6-space/config-ros.bash
 fi
 
 # Go message:
