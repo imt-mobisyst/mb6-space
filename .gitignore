@@ -13,7 +13,6 @@ run-commands.bash
 *.log
 .vscode
 build/
-install/
 log/
 lost+found
 *~
