@@ -1,3 +1,6 @@
+# Go at the root directory of the mb6-project 
+cd `dirname $0`/..
+
 # Setup ROS command environment:
 if [ -e /opt/ros/iron/setup.bash ]; then
   source /opt/ros/iron/setup.bash

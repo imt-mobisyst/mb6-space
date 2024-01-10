@@ -11,14 +11,8 @@ Curent version: **Ubuntu-22.install04 LTS** / **ROS2 iron**
 
 ## Install
 
-_mb6-space_ is a meta-package.
-It didn't require to be installed, just, clone me sommewhere, potentially as your ros-workspace.
-For an installation of ROS and everithing, refert to the robots you want to play with.
-
-```sh
-git clone https://bitbucket.org/imt-mobisyst/mb6-space
-cd mb6-space
-```
+_mb6-space_ is a meta-package, almost empty.
+It is designed to be your ros-workspace.
 
 ### Ubuntu-22.04 LTS
 
@@ -40,9 +34,15 @@ Some install script for classical install:
 
 Otherwize, you can go through the manual instructions or execute the appropriate install scrips in [bin](./bin) directory:
 
-## Manual Installation
 
-Follow the instruction on [docs.ros.org](https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html)
+### Manual Installation
+
+```sh
+git clone https://bitbucket.org/imt-mobisyst/mb6-space
+cd mb6-space
+```
+
+This install process follows the instruction on [docs.ros.org](https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html)
 
 In short :
 
@@ -70,7 +70,7 @@ You can setup your terminal with ROS2 environment:
 source /opt/ros/iron/setup.bash
 ```
 
-### Hello-World with ROS2
+## Hello-World with ROS2
 
 This workspace include a default simple ROS package `draft-mb6` into `pkg-draft` directory.
 You can build it with `colcon build`,

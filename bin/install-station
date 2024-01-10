@@ -57,8 +57,8 @@ source run-commands.bash
 
 ### install mb6 pkg :
 
-git clone https://bitbucket.org/imt-mobisyst/pkg-tbot
-pkg-tbot/bin/install
-git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
+./bin/clone-basic
+./bin/clone-tbot
+./bin/clone-tsim
 
 colcon build
