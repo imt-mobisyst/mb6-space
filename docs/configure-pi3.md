@@ -198,3 +198,11 @@ source ~/mb6-space/bin/pibot-run-commands.bash
 
 Install `pkg-tbot` to get turtlebot drivers.
 
+### system control
+
+Service creation: [on linuxhandbook](https://linuxhandbook.com/create-systemd-services/)
+
+```sh
+sudo cp ./resource/pibot.service /etc/systemd/system/
+```
+
