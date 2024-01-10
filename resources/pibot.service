@@ -1,0 +1,12 @@
+[Unit]
+Description=Tbot ROS driver
+After=network.target
+
+[Service]
+ExecStart=/home/bot/mb6-space/bin/pibot-start.sh
+ExecReload=/home/bot/mb6-space/bin/pibot-start.sh
+Type=exec
+Restart=always
+
+[Install]
+WantedBy=default.target
