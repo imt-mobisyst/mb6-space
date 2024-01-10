@@ -1,6 +1,7 @@
 # Light Submodules
 #-----------------
 ovh-*
+pkg-basic
 pkg-robulab
 pkg-tbot
 pkg-tsim
