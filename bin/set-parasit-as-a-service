@@ -10,7 +10,7 @@ After=network.target
 [Service]
 User=$USER
 Group=$USER
-ExecStart=/bin/bash -c \"source `realpath $PROJECT_PATH`/run-commands.bash ; ros2 run mb6_basic parasit\"
+ExecStart=/bin/bash -c \"source `realpath $PROJECT_PATH`/pibot-run-commands.bash ; ros2 run mb6_basic parasit\"
 Type=simple
 
 [Install]
