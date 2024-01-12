@@ -15,7 +15,7 @@ sudo service systemd-timesyncd restart
 ## Some Softs:
 sudo cp deps/install-pi3-needrestart.conf /etc/needrestart/needrestart.conf
 sudo apt update
-sudo apt remove cloud-init
+sudo apt remove -y cloud-init
 sudo apt install -y build-essential meld
 sudo apt upgrade -y
 
