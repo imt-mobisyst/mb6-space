@@ -56,9 +56,10 @@ source run-commands.bash
 ./bin/install-realsense
 
 ### install mb6 pkg :
-
 ./bin/clone-basic
 ./bin/clone-tbot
 ./bin/clone-tsim
+
+./bin/set-parasit-as-a-service
 
 colcon build
