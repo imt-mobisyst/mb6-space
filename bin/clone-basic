@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
 cd `dirname $0`/..
-git clone git@bitbucket.org:imt-mobisyst/pkg-basic
+#git clone git@bitbucket.org:imt-mobisyst/pkg-basic
+git clone https://bitbucket.org/imt-mobisyst/pkg-basic
 colcon build --base-path pkg-basic
