@@ -17,7 +17,6 @@ sudo cp deps/install-pi3-needrestart.conf /etc/needrestart/needrestart.conf
 sudo apt update
 sudo apt remove -y cloud-init
 sudo apt install -y build-essential meld
-sudo apt upgrade -y
 
 ### DHCP Server on Eth0:
 # sudo apt install -y isc-dhcp-server
@@ -75,3 +74,7 @@ sudo mv autologin.conf /etc/systemd/system/getty@tty1.service.d/
 # Activate services
 ./bin/set-parasit-as-a-service
 ./bin/set-tbot-as-a-service
+
+# Finalize: 
+sudo apt upgrade -y
+sudo reboot
