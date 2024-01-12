@@ -27,8 +27,8 @@ sudo apt install -y build-essential meld
 # sudo service isc-dhcp-server restart
 
 ### Disable the : networkd-wait-online.service
-# sudo systemctl disable systemd-networkd-wait-online.service
-# sudo systemctl mask systemd-networkd-wait-online.service
+sudo systemctl disable systemd-networkd-wait-online.service
+sudo systemctl mask systemd-networkd-wait-online.service
 
 ### install ROS2 :
 export ROSDISTRO=iron
