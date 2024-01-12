@@ -24,19 +24,10 @@ rpi-imager
 
 Try **Custom Image**: Section: _Modify existing image_ on https://opensource.com/article/21/7/custom-raspberry-pi-image
 
-## First login:
+## Install:
 
-If necessary, fix manually the date:
-
-```sh
-date
-sudo date -s "2022-05-14 15:42:30"
-sudo apt update
-sudo apt upgrade
-```
-
-Then you can process a classical install from [install-pi3](../bin/install-pi3) script or go on **Manual Install** section. 
-Attention, the script also install ROS in _ros-base_ configuration.
+You can process a classical install from [install-pi3](../bin/install-pi3) script or go on **Manual Install** section. 
+Attention, the script also install ROS in _ros-base_ configuration and mb6 elements.
 
 ```sh
 cd
@@ -46,6 +37,24 @@ rm install.bash
 ```
 
 ## Manual Install:
+
+If necessary, update ntp serveurs conf and restart timesyncd service:
+
+```sh
+date
+sudo nano /etc/systemd/timesyncd.comf
+sudo service systemd-timesyncd restart
+```
+
+You can set: `NTP=0.fr.pool.ntp.org 1.fr.pool.ntp.org 2.fr.pool.ntp.org 3.fr.pool.ntp.org`
+
+Or fix manually the date:
+
+```sh
+date
+sudo date -s "2022-05-14 15:42:30"
+sudo apt update
+```
 
 Clone `mb6-space`:
 
@@ -68,8 +77,9 @@ You can now use `apt` in a more silent and autonomous mode...
 
 ```sh
 sudo apt update
-sudo apt upgrade -y
+sudo apt remove cloud-init
 sudo apt install -y build-essential meld
+sudo apt upgrade -y
 ```
 
 ### DHCP Server on Eth0:
@@ -152,7 +162,7 @@ The pibot is reachable in direct ethernet connexion (10.10.1.1 or pibotXX.local)
 To add Wifi
 
 ```sh
-nano /etc/netplan/40-wifi.yaml
+nano /etc/netplan/50-cloud-init.yaml
 ```
 
 ### robotic workspace:
