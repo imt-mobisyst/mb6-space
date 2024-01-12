@@ -58,7 +58,6 @@ git clone https://bitbucket.org/imt-mobisyst/pkg-tbot.git
 git clone https://bitbucket.org/imt-mobisyst/pkg-basic.git
 
 # Get prebuild pibot
-cd ..
 rm -fr install
 git checkout pibot
 
