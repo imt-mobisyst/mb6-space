@@ -2,12 +2,7 @@
 
 Version Rasbery-Pi3 with Ubuntu 22.04.
 
-Need Raspberry *Pi-Imager* 
-
-```sh
-sudo apt install rpi-imager
-rpi-imager
-```
+Need Raspberry *Pi-Imager* from [www.raspberrypi.com](https://www.raspberrypi.com/software) (not from apt...).
 
 ## Ubuntu via imager:
 
