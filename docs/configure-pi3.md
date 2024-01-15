@@ -26,9 +26,9 @@ Attention, the script also install ROS in _ros-base_ configuration and mb6 eleme
 
 ```sh
 cd
-curl https://bitbucket.org/imt-mobisyst/mb6-space/raw/master/bin/install-pi3 > install.bash
-bash install.bash
-rm install.bash
+git clone https://bitbucket.org/imt-mobisyst/mb6-space
+cd mb6-space
+./bin/install-pi3
 ```
 
 ## Manual Install:
