@@ -41,7 +41,6 @@ git config --global http.sslVerify false
 git-lfs install
 
 ### install ROS :
-
 ./bin/install-ros-setup
 ./bin/install-ros
 
@@ -50,15 +49,16 @@ source ./bin/run-commands.bash
 colcon build
 
 ### install Robot elements :
-
-source run-commands.bash
 ./bin/install-gazebo
 ./bin/install-realsense
 
 ### install mb6 pkg :
+git clone https://bitbucket.org/imt-mobisyst/pkg-basic
+git clone https://bitbucket.org/imt-mobisyst/pkg-tbot
+pkg-tbot/install
+git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
+pkg-tsim/install
 
-./bin/clone-basic
-./bin/clone-tbot
-./bin/clone-tsim
-
+source ./bin/run-commands.bash
 colcon build
+./bin/set-parasit-as-a-service

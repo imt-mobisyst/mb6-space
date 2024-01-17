@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 cd `dirname $0`/..
+<<<<<<< HEAD
+=======
+#git clone git@bitbucket.org:imt-mobisyst/pkg-tbot
+>>>>>>> fad62e430a5cf998c21a7f54c501ae9787b6489c
 git clone https://bitbucket.org/imt-mobisyst/pkg-tbot
 pkg-tbot/install
 colcon build --base-path pkg-tbot
