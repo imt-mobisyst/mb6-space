@@ -1,7 +1,6 @@
 #!/bin/bash
 
-## Clone  mb6-space
-
+## Clone mb6-space
 cd
 if [ ! -d "mb6-space" ]; then
   git config --global http.sslverify false
@@ -9,25 +8,25 @@ if [ ! -d "mb6-space" ]; then
 fi
 cd mb6-space
 
-## Some Softs:
+## Time Syncronisation:
+sudo cp deps/timesyncd.conf /etc/systemd/
+sudo service systemd-timesyncd restart
 
+## Some Softs:
 sudo cp deps/install-pi3-needrestart.conf /etc/needrestart/needrestart.conf
 sudo apt update
-sudo apt upgrade -y
-sudo apt install -y build-essential meld isc-dhcp-server
+sudo apt remove -y cloud-init
+sudo apt install -y build-essential meld
 
 ### DHCP Server on Eth0:
-
-sudo cp deps/install-pi3-60-static-eth0.yaml /etc/netplan/60-static-eth0.yaml
-sudo netplan apply
-
-sudo cp deps/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf
-sudo cp deps/install-pi3-isc-dhcp-server /etc/default/isc-dhcp-server
-sudo service isc-dhcp-server restart
-
+# sudo apt install -y isc-dhcp-server
+# sudo cp deps/install-pi3-60-static-eth0.yaml /etc/netplan/60-static-eth0.yaml
+# sudo netplan apply
+# sudo cp deps/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf
+# sudo cp deps/install-pi3-isc-dhcp-server /etc/default/isc-dhcp-server
+# sudo service isc-dhcp-server restart
 
 ### Disable the : networkd-wait-online.service
-
 sudo systemctl disable systemd-networkd-wait-online.service
 sudo systemctl mask systemd-networkd-wait-online.service
 
@@ -54,12 +53,11 @@ echo "
 # mb6 ROS environment:
 source ~/mb6-space/bin/pibot-run-commands.bash" >> ~/.bashrc
 
+git clone https://bitbucket.org/imt-mobisyst/pkg-basic.git
 git clone https://bitbucket.org/imt-mobisyst/pkg-tbot.git
-cd pkg-tbot
-./bin/install
+./pkg-tbot/bin/install
 
 # Get prebuild pibot
-cd ..
 rm -fr install
 git checkout pibot
 
@@ -71,3 +69,11 @@ ExecStart=
 ExecStart=-/sbin/agetty -o '-p -f -- \\u' --noclear --autologin bot %I $TERM
 " > autologin.conf
 sudo mv autologin.conf /etc/systemd/system/getty@tty1.service.d/
+
+# Activate services
+./bin/set-parasit-as-a-service
+./bin/set-tbot-as-a-service
+
+# Finalize: 
+sudo apt upgrade -y
+sudo reboot
