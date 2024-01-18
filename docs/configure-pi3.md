@@ -213,4 +213,3 @@ sudo cp ./resources/pibot.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable pibot.service
 ```
-
