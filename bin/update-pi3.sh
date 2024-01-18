@@ -26,7 +26,9 @@ else
         -s /bin/bash ros
 fi
 
+sudo cp -f $GITROOT/deps/install-pi3-needrestart.conf /etc/needrestart/needrestart.conf
+
 # change bot passwd
-sudo echo 'bot:$6$TxRfhWGHg6wSwSIn$DfkVRmxnSObMDCHfYC0jAN5wlWgKXR0X.QMBjSN1RdIkOtsTRWuU6KJ6tWDwiNsoAqc5CeeknA7y6PM4cDYMZ.' | chpasswd
+# sudo echo 'bot:$6$TxRfhWGHg6wSwSIn$DfkVRmxnSObMDCHfYC0jAN5wlWgKXR0X.QMBjSN1RdIkOtsTRWuU6KJ6tWDwiNsoAqc5CeeknA7y6PM4cDYMZ.' | chpasswd
 
 ip a > $(hostname).ip
