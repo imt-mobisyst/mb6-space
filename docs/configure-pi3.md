@@ -1,4 +1,4 @@
-# OS Instalation on Pi3 
+# OS Instalation on Pi3
 
 Version Rasbery-Pi3 with Ubuntu 22.04.
 
@@ -12,7 +12,7 @@ Need Raspberry *Pi-Imager* from [www.raspberrypi.com](https://www.raspberrypi.co
   - choose a pibot number _XX_ between 20 and 80.
   - hostname: 'pibotXX'
   - enable SSH (password auth)
-  - username: bot 
+  - username: bot
   - password: bot
   - LAN:
     * _IoT IMT Nord Europe_ : `72Hin@R*`
@@ -21,7 +21,7 @@ Try **Custom Image**: Section: _Modify existing image_ on https://opensource.com
 
 ## Install:
 
-You can process a classical install from [install-pi3](../bin/install-pi3) script or go on **Manual Install** section. 
+You can process a classical install from [install-pi3](../bin/install-pi3) script or go on **Manual Install** section.
 Attention, the script also install ROS in _ros-base_ configuration and mb6 elements.
 
 ```sh
@@ -59,7 +59,7 @@ git config --global http.sslverify false
 git clone https://bitbucket.org/imt-mobisyst/mb6-space.git
 ```
 
-Update and get some soft: 
+Update and get some soft:
 
 First configure `apt` needrestart from "interactive" (that promt an interactive windows to specify which services to resart after an apt update) to "automatic".
 Edit the `/etc/needrestart/needrestart.conf` file, to change the line `#$nrconf{restart} = 'i';` to  `$nrconf{restart} = 'a';`.
@@ -91,10 +91,11 @@ sudo nano /etc/netplan/60-static-eth0.yaml
 # Static Configuration
 network:
     ethernets:
+        renderer: networkd
         eth0:
             dhcp4: no
             addresses:
-             - 10.10.1.1/16
+                - 192.168.1.1/24
     version: 2
 ```
 
@@ -123,9 +124,9 @@ Edit: `/etc/dhcp/dhcpd.conf` like:
 # This is a very basic subnet declaration.
 
 subnet 10.10.0.0 netmask 255.255.0.0 {
-  range 10.10.1.20 10.10.1.80; 
-  option domain-name-servers 8.8.8.8, 8.8.4.4; 
-  option routers 10.10.1.1; 
+  range 10.10.1.20 10.10.1.80;
+  option domain-name-servers 8.8.8.8, 8.8.4.4;
+  option routers 10.10.1.1;
 }
 ```
 
@@ -150,9 +151,9 @@ systemctl status isc-dhcp-server.service # get the PID
 journalctl _PID=2690
 ```
 
-The pibot is reachable in direct ethernet connexion (10.10.1.1 or pibotXX.local). 
+The pibot is reachable in direct ethernet connexion (10.10.1.1 or pibotXX.local).
 
-### Wifi 
+### Wifi
 
 To add Wifi
 
@@ -187,9 +188,9 @@ colcon build
 
 ### Some specifics elements for Pi3:
 
-- The specific _run-commands_ to source is `./bin/pibot-run-commands.bash`. It permits to set a specific ROS domain to the _pibot_. 
+- The specific _run-commands_ to source is `./bin/pibot-run-commands.bash`. It permits to set a specific ROS domain to the _pibot_.
 
-Edit `~/.bashrc`, and add: 
+Edit `~/.bashrc`, and add:
 
 ```sh
 
@@ -208,6 +209,8 @@ Install `pkg-tbot` to get turtlebot drivers.
 Service creation: [on linuxhandbook](https://linuxhandbook.com/create-systemd-services/)
 
 ```sh
-sudo cp ./resource/pibot.service /etc/systemd/system/
+sudo cp ./resources/pibot.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable pibot.service
 ```
 
