@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+PROJECT_PATH=`dirname $0`
+
+echo  """
+[Unit]
+Description=mb6 start process
+After=network.target
+
+[Service]
+User=$USER
+Group=$USER
+ExecStart=`realpath $PROJECT_PATH`/start.sh
+Type=simple
+
+[Install]
+WantedBy=network.target
+""" > mb6-start.service
+
+sudo mv mb6-start.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable mb6-start.service
+
+echo "You can start the service: 'service mb6-start start'"
