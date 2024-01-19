@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Update mb6-space.
 cd `dirname $0`/..
 git pull
