@@ -11,12 +11,12 @@ if [ -e ./pkg-basic ]; then
     cd ..
 fi
 if [ -e ./pkg-tbot ]; then
-    cd pkg-basic
+    cd pkg-tbot
     git pull
     cd ..
 fi
 if [ -e ./pkg-tsim ]; then
-    cd pkg-basic
+    cd pkg-tsim
     git pull
     cd ..
 fi
