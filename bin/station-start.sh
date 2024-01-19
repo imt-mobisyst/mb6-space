@@ -26,4 +26,4 @@ if [ ! -e ./patches ]; then
     mkdir patches
 fi
 
-./bin/station-patches.sh
+bash ./bin/station-patches.sh
