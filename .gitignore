@@ -12,6 +12,7 @@ run-commands.bash
 # Local config:
 #-----------------
 config-ros.bash
+patches
 
 # System
 #-----------------
