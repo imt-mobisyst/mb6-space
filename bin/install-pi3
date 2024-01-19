@@ -13,18 +13,13 @@ sudo cp deps/timesyncd.conf /etc/systemd/
 sudo service systemd-timesyncd restart
 
 ## Some Softs:
-sudo cp deps/install-pi3-needrestart.conf /etc/needrestart/needrestart.conf
+# sudo cp deps/install-pi3-needrestart.conf /etc/needrestart/needrestart.conf
 sudo apt update
 sudo apt remove -y cloud-init
 sudo apt install -y build-essential meld
 
 ### DHCP Server on Eth0:
-# sudo apt install -y isc-dhcp-server
-# sudo cp deps/install-pi3-60-static-eth0.yaml /etc/netplan/60-static-eth0.yaml
-# sudo netplan apply
-# sudo cp deps/install-pi3-dhcpd.conf /etc/dhcp/dhcpd.conf
-# sudo cp deps/install-pi3-isc-dhcp-server /etc/default/isc-dhcp-server
-# sudo service isc-dhcp-server restart
+# TODO
 
 ### Disable the : networkd-wait-online.service
 sudo systemctl disable systemd-networkd-wait-online.service
@@ -74,6 +69,6 @@ sudo mv autologin.conf /etc/systemd/system/getty@tty1.service.d/
 ./bin/set-parasit-as-a-service
 ./bin/set-tbot-as-a-service
 
-# Finalize: 
+# Finalize:
 sudo apt upgrade -y
 sudo reboot

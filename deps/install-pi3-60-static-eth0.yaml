@@ -1,8 +1,0 @@
-# Static Configuration
-network:
-    ethernets:
-        eth0:
-            dhcp4: no
-            addresses:
-             - 10.10.1.1/16
-    version: 2
