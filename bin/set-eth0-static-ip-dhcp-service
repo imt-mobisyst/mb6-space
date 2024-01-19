@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# eth0 static IP config
+sudo cp -f deps/install-pi3-netplan-60-static-eth0.yaml /etc/netplan/
+sudo cp -f deps/install-pi3-networkd-eth0-static.config /etc/systemd/network/
+
+# install DHCP
+sudo apt install kea
+sudo cp -f deps/install-pi3-kea-dhcp4.conf /etc/kea/kea-dhcp4.conf
