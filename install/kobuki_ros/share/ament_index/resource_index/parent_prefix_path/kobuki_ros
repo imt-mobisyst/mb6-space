@@ -1,1 +1,1 @@
-/root/mb6-space/install/kobuki_node:/root/mb6-space/install/kobuki_ros_interfaces:/root/mb6-space/install/kobuki_core:/opt/ros/iron
+/mb6-space/install/kobuki_node:/mb6-space/install/kobuki_ros_interfaces:/mb6-space/install/kobuki_core:/opt/ros/iron
