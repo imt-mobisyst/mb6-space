@@ -1,11 +1,19 @@
-# Update mb6-space.
+#!/usr/bin/env bash
+
+# Return in mb6-space.
 cd `dirname $0`/..
 
-# Patch 000
 # Apply patches:
-if [ ! -f ./patches/patch000.log ]; then
-    # Do something
-    echo "OK" > ./patches/patch000.log
+if [ ! -e ./patches ]; then
+    mkdir patches
 fi
 
-cat ./patches/patch000.log
+# Patch 000
+export PATCH= "patch000"
+if [ ! -f ./patches/$PATCH.log ]; then
+    # Do something
+    # ...
+    # Mark the patch
+    echo "-> Patch process ready" > ./patches/$PATCH.log
+    cat ./patches/$PATCH.log
+fi
