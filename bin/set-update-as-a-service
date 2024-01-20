@@ -10,7 +10,7 @@ After=network.target
 [Service]
 User=$USER
 Group=$USER
-ExecStart=`realpath $PROJECT_PATH`/station-update.sh
+ExecStart=`realpath $PROJECT_PATH`/update.sh
 Type=simple
 
 [Install]
