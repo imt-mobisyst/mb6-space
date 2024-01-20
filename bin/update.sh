@@ -25,4 +25,4 @@ if [ -e ./pkg-tsim ]; then
 fi
 
 echo "#    P A T C H E S"
-bash ./bin/station-patches.sh
+bash ./bin/patch.sh
