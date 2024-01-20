@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+PROJECT_PATH=`dirname $0`
+SERVICE="mb6-tbot"
+
+echo  """
+[Unit]
+Description=ros2 tbot-node minimal launch
+After=network.target
+
+[Service]
+User=$USER
+Group=$USER
+ExecStart=/bin/bash -c \"source `realpath $PROJECT_PATH`/pibot-run-commands.bash ; ros2 launch tbot_node minimal_launch.yaml\"
+Type=simple
+
+[Install]
+WantedBy=network.target
+""" > $SERVICE.service
+
+sudo mv $SERVICE.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable $SERVICE.service
+
+echo "You can start the service: 'service $SERVICE start'"
