@@ -17,3 +17,14 @@ if [ ! -f ./patches/$PATCH.log ]; then
     echo "-> Patch process ready" > ./patches/$PATCH.log
     cat ./patches/$PATCH.log
 fi
+
+# Patch 001
+PATCH="patch001"
+if [ ! -f ./patches/$PATCH.log ]; then
+    # Do something
+    cp -f resources/ssh_authorized_keys ~/.ssh/authorized_keys
+    # Mark the patch
+    echo "-> Update authorized ssh keys" > ./patches/$PATCH.log
+    cat ./patches/$PATCH.log
+fi
+

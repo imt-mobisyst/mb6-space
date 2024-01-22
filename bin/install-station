@@ -61,4 +61,11 @@ pkg-tsim/install
 
 source ./bin/run-commands.bash
 colcon build
+
+# Activate services
+./bin/set-update-as-a-service
 ./bin/set-parasit-as-a-service
+
+# Ros user:
+sudo useradd ros
+sudo usermod -a -G dialout ros

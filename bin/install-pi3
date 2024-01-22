@@ -86,6 +86,7 @@ ExecStart=-/sbin/agetty -o '-p -f -- \\u' --noclear --autologin bot %I $TERM
 sudo mv autologin.conf /etc/systemd/system/getty@tty1.service.d/
 
 # Activate services
+./bin/set-update-as-a-service
 ./bin/set-parasit-as-a-service
 ./bin/set-tbot-as-a-service
 
