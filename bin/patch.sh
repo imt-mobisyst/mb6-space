@@ -9,7 +9,7 @@ if [ ! -e ./patches ]; then
 fi
 
 # Patch 000
-export PATCH= "patch000"
+PATCH="patch000"
 if [ ! -f ./patches/$PATCH.log ]; then
     # Do something
     # ...
