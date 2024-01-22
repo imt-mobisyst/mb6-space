@@ -89,6 +89,10 @@ sudo mv autologin.conf /etc/systemd/system/getty@tty1.service.d/
 ./bin/set-parasit-as-a-service
 ./bin/set-tbot-as-a-service
 
+# Ros user:
+sudo useradd ros
+sudo usermod -a -G dialout ros
+
 # Finalize:
 sudo apt upgrade -y
 sudo reboot
