@@ -54,8 +54,6 @@ colcon build
 
 ### install mb6 pkg :
 git clone https://bitbucket.org/imt-mobisyst/pkg-basic
-git clone https://bitbucket.org/imt-mobisyst/pkg-tbot
-pkg-tbot/install
 git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
 pkg-tsim/install
 
