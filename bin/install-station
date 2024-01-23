@@ -64,6 +64,11 @@ colcon build
 ./bin/set-update-as-a-service
 ./bin/set-parasit-as-a-service
 
-# Ros user:
-sudo useradd ros
-sudo usermod -a -G dialout ros
+# Create non admin ros user
+if ! id 'ros' >/dev/null 2>&1; then
+    # python3 -c 'import crypt; print(crypt.crypt("ros"))'
+    sudo useradd -m \
+        -g users -G dialout,cdrom,audio,video,plugdev,input,render,netdev,gpio,spi,i2c\
+        -p '$6$k./SdE0nf/6jNVfI$2t.Hem07Pe9GZXVkjNfttSSRotXtDUWSLPQOMdw1N9CtQOAxSgrsU2Uom3KjytiLFqbNGZT2srCyKDGmQtNoN/'\
+        -s /bin/bash ros
+fi
