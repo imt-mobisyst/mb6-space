@@ -71,4 +71,6 @@ if ! id 'ros' >/dev/null 2>&1; then
         -g users -G dialout,cdrom,audio,video,plugdev,input,render,netdev\
         -p '$6$k./SdE0nf/6jNVfI$2t.Hem07Pe9GZXVkjNfttSSRotXtDUWSLPQOMdw1N9CtQOAxSgrsU2Uom3KjytiLFqbNGZT2srCyKDGmQtNoN/'\
         -s /bin/bash ros
+
+    sudo ./bin/set-ros-bashrc
 fi
