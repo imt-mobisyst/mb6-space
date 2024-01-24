@@ -90,7 +90,10 @@ if ! id 'ros' >/dev/null 2>&1; then
     echo "$SUDOERSCONFIGLINE" | (EDITOR="tee -a" visudo)
 fi
 
-
 # Finalize:
 sudo apt upgrade -y
+
+sudo cp -f deps/install-pi3-sudoers /etc/sudoers
+sudo chown root:root /etc/sudoers
+
 sudo reboot
