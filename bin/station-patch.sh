@@ -28,4 +28,3 @@ if [ ! -f ./patches/$PATCH.log ]; then
     echo "-> Fix subnet on 99 for Bot" > ./patches/$PATCH.log
     cat ./patches/$PATCH.log
 fi
-
