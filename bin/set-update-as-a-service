@@ -5,7 +5,7 @@ PROJECT_PATH=`dirname $0`
 echo  """
 [Unit]
 Description=mb6 update process (Pull + Patch)
-After=network.target
+After=network-online.target
 
 [Service]
 User=$USER
