@@ -45,6 +45,7 @@ git-lfs install
 ./bin/install-ros
 
 ### build empty mb6 :
+cp -f deps/config-ros.bash .
 source ./bin/run-commands.bash
 colcon build
 
