@@ -18,11 +18,11 @@ if [ ! -f ./patches/$PATCH.log ]; then
     cat ./patches/$PATCH.log
 fi
 
-# Patch 002
-PATCH="patch002"
+# Patch 003
+PATCH="patch003"
 if [ ! -f ./patches/$PATCH.log ]; then
     # Do something
-    cp -f deps/config-ros.bash .
+    cp -f deps/station-config-ros.bash ./config-ros.bash
     colcon build
     # Mark the patch
     echo "-> Fix subnet on 99 for Bot" > ./patches/$PATCH.log

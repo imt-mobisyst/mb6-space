@@ -14,7 +14,7 @@ ExecStart=`realpath $PROJECT_PATH`/update.sh
 Type=simple
 
 [Install]
-WantedBy=network.target
+WantedBy=network-online.target
 """ > mb6-update.service
 
 sudo mv mb6-update.service /etc/systemd/system/
