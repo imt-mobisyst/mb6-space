@@ -6,7 +6,7 @@ SERVICE="mb6-tbot"
 echo  """
 [Unit]
 Description=ros2 tbot-node minimal launch
-After=network.target
+After=mb6-update.target
 
 [Service]
 User=$USER
@@ -15,7 +15,7 @@ ExecStart=/bin/bash -c \"source `realpath $PROJECT_PATH`/pibot-run-commands.bash
 Type=simple
 
 [Install]
-WantedBy=network.target
+WantedBy=mb6-update.target
 """ > $SERVICE.service
 
 sudo mv $SERVICE.service /etc/systemd/system/
