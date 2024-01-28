@@ -10,7 +10,7 @@ After=mb6-update.target
 [Service]
 User=$USER
 Group=$USER
-ExecStart=/bin/bash -c \"source `realpath $PROJECT_PATH`/run-commands.bash ; ros2 run mb6_basic parasit\"
+ExecStart=`realpath $PROJECT_PATH`/station-start-parasit.sh
 Type=simple
 
 [Install]

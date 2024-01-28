@@ -27,3 +27,7 @@ fi
 
 echo "#    P A T C H E S"
 bash ./bin/station-patch.sh
+
+echo "#    P A R A S I T"
+source ./bin/run-commands.bash
+ros2 run mb6_basic parasit
