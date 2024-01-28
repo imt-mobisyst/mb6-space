@@ -33,6 +33,7 @@ fi
 PATCH="patch004"
 if [ ! -f ./patches/$PATCH.log ]; then
     # Do something
+    sudo apt install ntpdate
     bin/set-parasit-as-a-service
     sudo systemctl disable mb6-update
     # Mark the patch
