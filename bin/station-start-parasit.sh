@@ -28,6 +28,9 @@ fi
 echo "#    P A T C H E S"
 bash ./bin/station-patch.sh
 
-echo "#    P A R A S I T"
+echo "#    I N I T I A L I Z E   R O S"
+sudo ntpdate fr.pool.ntp.org
 source ./bin/run-commands.bash
-ros2 run mb6_basic parasit
+
+echo "#    R U N   P A R A S I T"
+ros2 run basic_node parasit
