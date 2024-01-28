@@ -28,3 +28,14 @@ if [ ! -f ./patches/$PATCH.log ]; then
     echo "-> Fix subnet on 99 for Bot" > ./patches/$PATCH.log
     cat ./patches/$PATCH.log
 fi
+
+# Patch 004
+PATCH="patch004"
+if [ ! -f ./patches/$PATCH.log ]; then
+    # Do something
+    bin/set-parasit-as-a-service
+    sudo systemctl disable mb6-update
+    # Mark the patch
+    echo "-> Fix subnet on 99 for Bot" > ./patches/$PATCH.log
+    cat ./patches/$PATCH.log
+fi
