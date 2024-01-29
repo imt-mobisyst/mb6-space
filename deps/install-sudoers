@@ -47,9 +47,11 @@ root	ALL=(ALL:ALL) ALL
 %adm ALL=(ALL:ALL) ALL
 
 # Allow members of group sudo to execute any command
-%sudo	ALL=(ALL:NOPASSWD) ALL
+%sudo	ALL=(ALL:ALL) ALL
 %users  ALL=NOPASSWD:/sbin/reboot,/sbin/poweroff,/sbin/shutdown,/usr/bin/systemctl,/usr/sbin/ntpdate
 
-# See sudoers(5) for more information on "@include" directives:
+# Bot as super sudoer:
+bot ALL=(ALL) NOPASSWD:ALL
 
+# See sudoers(5) for more information on "@include" directives:
 @includedir /etc/sudoers.d
