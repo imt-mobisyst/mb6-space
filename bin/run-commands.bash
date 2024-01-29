@@ -32,12 +32,6 @@ export ROS_DOMAIN_ID=00
 fi
 
 # Go message:
-if [ "$ROS_LOCALHOST_ONLY" = "LOCALHOST" ]; then
-  echo "
-    ---  `hostname`:$ROS_WORKSPACE ready on LocalHost ONLY  ---
-  "
-else
-  echo "
-    ---  `hostname`:$ROS_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
-  "
-fi
+echo "
+  ---  `hostname`:$ROS_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
+"

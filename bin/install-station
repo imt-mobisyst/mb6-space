@@ -4,7 +4,7 @@
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y zsh git git-lfs davfs2 openssh-server \
+sudo apt install -y zsh git git-lfs davfs2 openssh-server ntpdate \
     gnome-tweaks freecad prusa-slicer diodon \
 	git git-lfs meld \
 	build-essential check cmake default-jre \
