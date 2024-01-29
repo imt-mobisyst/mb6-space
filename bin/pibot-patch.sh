@@ -29,5 +29,4 @@ if [ ! -f ./patches/$PATCH.log ]; then
     # Mark the patch
     echo "-> Clean PC Stations..." > ./patches/$PATCH.log
     cat ./patches/$PATCH.log
-    sudo reboot
 fi
