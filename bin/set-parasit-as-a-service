@@ -5,7 +5,7 @@ PROJECT_PATH=`dirname $0`
 echo  """
 [Unit]
 Description=ros2 mb6-basic parasit node
-After=mb6-update.target
+After=network-online.target
 
 [Service]
 User=$USER
@@ -14,7 +14,7 @@ ExecStart=`realpath $PROJECT_PATH`/pibot-start-parasit.sh
 Type=simple
 
 [Install]
-WantedBy=mb6-update.target
+WantedBy=network-online.target
 """ > mb6-parasit.service
 
 sudo mv mb6-parasit.service /etc/systemd/system/
