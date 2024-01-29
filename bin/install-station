@@ -4,7 +4,7 @@
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y zsh git git-lfs davfs2 openssh-server \
+sudo apt install -y zsh git git-lfs davfs2 openssh-server ntpdate \
     gnome-tweaks freecad prusa-slicer diodon \
 	git git-lfs meld \
 	build-essential check cmake default-jre \
@@ -45,6 +45,7 @@ git-lfs install
 ./bin/install-ros
 
 ### build empty mb6 :
+cp -f deps/config-ros.bash .
 source ./bin/run-commands.bash
 colcon build
 
@@ -54,8 +55,6 @@ colcon build
 
 ### install mb6 pkg :
 git clone https://bitbucket.org/imt-mobisyst/pkg-basic
-git clone https://bitbucket.org/imt-mobisyst/pkg-tbot
-pkg-tbot/install
 git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
 pkg-tsim/install
 
@@ -66,6 +65,13 @@ colcon build
 ./bin/set-update-as-a-service
 ./bin/set-parasit-as-a-service
 
-# Ros user:
-sudo useradd ros
-sudo usermod -a -G dialout ros
+# Create non admin ros user
+if ! id 'ros' >/dev/null 2>&1; then
+    # python3 -c 'import crypt; print(crypt.crypt("ros"))'
+    sudo useradd -m \
+        -g users -G dialout,cdrom,audio,video,plugdev,input,render,netdev\
+        -p '$6$k./SdE0nf/6jNVfI$2t.Hem07Pe9GZXVkjNfttSSRotXtDUWSLPQOMdw1N9CtQOAxSgrsU2Uom3KjytiLFqbNGZT2srCyKDGmQtNoN/'\
+        -s /bin/bash ros
+
+    sudo ./bin/set-ros-bashrc
+fi
