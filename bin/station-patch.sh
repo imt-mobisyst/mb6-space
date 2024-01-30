@@ -29,14 +29,15 @@ if [ ! -f ./patches/$PATCH.log ]; then
     cat ./patches/$PATCH.log
 fi
 
-# Patch 004
-PATCH="patch004"
+# Patch 005
+PATCH="patch005"
 if [ ! -f ./patches/$PATCH.log ]; then
     # Do something
     sudo apt install ntpdate
     bin/set-parasit-as-a-service
     sudo systemctl disable mb6-update
+    cp ./deps/install-sudoers /etc/sudoers
     # Mark the patch
-    echo "-> Fix subnet on 99 for Bot" > ./patches/$PATCH.log
+    echo "-> Clean PC Stations..." > ./patches/$PATCH.log
     cat ./patches/$PATCH.log
 fi
