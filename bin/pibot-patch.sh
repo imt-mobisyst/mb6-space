@@ -25,7 +25,8 @@ if [ ! -f ./patches/$PATCH.log ]; then
     sudo apt install ntpdate
     bin/set-parasit-as-a-service
     sudo systemctl disable mb6-update
-    cp ./deps/install-sudoers /etc/sudoers
+    sudo cp ./deps/install-sudoers /etc/sudoers
+    userdel -r ros
     # Mark the patch
     echo "-> Clean PC Stations..." > ./patches/$PATCH.log
     cat ./patches/$PATCH.log
