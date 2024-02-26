@@ -3,7 +3,6 @@
 # Update mb6-space.
 cd `dirname $0`/..
 git pull
-source ./bin/pibot-run-commands.bash
 
 echo "#    P A T C H E S"
 bash ./bin/pibot-patch.sh
