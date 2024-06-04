@@ -13,7 +13,6 @@ pkg-multibot
 # Local config:
 #-----------------
 local-config.sh
-config-ros.bash
 patches
 
 # System

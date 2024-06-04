@@ -21,15 +21,10 @@ alias mb6-build-pkg='colcon build --event-handlers console_direct+ --cmake-args 
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:($ROS_AUTOMATIC_DISCOVERY_RANGE::$ROS_DOMAIN_ID)\[\033[01;34m\]\w\[\033[00m\].\n\$ '
 
 # User configurations:
-if [ -e ~/mb6-space/config-ros.bash ]; then
-  source ~/mb6-space/config-ros.bash
-else
-  echo "# ROS configuration:
-export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
-export ROS_DOMAIN_ID=00
-" > ~/mb6-space/config-ros.bash
-  source ~/mb6-space/config-ros.bash
+if [ ! -f ~/mb6-space/local-config.sh ]; then
+    cp ~/mb6-space/bin/default-config.sh ~/mb6-space/local-config.sh
 fi
+source ~/mb6-space/local-config.sh
 
 # Go message:
 echo "
