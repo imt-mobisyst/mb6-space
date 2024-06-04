@@ -9,6 +9,9 @@ nav:
   - Robots:
     - Pibot: 'robot-pibot.md'
     - Ezbot: 'robot-ezbot.md'
+  - Packages:
+    - Pibot: 'robot-pibot.md'
+    - Ezbot: 'robot-ezbot.md'
   - F.A.Q: 'f.a.q.md'
 extra_css:
   - style.css

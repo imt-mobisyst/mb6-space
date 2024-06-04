@@ -3,14 +3,11 @@
 Curent version: **Ubuntu-22.install04 LTS** / **ROS2 iron**
 
 
-### Ubuntu-22.04 LTS
+## Install
 
-First the OS on your machine: 
+You can rely on install section in the navigation bar to get specific instruction depending on the targeted machine.
 
-- On a _Raspberry Pi_ you can follows the guides: [Ubuntu22.04 on A Pi3 computer](./docs/configure-pi3.md)
-- On a _x86_ machine get help from the communty: [official website](https://ubuntu.com/) - [french community](https://www.ubuntu-fr.org/)
-- To configure a standard PC station: [Ubuntu22.04 on a PC Station](./docs/configure-station.md)
-
+On a _x86_ machine you also can get help from the communty: [official website](https://ubuntu.com/) - [french community](https://www.ubuntu-fr.org/)
 
 ### ROS2 dev. environment-22.04 LTS
 
