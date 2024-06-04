@@ -1,0 +1,16 @@
+site_name: HackaGames
+nav:
+  - MobiSyst <: '..'
+  - Home: 'index.md'
+  - Install:
+    - On Pi3: 'configure-pi3.md'
+    - On Pi4: 'configure-pi4.md'
+    - Station: 'configure-station.md'
+  - Robots:
+    - Pibot: 'robot-pibot.md'
+    - Ezbot: 'robot-ezbot.md'
+  - F.A.Q: 'f.a.q.md'
+extra_css:
+  - style.css
+markdown_extensions:
+  - attr_list
