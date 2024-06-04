@@ -1,29 +1,19 @@
 # To-Do Board of Mb6-Space project:
 
-## Basic : 
-
-- simple_move
-- transform
-- parasit: 
- * Double domain
- * Parameters
- * service: exec
-
-## TSim : 
-
-- Launchfile avec Multi-plexer.
+## Studient Vsit : Color-Zone Game
 
 
-## UV Larm : 
+## Pi3 : 
 
-- Ajouter des corrections via des lien sur basic (simple_move, transform). 
-- Sortir la navigation du simulateur ?
-- Ajouter le goal pose dans le challenge 1.
-- Reprendre la notion de parametre (integration code, usage launchfile)
-- Services, Visualisation Web...
+- Configure/Install minimal Kobuki nodes
+- Configure on start launching
+- Capture Turtlebot buttons for on-the-go kobuki-node reset (including a `sudo service isc-dhcp-server restart`).
+- Ubuntu Server is based on `Cloud-Init`. Go deeper on this solution...
+- cron or something: `sudo service isc-dhcp-server restart` to permit hot network connexion...
 
-## PiBot : 
 
-- Integré bouton, soulévement, obstacle négatifs...
-- Mettre en place le déployement de démos (multi-robot SLAM sur random-move)
-- Bouton stop.
+## Draft ideas:
+
+- pkg-toons: (Reactive Move & More)
+- pkg-viscene: (+3d-SLAM)
+- 

@@ -1,4 +1,8 @@
-# Jouer avec sudo
+# Frequent Asked Questions
+
+
+
+## Comment configurer aux petits oignon sudo ?
 
 `sudo` est parramétrable et permet d'autoriser finnement les accés et les droits des utilisateur sur les action senssible sur la machine.
 Le plus simple est de creer des fichiers de config spécifique dans le répétoire approprié:
@@ -8,9 +12,7 @@ sudo mkdir /etc/sudoers.d            # si besoin
 sudo touch /etc/sudoers.d/myConfigs  
 ```
 
-## Autoriser une commande spécifique
-
-Il est possible d'autoriser un utilisateur sur une commande spécifique par exemple (la commande `whereis xxx` permet de récupérer le chemin sur une commande `xxx`):
+Il est donc possible d'autoriser un utilisateur sur une commande spécifique par exemple (la commande `whereis xxx` permet de récupérer le chemin sur une commande `xxx`):
 
 ```sh 
 User     ALL=(ALL:ALL) /path/cmd
