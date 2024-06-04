@@ -7,9 +7,12 @@ pkg-tbot
 pkg-tsim
 pkg-toons
 pkg-viscene
+pkg-maraubot
+pkg-multibot
 
 # Local config:
 #-----------------
+local-config.sh
 config-ros.bash
 patches
 
