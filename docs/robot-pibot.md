@@ -48,7 +48,7 @@ _Pibot_ relies on several projects:
 - [pkg-tbot](https://github.com/imt-mobisyst/pkg-tbot) for _Kobuki_ + laser drivers and configurations.
 - [pkg-basic](https://github.com/imt-mobisyst/pkg-basic) to allow basic/simple controls and tools.
 
-## Start your own process
+## Start your own processes
 
 TMux.
 
