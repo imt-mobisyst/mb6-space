@@ -67,4 +67,4 @@ launch:
         name: "scale_angular.yaw"
         value: 2.0
     remap:
-     - {from: "cmd_vel", to: "/multi/cmd_teleop"}
+     - {from: "cmd_vel", to: "multi/cmd_teleop"}
