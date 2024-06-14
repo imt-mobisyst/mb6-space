@@ -30,7 +30,7 @@ echo "#    P A T C H E S"
 bash ./bin/station-patch.sh
 
 echo "#    I N I T I A L I Z E   R O S"
-source ./bin/run-commands.bash
+source ./bin/station-run-commands.bash
 sudo ntpdate fr.pool.ntp.org
 
 echo "#    R U N   P A R A S I T"

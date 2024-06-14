@@ -5,16 +5,16 @@ PROJECT_PATH=`dirname $0`
 echo  """
 [Unit]
 Description=ros2 mb6-basic parasit node
-After=mb6-update.target
+After=network-online.target
 
 [Service]
 User=$USER
 Group=$USER
-ExecStart=`realpath $PROJECT_PATH`/station-start-parasit.sh
+ExecStart=`realpath $PROJECT_PATH`/start-parasit.sh
 Type=simple
 
 [Install]
-WantedBy=mb6-update.target
+WantedBy=mb6-updated.target
 """ > mb6-parasit.service
 
 sudo mv mb6-parasit.service /etc/systemd/system/
