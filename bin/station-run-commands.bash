@@ -13,7 +13,7 @@ alias status='git status -sb .'
 alias log='git log -n 4'
 alias log-all='git log --all --decorate --oneline --graph'
 alias diff='git difftool -t meld'
-
+6-space/bin
 # some other alias:
 alias mb6-build-pkg='colcon build --event-handlers console_direct+ --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON --packages-select'
 
