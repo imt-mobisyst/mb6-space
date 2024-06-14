@@ -11,7 +11,7 @@ After=mb6-updated.target
 [Service]
 User=$USER
 Group=$USER
-ExecStart=`realpath $PROJECT_PATH`/pibot-start-tbot.sh
+ExecStart=`realpath $PROJECT_PATH`/start-tbot.sh
 Type=simple
 
 [Install]
