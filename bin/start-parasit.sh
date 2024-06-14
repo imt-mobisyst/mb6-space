@@ -3,7 +3,6 @@
 # Update mb6-space.
 cd `dirname $0`/..
 git pull
-source ./bin/run-commands.bash
 
 # Update mb6's packages...
 if [ -e ./pkg-basic ]; then
