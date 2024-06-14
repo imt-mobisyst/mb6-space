@@ -10,11 +10,11 @@ After=network-online.target
 [Service]
 User=$USER
 Group=$USER
-ExecStart=`realpath $PROJECT_PATH`/pibot-start-parasit.sh
+ExecStart=`realpath $PROJECT_PATH`/start-parasit.sh
 Type=simple
 
 [Install]
-WantedBy=network-online.target
+WantedBy=mb6-updated.target
 """ > mb6-parasit.service
 
 sudo mv mb6-parasit.service /etc/systemd/system/
