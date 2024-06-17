@@ -24,7 +24,7 @@ colcon build
 
 echo "#    I N I T I A L I Z E   R O S"
 source ./bin/run-commands.bash
-sudo ntpdate fr.pool.ntp.org
+#sudo ntpdate fr.pool.ntp.org
 
 echo "#    R U N   P A R A S I T"
 ros2 run basic_node parasit
