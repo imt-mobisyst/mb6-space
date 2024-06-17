@@ -4,7 +4,7 @@
 cd
 if [ ! -d "mb6-space" ]; then
   git config --global http.sslverify false
-  git clone https://bitbucket.org/imt-mobisyst/mb6-space.git
+  git clone https://github.com/imt-mobisyst/mb6-space.git
 fi
 cd mb6-space
 
@@ -42,7 +42,9 @@ echo "
 
 sudo apt install -y \
   ros-$ROSDISTRO-ros-base \
-  ros-$ROSDISTRO-urg-node
+  ros-$ROSDISTRO-urg-node \
+  ros-$ROSDISTRO-joy \
+  ros-$ROSDISTRO-teleop-twist-joy
 
 sudo usermod -a -G dialout `whoami`
 
@@ -54,10 +56,6 @@ echo "
 
 # mb6 ROS environment:
 source ~/mb6-space/bin/pibot-run-commands.bash" >> ~/.bashrc
-
-git clone https://bitbucket.org/imt-mobisyst/pkg-basic.git
-git clone https://bitbucket.org/imt-mobisyst/pkg-tbot.git
-./pkg-tbot/bin/install
 
 # Get prebuild pibot
 rm -fr install
@@ -73,7 +71,6 @@ ExecStart=-/sbin/agetty -o '-p -f -- \\u' --noclear --autologin bot %I $TERM
 sudo mv autologin.conf /etc/systemd/system/getty@tty1.service.d/
 
 # Activate services
-./bin/set-update-as-a-service
 ./bin/set-parasit-as-a-service
 ./bin/set-tbot-as-a-service
 
