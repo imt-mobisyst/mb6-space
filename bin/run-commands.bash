@@ -1,2 +1,2 @@
 # Setup ROS command environment:
-source ./station-run-commands.sh
+source ./station-run-commands.bash
