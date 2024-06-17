@@ -27,4 +27,5 @@ source ./bin/run-commands.bash
 #sudo ntpdate fr.pool.ntp.org
 
 echo "#    R U N   P A R A S I T"
+export ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET
 ros2 run basic_node parasit
