@@ -12,6 +12,8 @@ User=$USER
 Group=$USER
 ExecStart=`realpath $PROJECT_PATH`/start-parasit.sh
 Type=simple
+Restart=always
+RuntimeMaxSec=180s
 
 [Install]
 WantedBy=mb6-updated.target
