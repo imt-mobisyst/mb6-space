@@ -1,9 +1,9 @@
 #!/bin/bash
 
-sudo echo """
+PROJECT_PATH=`dirname $0`/..
+echo `realpath $PROJECT_PATH`
 
-export ROS_AUTOMATIC_DISCOVERY_RANGE='LOCALHOST'
-export ROS_DOMAIN_ID='00'
-PS1='\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:(\$ROS_AUTOMATIC_DISCOVERY_RANGE::\$ROS_DOMAIN_ID)\[\033[01;34m\]\w\[\033[00m\].\n\$ '
-""" >> /home/ros/.bashrc
-
+echo """
+#   M B 6   R U N   C O M M A N D S:
+source `realpath $PROJECT_PATH`/bin/run-commands.bash
+""" >> /home/$USER/.bashrc
