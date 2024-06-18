@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+PROJECT_PATH=`dirname $0`
+
+if [ "$1" != "bot" ] && [ "$1" != "" ]; then
+    echo "# Create user: $1"
+    sudo userdel -r $1 
+    sudo adduser $1
+    sudo usermod -a -G dialout -G input $1
+    sudo runuser bob -c "git clone https://github.com/imt-mobisyst/mb6-space ~/mb6-space"
+    sudo runuser bob -c "git clone https://github.com/imt-mobisyst/pkg-basic ~/mb6-space/pkg-basic"
+fi
