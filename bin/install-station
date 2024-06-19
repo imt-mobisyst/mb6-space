@@ -46,7 +46,7 @@ git-lfs install
 
 ### build empty mb6 :
 cp -f deps/config-ros.bash .
-source ./bin/run-commands.bash
+source ./bin/station-run-commands.bash
 colcon build
 
 ### install Robot elements :

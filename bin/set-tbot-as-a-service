@@ -6,16 +6,16 @@ SERVICE="mb6-tbot"
 echo  """
 [Unit]
 Description=ros2 tbot-node minimal launch
-After=mb6-update.target
+After=mb6-updated.target
 
 [Service]
 User=$USER
 Group=$USER
-ExecStart=/bin/bash -c \"source `realpath $PROJECT_PATH`/pibot-run-commands.bash ; ros2 launch tbot_node minimal_launch.yaml\"
+ExecStart=`realpath $PROJECT_PATH`/start-tbot.sh
 Type=simple
 
 [Install]
-WantedBy=mb6-update.target
+WantedBy=multi-user.target
 """ > $SERVICE.service
 
 sudo mv $SERVICE.service /etc/systemd/system/
