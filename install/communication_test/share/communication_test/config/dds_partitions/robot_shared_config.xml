@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+
+    <!-- Default publisher profile -->
+    <publisher profile_name="default_publisher" is_default_profile="true">
+        <qos>
+            <partition>
+                <names>
+                    <name>%robotX%</name>
+                </names>
+            </partition>
+            <reliability>
+                <kind>RELIABLE</kind>
+                <max_blocking_time>
+                    <sec>1</sec>
+                </max_blocking_time>
+            </reliability>
+        </qos>
+    </publisher>
+
+    <!-- Default subscriber profile -->
+    <subscriber profile_name="default_subscriber" is_default_profile="true">
+        <qos>
+            <partition>
+                <names>
+                    <name>%robotX%</name>
+                </names>
+            </partition>
+            <reliability>
+                <kind>RELIABLE</kind>
+                <max_blocking_time>
+                    <sec>1</sec>
+                </max_blocking_time>
+            </reliability>
+        </qos>
+    </subscriber>
+
+
+
+
+    <!-- Shared partition -->
+
+    <subscriber profile_name="/assignedRobot">
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                </names>
+            </partition>
+        </qos>
+    </subscriber>
+    
+    
+    <subscriber profile_name="/goal_pose"> 
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                </names>
+            </partition>
+        </qos>
+    </subscriber>
+
+    <publisher profile_name="/auctionBid">
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                </names>
+            </partition>
+        </qos>
+    </publisher>
+
+    <publisher profile_name="/robot_marker">
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                </names>
+            </partition>
+        </qos>
+    </publisher>
+
+    <publisher profile_name="/package_deposit_marker">
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                </names>
+            </partition>
+        </qos>
+    </publisher>
+    
+    <subscriber profile_name="/package_marker">
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                </names>
+            </partition>
+        </qos>
+    </subscriber>
+
+    <subscriber profile_name="/retrieve_marker">
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                </names>
+            </partition>
+        </qos>
+    </subscriber>
+
+    <publisher profile_name="/package_retrieved_marker">
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                </names>
+            </partition>
+        </qos>
+    </publisher>
+
+    <publisher profile_name="/package_marker_array">
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                </names>
+            </partition>
+        </qos>
+    </publisher>
+    <publisher profile_name="/package_deposit_marker_array">
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                </names>
+            </partition>
+        </qos>
+    </publisher>
+
+</profiles>

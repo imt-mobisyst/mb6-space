@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+
+    <!-- Default publisher profile -->
+    <publisher profile_name="default_publisher" is_default_profile="true">
+        <qos>
+            <partition>
+                <names>
+                    <name>%robotX%</name>
+                </names>
+            </partition>
+            <reliability>
+                <kind>RELIABLE</kind>
+                <max_blocking_time>
+                    <sec>1</sec>
+                </max_blocking_time>
+            </reliability>
+        </qos>
+    </publisher>
+
+    <!-- Default subscriber profile -->
+    <subscriber profile_name="default_subscriber" is_default_profile="true">
+        <qos>
+            <partition>
+                <names>
+                    <name>%robotX%</name>
+                </names>
+            </partition>
+            <reliability>
+                <kind>RELIABLE</kind>
+                <max_blocking_time>
+                    <sec>1</sec>
+                </max_blocking_time>
+            </reliability>
+        </qos>
+    </subscriber>
+
+
+    <!-- DEBUG TOPICS -->
+    <data_writer profile_name="/%robotX%/map">
+        <topic>
+            <historyQos>
+                <kind>KEEP_LAST</kind>
+                <depth>10</depth>
+            </historyQos>
+        </topic>
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                    <name>%robotX%</name>
+                </names>
+            </partition>
+            <reliability>
+                <kind>RELIABLE</kind>
+            </reliability>
+            <durability>
+                <kind>TRANSIENT_LOCAL</kind>
+            </durability>
+        </qos>
+    </data_writer>
+
+    <data_writer profile_name="/%robotX%/local_costmap/costmap">
+        <topic>
+            <historyQos>
+                <kind>KEEP_LAST</kind>
+                <depth>10</depth>
+            </historyQos>
+        </topic>
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                    <name>%robotX%</name>
+                </names>
+            </partition>
+            <reliability>
+                <kind>RELIABLE</kind>
+            </reliability>
+            <durability>
+                <kind>TRANSIENT_LOCAL</kind>
+            </durability>
+        </qos>
+    </data_writer>
+
+    <publisher profile_name="/%robotX%/transformed_global_plan">
+        <qos>
+            <partition>
+                <names>
+                    <name>shared</name>
+                    <name>%robotX%</name>
+                </names>
+            </partition>
+        </qos>
+    </publisher>
+    
+
+</profiles>
