@@ -36,7 +36,7 @@ launch:
 
 # Supervision:
 - node:
-    pkg: "tbot_node"
+    pkg: "basic_node"
     exec: "multiplexer"
     name: "multiplexer"
     remap:
