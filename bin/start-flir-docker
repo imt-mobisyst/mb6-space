@@ -1,0 +1,4 @@
+#!/bin/bash
+
+xhost +local:docker
+docker run -v /home/guillaume/mb6-space/pkg-basic:/home/pkg-basic --privileged -v /dev:/dev -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -ti flir_cam

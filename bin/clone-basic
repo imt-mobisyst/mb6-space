@@ -2,4 +2,5 @@
 
 cd `dirname $0`/..
 git clone https://github.com/imt-mobisyst/pkg-basic
+source ./bin/run-commands.bash
 colcon build --base-path pkg-basic
