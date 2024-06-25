@@ -45,26 +45,26 @@ launch:
         to: "commands/velocity"
 
 # Driver:
-- node:
-    pkg: joy
-    exec: joy_node
+# - node:
+#     pkg: joy
+#     exec: joy_node
 
 # Control:
-- node: 
-    pkg: teleop_twist_joy
-    exec: teleop_node
-    param:
-      - 
-        name: "axis_linear.x"
-        value: 1
-      - 
-        name: "axis_angular.yaw"
-        value: 0
-      - 
-        name: "scale_linear.x"
-        value: 0.25 # Default 0.5
-      - 
-        name: "scale_angular.yaw"
-        value: 1.0 # Default 0.5
-    remap:
-     - {from: "cmd_vel", to: "multi/cmd_teleop"}
+# - node: 
+#     pkg: teleop_twist_joy
+#     exec: teleop_node
+#     param:
+#       - 
+#         name: "axis_linear.x"
+#         value: 1
+#       - 
+#         name: "axis_angular.yaw"
+#         value: 0
+#       - 
+#         name: "scale_linear.x"
+#         value: 0.25 # Default 0.5
+#       - 
+#         name: "scale_angular.yaw"
+#         value: 1.0 # Default 0.5
+#     remap:
+#      - {from: "cmd_vel", to: "multi/cmd_teleop"}
