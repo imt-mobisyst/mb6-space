@@ -28,10 +28,12 @@ ros2 topic list
 At this point, you can verify that laser is publishing data into the `/scan` topic and that `multiplexer` node is started.
 The multiplexer from [basic_node](https://github.com/imt-mobisyst/pkg-basic) package, listen to several command sources to select the most appropriate one. 
 
-So you can take control with a classical _teleop_ node connected to the `multi/cmd_teleop` topic:
+So you can take control with a classical _teleop_ node connected to the `multi/cmd_teleop` topic, start slam capability etc...
 
 ```sh
 ros2 run teleop_twist_keyboard teleop_twist_keyboard cmd_vel:=/multi/cmd_teleop
+ros2 launch slam_toolbox online_sync_launch.py
+...
 ```
 
 To notice that your autonomous control should send velocity messages to `multi/cmd_nav`.
@@ -61,3 +63,4 @@ TMux.
 4. Switch-off the robot.
 5. Plug the robot to permit its recharge.
 
+        
