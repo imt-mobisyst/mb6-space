@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from communication_test_interfaces/srv/WifiMeasure.srv
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Point.idl"
+
+module communication_test_interfaces {
+  module srv {
+    struct WifiMeasure_Request {
+      boolean publish;
+
+      geometry_msgs::msg::Point position;
+    };
+    struct WifiMeasure_Response {
+      float signal_quality;
+
+      float signal_dbm;
+    };
+  };
+};

@@ -21,7 +21,7 @@ def generate_launch_description():
     )
 
     robot_id_launch_arg = DeclareLaunchArgument(
-        'robot_id', default_value=None
+        'robot_id', default_value=''
     )
 
 
@@ -29,16 +29,14 @@ def generate_launch_description():
     def getRobotId(context):
         id = LaunchConfiguration('robot_id').perform(context)
 
-        if id is None:
-            id = int(socket.gethostname()[-2:]) # Default value = Last number of the kobuki RPI hostname
+        if id == '':
+            namespace = ''
+        else:
+            namespace = f"robot_{id}"
+            print(f'Using robot {id} on namespace "{namespace}"')
 
-
-        namespace = f"robot_{id}"
-
-        print(f'Using robot {id} on namespace "{namespace}"')
 
         return [
-            SetLaunchConfiguration('id', id),
             SetLaunchConfiguration('namespace', namespace)
         ]
     
@@ -61,7 +59,10 @@ def generate_launch_description():
         # Package dispenser
         Node(
             package='communication_test',
-            executable='package_dispenser.py'
+            executable='package_dispenser.py',
+            parameters=[
+                {'is_simulation': False}
+            ]
         ),
 
         

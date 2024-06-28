@@ -3,7 +3,7 @@ from ament_index_python import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction
 from launch.substitutions import LaunchConfiguration
-from launch_ros.actions import Node, PushRosNamespace
+from launch_ros.actions import Node, PushRosNamespace, SetRemap
 from launch.actions import IncludeLaunchDescription, OpaqueFunction, SetLaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
@@ -21,7 +21,7 @@ def generate_launch_description():
 
 
     # Robot ID
-    def getRobotId(context):
+    def setRobotId(context):
         id = LaunchConfiguration('robot_id').perform(context)
 
         if id is None:
@@ -32,16 +32,21 @@ def generate_launch_description():
         
         print(f'Using robot {id} on namespace "{namespace}"')
 
+        robot_config = os.path.join(get_package_share_directory('communication_test'), 'config', 'nav2', f'nav2_localization_kobuki_{id}.yaml')
+
         return [
             SetLaunchConfiguration('id', id),
-            SetLaunchConfiguration('namespace', namespace)
+            SetLaunchConfiguration('namespace', namespace),
+            SetLaunchConfiguration('robot_config', robot_config)
         ]
     
-    robot_id = OpaqueFunction(function=getRobotId)
+    robot_id = OpaqueFunction(function=setRobotId)
 
 
     # Start a controller node
     controller_node = GroupAction([
+        SetRemap(src='/tf',dst='tf'),
+        SetRemap(src='/tf_static',dst='tf_static'),
         PushRosNamespace(LaunchConfiguration('namespace')),
         Node(
             package='communication_test',
@@ -66,7 +71,7 @@ def generate_launch_description():
             launch_arguments={
                 "namespace": LaunchConfiguration('namespace'),
                 'map': os.path.join(get_package_share_directory('communication_test'), 'map', 'map.yaml'),
-                'params_file': os.path.join(get_package_share_directory('communication_test'), 'config', 'nav2', 'nav2_params_kobuki.yaml'),
+                'params_file': LaunchConfiguration('robot_config'),
                 'autostart': 'True',
                 'log_level': LaunchConfiguration('nav_log_level')
             }.items()

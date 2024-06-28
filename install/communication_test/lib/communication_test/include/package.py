@@ -13,7 +13,7 @@ class PackageState(Enum):
 
 class Package():
 
-    # Static variables
+    # Static variables (simulation values)
     nbPackages = 0
 
     colors = {
@@ -35,7 +35,42 @@ class Package():
         "yellow": createPoint(-4.952, 1.816)
     }
     
-    retrievalSpot = createPoint(6.328, -1.784)
+    retrievalSpotPoint = createPoint(6.328, -1.784)
+
+    markerScale = 1.0
+    squareSize = 1.5
+
+
+    # Different positions when running on the real robot
+    def setSimulation(isSimulation):
+        if isSimulation:
+            return
+        
+        # Remove yellow color
+        Package.colors = {
+            'red':    Package.colors['red'],
+            'green':  Package.colors['green'],
+            'blue':   Package.colors['blue'],
+        }
+
+        # Set points in the real map coordinates
+        Package.spawnSpots = [
+            createPoint(-0.618, -2.852),
+            createPoint(-3.127, 2.344)
+        ]
+
+
+        Package.depositSpots = {
+            "red":    createPoint(-0.823, 0.649),
+            "green":  createPoint(-2.332, -1.527),
+            "blue":   createPoint(-4.358, -1.149)
+        }
+        
+        # TODO: Set real retrieval point
+        Package.retrievalSpotPoint = createPoint(-1,-1)
+
+        Package.markerScale = 0.5
+        Package.squareSize = 1
 
 
     # Functions
@@ -66,9 +101,10 @@ class Package():
 
 
 
-    def randomizeSpot(center:Point, squareSize = 1.5):
+    def randomizeSpot(center:Point):
         """Create a random point in a square around a center"""        
-        return createPoint(center.x + (random()-0.5)*squareSize, center.y + (random()-0.5)*squareSize)
+        return createPoint(center.x + (random()-0.5) * Package.squareSize,
+                           center.y + (random()-0.5) * Package.squareSize)
 
 
 
@@ -78,7 +114,7 @@ class Package():
     
     def retrievalSpot():
         """Get the position that the package should be retrieved at"""
-        return Package.randomizeSpot(Package.retrievalSpot)
+        return Package.randomizeSpot(Package.retrievalSpotPoint)
 
     
 
@@ -87,6 +123,7 @@ class Package():
         return Package.colors[self.colorName]
     
     def publishMarker(self, publisher, node):
+        """Publish a marker at the current package position, with the correct color"""
         marker = Marker()
         marker.header.frame_id = 'map'
         marker.header.stamp = node.get_clock().now().to_msg()
@@ -97,9 +134,9 @@ class Package():
         marker.ns = self.colorName
 
         # Set the scale of the marker
-        marker.scale.x = 0.3
-        marker.scale.y = 0.3
-        marker.scale.z = 0.3
+        marker.scale.x = 0.3 * Package.markerScale
+        marker.scale.y = 0.3 * Package.markerScale
+        marker.scale.z = 0.3 * Package.markerScale
 
         # Set the color
         color = self.color()

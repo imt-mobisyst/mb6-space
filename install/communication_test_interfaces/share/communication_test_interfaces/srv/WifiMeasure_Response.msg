@@ -1,0 +1,3 @@
+
+float32 signal_quality
+float32 signal_dbm
