@@ -26,19 +26,19 @@ def generate_launch_description():
     # Automatic DDS server
     common_dds_ip = socket.gethostbyname(socket.gethostname())
     common_dds_port = 11811
-
-    print(f"-> Shared DDS Discovery server : {common_dds_ip}:{common_dds_port}")
     
-    def setDiscoveryServerEnv(context):
+    def setDiscoveryServerEnv(_):
 
-        discoveryServer = ";" + common_dds_ip + ":" + common_dds_port
+        discoveryServer = f"{common_dds_ip}:{common_dds_port}"
+
+        print(f'-> Starting shared DDS Discovery server : "{discoveryServer}"')
 
         return [SetEnvironmentVariable(name='ROS_DISCOVERY_SERVER', value=discoveryServer)]
 
 
 
 
-    # Start FastDDS servers
+    # Start FastDDS Discovery server
     DDSserver = ExecuteProcess(
         cmd=[[
             FindExecutable(name='fastdds'),
@@ -92,6 +92,6 @@ def generate_launch_description():
         # Start common DDS server
         DDSserver,
         
-        # Run operator nodes (operator & rviz)
+        # Run operator nodes (operator, package dispenser & rviz)
         operator_nodes
     ])

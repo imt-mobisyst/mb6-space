@@ -18,20 +18,41 @@ def generate_launch_description():
 
     # CLI arguments
     subnet_dds_server_launch_arg = DeclareLaunchArgument("subnet_dds_server")
-    robot_ip_launch_arg = DeclareLaunchArgument('robot_ip',default_value=this_ip)
+    robot_ip_launch_arg = DeclareLaunchArgument('robot_ip', default_value=this_ip)
+    robot_port_launch_arg = DeclareLaunchArgument('robot_port', default_value='11811')
 
     # Robot ID
-    robot_id = int(socket.gethostname()[-2:])
-    namespace = f"robot_{robot_id}"
 
+    # Robot ID
+    def setRobotId(context):
+        id = LaunchConfiguration('robot_id').perform(context)
+
+        if id == '':
+            namespace = ""
+            id = int(socket.gethostname()[-2:]) # Default value = Last number of the kobuki RPI hostname
+        else:
+            namespace = f"robot_{id}"
+
+
+        robot_config = os.path.join(get_package_share_directory('communication_test'), 'config', 'nav2', f'nav2_localization_kobuki_{id}.yaml')
+
+        return [
+            SetLaunchConfiguration('id', id),
+            SetLaunchConfiguration('namespace', namespace),
+            SetLaunchConfiguration('robot_config', robot_config),
+        ]
+    
+    robot_id_setup = OpaqueFunction(function=setRobotId)
 
     # Create ROS_DISCOVERY_SERVER variables
 
     def create_common_servers(context):
         subnet_dds_server =  LaunchConfiguration('subnet_dds_server').perform(context)
-        robot_ip = LaunchConfiguration('robot_ip_launch_arg').perform(context)
+        robot_ip = LaunchConfiguration('robot_ip').perform(context)
+        robot_port = LaunchConfiguration('robot_port').perform(context)
+        robot_id = int(LaunchConfiguration('id').perform(context))
 
-        robot_dds_server = robot_ip + ":11811"
+        robot_dds_server = robot_ip + ":" + robot_port
 
         # The ROS_DISCOVERY_SERVER variable must list the servers as a list with their ID as index
         # When running on the same machine, we need to add multiple ";" to match the many IDs
@@ -43,13 +64,15 @@ def generate_launch_description():
 
 
     def create_local_servers(context):
-        robot_ip = LaunchConfiguration('robot_ip_launch_arg').perform(context)
+        robot_ip = LaunchConfiguration('robot_ip').perform(context)
+        robot_port = LaunchConfiguration('robot_port').perform(context)
+        robot_id = int(LaunchConfiguration('id').perform(context))
 
-        robot_dds_server = robot_ip + ":11811"
+        robot_dds_server = robot_ip + ":" + robot_port
 
         # The ROS_DISCOVERY_SERVER variable must list the servers as a list with their ID as index
         # When running on the same machine, we need to add multiple ";" to match the many IDs
-        controller_servers = (";"*(robot_id + 1)) + robot_dds_server
+        controller_servers = (";"*robot_id) + robot_dds_server
 
         return [SetLaunchConfiguration('local_servers', controller_servers)]
 
@@ -60,29 +83,29 @@ def generate_launch_description():
 
     # Start a controller node
     controller_node = GroupAction([
-        PushRosNamespace(namespace),
+        PushRosNamespace(LaunchConfiguration('namespace')),
         Node(
             package='communication_test',
             executable='kobuki_warehouse_controller.py',
             name='warehouse_controller',
             parameters=[
-                {'robot_id': robot_id},
+                {'robot_id': LaunchConfiguration('id')},
             ]
         )
     ])
     
 
     localization = GroupAction([
-        PushRosNamespace(namespace),
+        PushRosNamespace(LaunchConfiguration('namespace')),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                         os.path.join(
                             get_package_share_directory('nav2_bringup'),
                             'launch/localization_launch.py')),
             launch_arguments={
-                "namespace": namespace,
+                "namespace": LaunchConfiguration('namespace'),
                 'map': os.path.join(get_package_share_directory('communication_test'), 'map', 'map.yaml'),
-                'params_file': os.path.join(get_package_share_directory('communication_test'), 'config', 'nav2', 'nav2_params_kobuki.yaml'),
+                'params_file': LaunchConfiguration('robot_config'),
                 'autostart': 'True',
                 'log_level': LaunchConfiguration('nav_log_level')
             }.items()
@@ -98,7 +121,7 @@ def generate_launch_description():
                     get_package_share_directory('communication_test'),
                     'launch/nav/navigation_launch.py')),
             launch_arguments={
-                "namespace": namespace,
+                "namespace": LaunchConfiguration('namespace'),
                 "params_file": os.path.join(get_package_share_directory('communication_test'), 'config', 'nav2', 'nav2_params_kobuki.yaml'),
                 'log_level': LaunchConfiguration('nav_log_level')
             }.items()
@@ -111,9 +134,16 @@ def generate_launch_description():
         log_level_launch_arg,
         
         subnet_dds_server_launch_arg,
+        
+        robot_ip_launch_arg,
+        robot_port_launch_arg,
+        robot_id_setup,
 
         common_servers_arg,
         local_servers_arg,
+
+        DDSserver,
+
 
         GroupAction([
             SetEnvironmentVariable('ROS_DISCOVERY_SERVER', LaunchConfiguration('common_servers')),
