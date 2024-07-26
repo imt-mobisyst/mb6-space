@@ -69,8 +69,14 @@
         //   action_clients: [],
         // },
         allow: {
-          publishers: [".*/robot_marker", ".*/map", ".*/package_deposit_marker", ".*/package_marker_array", ".*/package_deposit_marker_array", ".*/package_retrieved_marker", ".*/auctionBid", ".*/local_costmap/costmap", ".*/local_costmap/costmap_updates", ".*/transformed_global_plan"],
-          subscribers: [".*/package_marker", ".*/retrieve_marker", ".*/assignedRobot", ".*/robot_marker"],
+          publishers: [
+            ".*/robot_marker", ".*/map", ".*/package_deposit_marker", ".*/package_marker_array", ".*/package_deposit_marker_array", ".*/package_retrieved_marker", ".*/auctionBid", ".*/local_costmap/costmap", ".*/local_costmap/costmap_updates", ".*/transformed_global_plan", // OPERATOR
+            ".*/multi/cmd_nav" // PIBOT
+          ],
+          subscribers: [
+            ".*/package_marker", ".*/retrieve_marker", ".*/assignedRobot", // OPERATOR
+            ".*/scan", ".*/odom", ".*/tf", ".*/tf_static" // PIBOT
+          ],
           service_servers: [],
           service_clients: [],
           action_servers: [],
@@ -168,7 +174,8 @@
     connect: {
       endpoints: [
         // "<proto>/<ip>:<port>"
-        "tcp/localhost:7499"
+        "tcp/%OPERATOR_IP%:7447",
+        "tcp/%PIBOT_IP%:7447"
       ]
     },
   
@@ -178,10 +185,11 @@
     //// peers, or client can use to establish a zenoh session.
     //// In 'router' mode (default) the zenoh-bridge-ros2dds is listening by default on `tcp/0.0.0.0:7447` (`0.0.0.0` meaning all the available network interfaces)
     ////
+
+    // Use the default listener to listen locally
     listen: {
       endpoints: [
         // "<proto>/<ip>:<port>"
-        "tcp/localhost:%PORT_OPE%"
       ]
     },
   
