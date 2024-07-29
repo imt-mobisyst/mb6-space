@@ -179,11 +179,11 @@
     ////
 
     // Use the default listener to listen locally
-    // listen: {
-    //   endpoints: [
-    //     // "<proto>/<ip>:<port>"
-    //   ]
-    // },
+    listen: {
+      endpoints: [
+        // "<proto>/<ip>:<port>"
+      ]
+    },
   
     ////
     //// Configure the scouting mechanisms and their behaviours
