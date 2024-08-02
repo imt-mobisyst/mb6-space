@@ -29,6 +29,10 @@ def generate_launch_description():
         'nav_log_level', default_value='info', description='log level'
     )
 
+    # CLI arguments
+    robot_id_launch_arg = DeclareLaunchArgument(
+        'robot_id', default_value=''
+    )
 
     # Robot ID
     def setRobotId(context):
@@ -37,8 +41,6 @@ def generate_launch_description():
         if id == '':
             id = int(socket.gethostname()[-2:]) # Default value = Last number of the kobuki RPI hostname
 
-        
-        print(f'Using robot {id} on domain ID "{id}"')
 
         robot_config = os.path.join(get_package_share_directory('communication_test'), 'config', 'nav2', f'nav2_localization_kobuki_{id}.yaml')
 
@@ -133,6 +135,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         log_level_launch_arg,
+        robot_id_launch_arg,
 
         robot_id_setup,
 
