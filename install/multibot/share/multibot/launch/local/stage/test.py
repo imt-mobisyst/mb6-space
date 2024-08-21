@@ -29,7 +29,7 @@ def generate_launch_description():
     load_controller = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
-                get_package_share_directory('communication_test'),
+                get_package_share_directory('multibot'),
                 'launch/include/stage/stage_namespace_robot_launch.py')),
 
         # Launch turtles with the correct DDS configuration
@@ -42,7 +42,7 @@ def generate_launch_description():
 
     # Launch operator node only in the common network
     operator_node = Node(
-        package='communication_test',
+        package='multibot',
         executable='static_operator.py',
         name='operator',
         parameters=[
