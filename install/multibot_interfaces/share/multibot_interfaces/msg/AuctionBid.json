@@ -1,0 +1,36 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "multibot_interfaces/msg/AuctionBid",
+      "fields": [
+        {
+          "name": "robot_id",
+          "type": {
+            "type_id": 2,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        },
+        {
+          "name": "distance",
+          "type": {
+            "type_id": 10,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "multibot_interfaces/msg/AuctionBid",
+      "hash_string": "RIHS01_7ec3075df5a0994e3a2e7c2fd918960b21fa67c84fb03f2e2d46ae5fb5cca452"
+    }
+  ]
+}
