@@ -21,8 +21,8 @@ alias mb6-build-pkg='colcon build --event-handlers console_direct+ --cmake-args 
 if [ ! -f $MB6_WORKSPACE/config.toml ]; then
     cp $MB6_WORKSPACE/bin/default-config.toml $MB6_WORKSPACE/config.toml
 fi
-export ROS_AUTOMATIC_DISCOVERY_RANGE=`toml get --toml-path /home/guillaume/Projects/mb6-space/config.toml ros2.discovery_range`
-export ROS_DOMAIN_ID=`toml get --toml-path /home/guillaume/Projects/mb6-space/config.toml ros2.domain_id`
+export ROS_AUTOMATIC_DISCOVERY_RANGE=`toml get --toml-path $MB6_WORKSPACE/config.toml ros2.discovery_range`
+export ROS_DOMAIN_ID=`toml get --toml-path $MB6_WORKSPACE/config.toml ros2.domain_id`
 
 #source ~/mb6-space/local-config.sh
 
