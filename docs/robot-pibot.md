@@ -1,5 +1,9 @@
 # Pibot Robot
 
+```sh
+ros2 launch slam_toolbox online_sync_launch.py
+```
+
 The mobile robot _Pibot_ is built on top of a [Kobuki](https://www.turtlebot.com/turtlebot2/) an [Hokuyo](https://hokuyo-usa.com/) laser range supervised with a raspberry-Pi3 computer card. 
 
 The [ROS2](https://docs.ros.org/) middleware is adapted to this configuration in the [tbot_node](https://github.com/imt-mobisyst/pkg-tbot) project.
@@ -13,8 +17,7 @@ At this point the robot is already ready to be controled.
 
 The operator from its computer station need to identify and configure the _Pibot_ domain identifier (Domain_ID) and then start a _teleop_ for instance.
 
-_Pibot_ is automaticly connected to `IOT IMT Nord Europe` _WiFi_ (be sure set your computer on the same network) with a _
-_Pibot_ is automaticly connected to `IOT IMT Nord Europe` _WiFi_ (be sure set your computer on the same network) with a _Domain_ID_ matching its _Pibot_ number. 
+_Pibot_ is automaticly connected to `IOT IMT Nord Europe` _WiFi_ (be sure that your computer is on the same network) with a _Domain_ID_ matching its _Pibot_ number. 
 For instance `pibot22` is configured with `22`.
 
 On your _ROS_ terminal:
