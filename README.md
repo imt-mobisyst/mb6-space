@@ -1,29 +1,49 @@
-# Mobile System - Master for Robotics Packages
+# Mobile System - The master directory for robotics packages
 
 The project to control all the others...
 
 _mb6-space_ regroups elements for playing with the mobile robots of IMT Nord Europe.
-Its is the master project on the top off sub-project dedicated to robots platform, software modules or scenario application.
+It is the master project on the top off sub-projects, dedicated to robots platform, software modules or scenario applications.
 
-It does not include code but mostly documentation and tools.
+It does not include code but mostly documentation and command tools.
 
+## Install:
+
+_mb6-space_ can be clonned and configured accordingly to ROS2.
+Also, the proposed command tools relies on [toml](https://toml.io) based configuration file.
+
+```sh
+pip install toml toml-cli
+git clone https://github.com/imt-mobisyst/mb6-space.git
+cd mb6-space
+./bin/set-ros-bashrc
+source ./bin/run-commands.bash
+```
+
+The `set-ros-bashrc` script add lines into your `~/.bashrc` file to source `./bin/run-commands.bash` automaticly in your shells.
 
 ## Get Stated:
 
-_mb6-space_ is a meta-package only including the documentation.
-It is designed to be your ros-workspace.
+_mb6-space_ is a meta-package only including the documentation and some usefull command tools.
+It is designed to be your ros-workspace. `ROS` work with several environement variables. 
 
-After cloning you can source `./bin/run-commands.bash` into your `~/.bashrc` file with the `set-ros-bashrc` script.
-This will configure automatically all your shells.
-The `run-commands` get the configuration elements from a `local-config.sh`. 
+You can change esselly the varibles by editing your `./config.toml` and source again the `./bin/run-commands.bash`.
 
 ```sh
-./bin/set-ros-bashrc
-sources ~/.bashrc
-gedit ./local-config.sh
-sources ~/.bashrc
+gedit ./config.toml
+sources ./bin/run-commands.bash
 ```
 
+One simple exemple for ros package to install is `pkg-basic` defining basic functionnalities.
+To notice that most of our packages comme with an install script for dependancies.
+
+```sh
+git clone https://github.com/imt-mobisyst/pkg-basic.git
+./pkg-basic/bin/install
+colcon build
+sources ./bin/run-commands.bash
+ros2 launch basic_node parasit_launch.yaml
+```
 
 ## Documentation
 
@@ -45,3 +65,5 @@ Deployoment is achieved with a public github repository (_imt-mobisyst.github.io
 git clone git@github.com:ktorz-net/imt-mobisyst.github.io.git ../imt-mobisyst-site
 ./bin/docs-deploy.sh
 ```
+
+To notice that the documentation repository can be cloned any where on your computer while the `config.toml` is updated accordingly.

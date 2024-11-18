@@ -13,7 +13,7 @@ pkg-viscene
 
 # Local config:
 #-----------------
-local-config.sh
+config.toml
 patches
 
 # System
