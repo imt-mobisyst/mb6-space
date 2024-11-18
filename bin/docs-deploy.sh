@@ -2,15 +2,20 @@
 
 # Setup local environment:
 cd `dirname $0`/..
-if [ ! -f local-config.sh ]; then
-    cp ./bin/default-config.sh ./local-config.sh
+if [ ! -f local-config.toml ]; then
+    cp ./bin/default-config.toml ./local-config.toml
 fi
-source local-config.sh
+
+#source local-config.sh
+WEBPAGES_MODULE=`toml get --toml-path local-config.toml webpages.module`
+WEBPAGES_REPO=`toml get --toml-path local-config.toml webpages.target`
 
 # Scripts actions:
 echo ""
 echo "DEPLOY $WEBPAGES_MODULE ON $WEBPAGES_REPO"
 echo ""
+
+exit
 
 echo "--Build"
 mkdocs build

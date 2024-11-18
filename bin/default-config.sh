@@ -1,7 +1,0 @@
-# Mkdocs WebPages:
-WEBPAGES_MODULE="mb6-space"
-WEBPAGES_REPO="../imt-mobisyst-site"
-
-# ROS2:
-export ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET # LOCALHOST | SUBNET
-export ROS_DOMAIN_ID=00

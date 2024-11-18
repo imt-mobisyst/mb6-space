@@ -1,11 +1,11 @@
+
+
 # Setup ROS command environment:
 if [ -e /opt/ros/iron/setup.bash ]; then
   source /opt/ros/iron/setup.bash
-  export ROS_WORKSPACE="iron"
 fi
 if [ -e ~/mb6-space/install/setup.bash ]; then
   source ~/mb6-space/install/setup.bash
-  export ROS_WORKSPACE="mb6-space"
 fi
 
 # some Git alias:
@@ -17,16 +17,18 @@ alias diff='git difftool -t meld'
 # some other alias:
 alias mb6-build-pkg='colcon build --event-handlers console_direct+ --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON --packages-select'
 
+# User configurations:
+if [ ! -f $MB6_WORKSPACE/config.toml ]; then
+    cp $MB6_WORKSPACE/bin/default-config.toml $MB6_WORKSPACE/config.toml
+fi
+export ROS_AUTOMATIC_DISCOVERY_RANGE=`toml get --toml-path /home/guillaume/Projects/mb6-space/config.toml ros2.discovery_range`
+export ROS_DOMAIN_ID=`toml get --toml-path /home/guillaume/Projects/mb6-space/config.toml ros2.domain_id`
+
+#source ~/mb6-space/local-config.sh
+
 # Tunned prompt:
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:($ROS_AUTOMATIC_DISCOVERY_RANGE::$ROS_DOMAIN_ID)\[\033[01;34m\]\w\[\033[00m\].\n\$ '
-
-# User configurations:
-if [ ! -f ~/mb6-space/local-config.sh ]; then
-    cp ~/mb6-space/bin/default-config.sh ~/mb6-space/local-config.sh
-fi
-source ~/mb6-space/local-config.sh
-
 # Go message:
 echo "
-  ---  `hostname`:$ROS_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
+  ---  `hostname`:$MB6_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
 "
