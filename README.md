@@ -16,11 +16,11 @@ Also, the proposed command tools relies on [toml](https://toml.io) based configu
 pip install toml toml-cli
 git clone https://github.com/imt-mobisyst/mb6-space.git
 cd mb6-space
-./bin/set-ros-bashrc
+./bin/set-mb6-bashrc
 source ./bin/run-commands.bash
 ```
 
-The `set-ros-bashrc` script add lines into your `~/.bashrc` file to source `./bin/run-commands.bash` automaticly in your shells.
+The `set-mb6-bashrc` script add lines into your `~/.bashrc` file to source `./bin/run-commands.bash` automaticly in your shells.
 
 ## Get Stated:
 
