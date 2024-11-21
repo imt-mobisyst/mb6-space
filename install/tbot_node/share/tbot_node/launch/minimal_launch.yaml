@@ -22,6 +22,12 @@ launch:
     - 
       name: "laser_frame_id"
       value: "laser_link"
+    - 
+      name: "angle_min"
+      value: -1.6
+    - 
+      name: "angle_max"
+      value: 1.6
 
 # State publisher:
 - node: 
