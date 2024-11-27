@@ -27,7 +27,7 @@ Attention, the script also install ROS in _desktop_ configuration.
 
 ```sh
 cd
-curl https://bitbucket.org/imt-mobisyst/mb6-space/raw/master/bin/install-station > install.bash
+curl https://github.com/imt-mobisyst/mb6-space/raw/master/bin/install-station > install.bash
 bash install.bash
 rm install.bash
 ```
@@ -58,7 +58,7 @@ Clone mb6-space:
 cd
 if [ ! -d "mb6-space" ]; then
   git config --global http.sslverify false
-  git clone https://bitbucket.org/imt-mobisyst/mb6-space.git
+  git clone https://github.com/imt-mobisyst/mb6-space.git
 fi
 cd mb6-space
 ```

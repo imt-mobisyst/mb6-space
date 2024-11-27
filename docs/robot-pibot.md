@@ -6,9 +6,11 @@ ros2 launch slam_toolbox online_sync_launch.py
 
 The mobile robot _Pibot_ is built on top of a [Kobuki](https://www.turtlebot.com/turtlebot2/) an [Hokuyo](https://hokuyo-usa.com/) laser range supervised with a raspberry-Pi3 computer card. 
 
-The [ROS2](https://docs.ros.org/) middleware is adapted to this configuration in the [tbot_node](https://github.com/imt-mobisyst/pkg-tbot) project.
+The [ROS2](https://docs.ros.org/) middleware is adapted to this configuration in the [pkg-tbot](https://github.com/imt-mobisyst/pkg-tbot) project.
 
 ![Picture of a Pibot](./figs/naked-pibot.png)
+
+A **pibotXX** is automaticaly configured on `IOT IMT Nord Europe` _WiFi_ with a fixed _IP_: `10.89.5.XX`.
 
 ## Get Started.
 
@@ -39,24 +41,47 @@ ros2 launch slam_toolbox online_sync_launch.py
 ...
 ```
 
-To notice that your autonomous control should send velocity messages to `multi/cmd_nav`.
+To notice that your autonomous control should send velocity messages to `multi/cmd_nav` (`/multi/cmd_teleop` is reserved to human teleoperation).
+
+## Get Started v2 (from _mb6_sapce_)
+
+From _mb6_sapce_ directory, it is possible to configure once for all the `ROS_DOMAIN_ID` by editing the `config.toml` and sourcing `./bin/run-commands.bash`
+
+```sh
+cd /path/to/mb6_space
+gedit config.toml
+source ./bin/run-commands.bash
+```
+
+Each new terminal will be open on the same configuration.
+You can then, connect your __pibotXX_ with `rviz2`.
+
+```sh
+rviz2 rviz-conf/simple-pibot.rviz
+```
+
+you can also try _SLAM_: 
+
+```sh
+# Terminal 1
+ros2 launch slam_toolbox online_sync_launch.py
+
+# Terminal 2
+rviz2 rviz-conf/pibot-with-map.rviz
+```
+
+
+## Get Started v3 (hard linked)
+
 
 
 ## Pibot Configuration
 
-_Pibot_ are configured on a reserved _DHCP_ range: $[10.89.5.10 \rightarrow 10.89.5.50]$, accordingly to their id number ($10.89.5.21$ for _Pibot21_).
-The user is `ros` and its password `ros` (it is possible to change the password with `passwd` command).
-
-_Pibot_ relies on several projects: 
+_Pibot_ relies on several ros packages: 
 
 - [mb6-space] on the pibot branch for install and service configuration.
 - [pkg-tbot](https://github.com/imt-mobisyst/pkg-tbot) for _Kobuki_ + laser drivers and configurations.
 - [pkg-basic](https://github.com/imt-mobisyst/pkg-basic) to allow basic/simple controls and tools.
-
-## Start your own processes
-
-TMux.
-
 
 ## Shutdown Check List
 
