@@ -1,4 +1,4 @@
-site_name: HackaGames
+site_name: mb6 ros-workspace
 nav:
   - MobiSyst <: '..'
   - Home: 'index.md'
@@ -6,14 +6,23 @@ nav:
     - On Pi3: 'configure-pi3.md'
     - On Pi4: 'configure-pi4.md'
     - Station: 'configure-station.md'
+    - Manual Install: 'install.md'
   - Robots:
     - Pibot: 'robot-pibot.md'
     - Ezbot: 'robot-ezbot.md'
-    - Ezbot: 'robot-stage.md'
+    - Stage: 'robot-stage.md'
   - Packages:
     - Basic: 'pkg-basic.md'
   - F.A.Q: 'f.a.q.md'
-extra_css:
-  - style.css
+
 markdown_extensions:
   - attr_list
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - style.css

@@ -1,6 +1,9 @@
 # OS Instalation on Pi3
 
-Version Rasbery-Pi3 with Ubuntu 22.04.
+Version: Ubuntu 22.04 - ROS2 iron.
+
+This version is dedicatd to work with **Turtlebot** platform,
+combinated they form a **pibot**.
 
 Need Raspberry *Pi-Imager* from [www.raspberrypi.com](https://www.raspberrypi.com/software) (not from apt...).
 
@@ -13,25 +16,30 @@ Need Raspberry *Pi-Imager* from [www.raspberrypi.com](https://www.raspberrypi.co
   - hostname: 'pibotXX'
   - enable SSH (password auth)
   - username: bot
-  - password: bot
+  - password: x2
   - LAN:
-    * _IoT IMT Nord Europe_ : `72Hin@R*`
+    * _IoT IMT Nord Europe_ : <!-- `72Hin@R*` -->
 
 Try **Custom Image**: Section: _Modify existing image_ on https://opensource.com/article/21/7/custom-raspberry-pi-image
 
 ## Install:
 
-You can process a classical install from [install-pi3](../bin/install-pi3) script or go on **Manual Install** section.
+You can process a classical install from [install-pi3]([../bin/install-pi3](https://github.com/imt-mobisyst/mb6-space/blob/master/bin/install-pi3)) script or go on **Manual Install** section.
 Attention, the script also install ROS in _ros-base_ configuration and mb6 elements.
 
 ```sh
 cd
-git clone https://bitbucket.org/imt-mobisyst/mb6-space
+git clone https://github.com/imt-mobisyst/mb6-space
 cd mb6-space
 ./bin/install-pi3
 ```
 
+After installation, `pibotXX` will be accecible on the _IP_ `10.89.5.XX` 
+(reserved _DHCP_ range: $[10.89.5.10 \rightarrow 10.89.5.50]$).
+
 ## Manual Install:
+
+**Not up-to-date**, please refer directly to the `install` script...
 
 If necessary, update ntp serveurs conf and restart timesyncd service:
 
@@ -56,7 +64,7 @@ Clone `mb6-space`:
 ```sh
 cd
 git config --global http.sslverify false
-git clone https://bitbucket.org/imt-mobisyst/mb6-space.git
+git clone https://github.com/imt-mobisyst/mb6-space.git
 ```
 
 Update and get some soft:
