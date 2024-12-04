@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./install-ros-setup
+./mb6-space/bin/install-ros-setup
 
 export ROSDISTRO=iron
 echo "
