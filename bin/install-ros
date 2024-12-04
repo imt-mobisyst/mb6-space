@@ -29,5 +29,5 @@ source ~/mb6-space/bin/run-commands.bash" >> ~/.bashrc
 
 source run-commands.bash
 
-colcon build
+cd ~/mb6-space && colcon build
 
