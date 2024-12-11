@@ -1,3 +1,0 @@
-builtin_interfaces/Time stamp
-string system_name
-string description
