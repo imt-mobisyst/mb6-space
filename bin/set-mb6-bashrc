@@ -5,6 +5,7 @@ echo `realpath $PROJECT_PATH`
 
 echo """
 #   M B 6   R U N   C O M M A N D S:
+export ROS_DISTRO=iron
 export MB6_WORKSPACE=\"`realpath $PROJECT_PATH`\"
 source `realpath $PROJECT_PATH`/bin/run-commands.bash
 """ >> /home/$USER/.bashrc

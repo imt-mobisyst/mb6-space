@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ## Some Softs:
-
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y zsh git git-lfs davfs2 openssh-server ntpdate \
@@ -13,10 +12,9 @@ sudo apt install -y zsh git git-lfs davfs2 openssh-server ntpdate \
 	texlive-publishers texlive-bibtex-extra texlive-science texlive-luatex \
 	latexila pandoc wkhtmltopdf \
 	gimp steam inkscape
-pip install zmq tqdm pytest beautifulsoup4 matplotlib
+pip install zmq tqdm pytest beautifulsoup4 matplotlib toml toml-cli
 
 ## Clone  mb6-space
-
 cd
 if [ ! -d "mb6-space" ]; then
   git config --global http.sslverify false
@@ -41,25 +39,37 @@ git config --global http.sslVerify false
 git-lfs install
 
 ### install ROS :
-./bin/install-ros-setup
+export ROS_DISTRO=iron
 ./bin/install-ros
 
+echo "
+                    --- Install ros default tools (ros-$ROS_DISTRO) ---
+"
+
+sudo apt install -y ros-$ROS_DISTRO-desktop \
+                    ros-$ROS_DISTRO-slam-toolbox \
+                    ros-$ROS_DISTRO-navigation2 \
+                    ros-$ROS_DISTRO-nav2-bringup \
+                    ros-$ROS_DISTRO-urg-node
+
+# Configure mb6-space environemnt
+./bin/set-mb6-bashrc
+source ~/.bashrc
+
 ### build empty mb6 :
-cp -f deps/config-ros.bash .
-source ./bin/station-run-commands.bash
-colcon build
+cd ~/mb6-space && colcon build
 
 ### install Robot elements :
 ./bin/install-gazebo
 ./bin/install-realsense
 
-### install mb6 pkg :
+### install minimal mb6 pkg :
 git clone https://github.com/imt-mobisyst/pkg-basic
 git clone https://github.com/imt-mobisyst/pkg-tsim
 pkg-tsim/install
 
-source ./bin/run-commands.bash
 colcon build
+source ./bin/run-commands.bash
 
 # Activate services
 ./bin/set-update-as-a-service

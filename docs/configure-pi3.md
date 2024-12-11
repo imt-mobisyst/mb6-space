@@ -172,17 +172,16 @@ nano /etc/netplan/50-cloud-init.yaml
 ### robotic workspace:
 
 You can return on [README.md](../README.md) for more detail on ROS2 install.
-The script `bin/install-ros-setup` configure ubuntu for ROS installation.
+The script `bin/install-ros` configure ubuntu for ROS installation and install `ros-base`.
 
-Then pibot relies on `ros-base` and `urg-node`.
+Then pibot relies on `urg-node`.
 
 ```sh
-bin/install-ros-setup
+bin/install-ros
 
-export ROSDISTRO=iron
+export ROS_DISTRO=iron
 sudo apt install -y \
-  ros-$ROSDISTRO-ros-base \
-  ros-$ROSDISTRO-urg-node
+  ros-$ROS_DISTRO-urg-node
 
 sudo usermod -a -G dialout `whoami`
 ```

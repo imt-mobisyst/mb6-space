@@ -28,8 +28,7 @@ On a _x86_ machine you also can get help from the communty: [official website](h
 
 Some install script for classical install:
 
-- [install-ros-setup](./bin/install-ros-setup) - only setup `apt` to target offical ROS repo.
-- [install-ros](./bin/install-ros) - install ROS iron from the official repo in desktop mode.
+- [install-ros](./bin/install-ros) - setup `apt` to target offical ROS repo and install ros minimal elements
 - [install-gazebo](./bin/install-gazebo) - install ROS-Gazebo
 - [install-realsense](./bin/install-realsense) - install dev. environement: RealSense
 
