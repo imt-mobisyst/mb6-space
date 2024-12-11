@@ -2,7 +2,6 @@
 
 ## Studient Vsit : Color-Zone Game
 
-
 ## Pi3 : 
 
 - Configure/Install minimal Kobuki nodes
