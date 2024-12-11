@@ -24,11 +24,12 @@ if [ -d $WEBPAGES_REPO/$WEBPAGES_MODULE ]; then
     rm -fr $WEBPAGES_REPO/$WEBPAGES_MODULE
 fi
 
+git -C $WEBPAGES_REPO pull
+
 mv site $WEBPAGES_REPO/$WEBPAGES_MODULE
 
 echo ""
 echo "--Commit"
-git -C $WEBPAGES_REPO pull
 git -C $WEBPAGES_REPO add $WEBPAGES_MODULE
-git -C $WEBPAGES_REPO commit -m "update from $WEBPAGES_MODULE" 
+git -C $WEBPAGES_REPO commit -m "update from $WEBPAGES_MODULE"
 git -C $WEBPAGES_REPO push

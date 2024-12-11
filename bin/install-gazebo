@@ -1,9 +1,7 @@
 #!/bin/bash
-
 echo "
                     --- Install Gazebo (ros-$ROS_DISTRO) ---
 "
-export ROS_DISTRO=iron
 
 sudo apt install -y \
     ros-$ROS_DISTRO-slam-toolbox \
