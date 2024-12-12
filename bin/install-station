@@ -56,6 +56,10 @@ sudo apt install -y ros-$ROS_DISTRO-desktop \
 ./bin/set-mb6-bashrc
 source ~/.bashrc
 
+echo "
+                    --- mb6 on $MB6_WORKSPACE) ---
+"
+
 ### build empty mb6 :
 cd ~/mb6-space && colcon build
 
