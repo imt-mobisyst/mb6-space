@@ -17,7 +17,7 @@ pip install toml toml-cli
 git clone https://github.com/imt-mobisyst/mb6-space.git
 cd mb6-space
 ./bin/set-mb6-bashrc
-source ./bin/run-commands.bash
+source ~/.bashrc
 ```
 
 The `set-mb6-bashrc` script adds lines into your `~/.bashrc` file to source `./bin/run-commands.bash` automatically in your shells.
