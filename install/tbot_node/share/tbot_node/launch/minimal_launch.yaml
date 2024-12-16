@@ -1,6 +1,4 @@
 launch:
-
-# Kobuki Driver:
 - node:
     pkg: "kobuki_node"
     exec: "kobuki_ros_node"
@@ -9,8 +7,6 @@ launch:
     -
       name: "device_port"
       value: "/dev/kobuki"
-
-# Laser Range:
 - node:
     pkg: "urg_node"
     exec: "urg_node_driver"
@@ -22,8 +18,6 @@ launch:
     - 
       name: "laser_frame_id"
       value: "laser_link"
-
-# State publisher:
 - node: 
     pkg: "robot_state_publisher"
     exec: "robot_state_publisher"
@@ -33,38 +27,11 @@ launch:
     - 
       name: "use_sim_time"
       value: False
-
-# Supervision:
 - node:
-    pkg: "tbot_node"
+    pkg: "basic_node"
     exec: "multiplexer"
     name: "multiplexer"
     remap:
     -
         from: "cmd_vel"
         to: "commands/velocity"
-
-# Driver:
-- node:
-    pkg: joy
-    exec: joy_node
-
-# Control:
-- node: 
-    pkg: teleop_twist_joy
-    exec: teleop_node
-    param:
-      - 
-        name: "axis_linear.x"
-        value: 1
-      - 
-        name: "scale_linear.x"
-        value: 0.3
-      - 
-        name: "axis_angular.yaw"
-        value: 3
-      - 
-        name: "scale_angular.yaw"
-        value: 2.0
-    remap:
-     - {from: "cmd_vel", to: "multi/cmd_teleop"}
