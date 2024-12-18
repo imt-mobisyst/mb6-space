@@ -2,6 +2,7 @@
 #-----------------
 ovh-*
 pkg-basic
+pkg-interfaces
 pkg-maraubot
 pkg-multibot
 pkg-robulab
