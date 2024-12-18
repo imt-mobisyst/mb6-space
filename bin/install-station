@@ -69,7 +69,7 @@ git clone https://github.com/imt-mobisyst/pkg-tsim
 pkg-tsim/install
 
 colcon build
-source ./bin/run-commands.bash
+source ~/.bashrc
 
 # Activate services
 ./bin/set-update-as-a-service
