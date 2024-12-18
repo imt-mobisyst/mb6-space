@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cd `dirname $0`/..
+git clone https://github.com/imt-mobisyst/pkg-interfaces
+source ./bin/run-commands.bash
+colcon build --base-path pkg-interfaces
