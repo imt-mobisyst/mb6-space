@@ -72,8 +72,8 @@ colcon build
 source ~/.bashrc
 
 # Activate services
-./bin/set-update-as-a-service
-./bin/set-parasit-as-a-service
+#./bin/set-update-as-a-service
+#./bin/set-parasit-as-a-service
 
 # Create non admin ros user
 if ! id 'ros' >/dev/null 2>&1; then
@@ -83,5 +83,5 @@ if ! id 'ros' >/dev/null 2>&1; then
         -p '$6$k./SdE0nf/6jNVfI$2t.Hem07Pe9GZXVkjNfttSSRotXtDUWSLPQOMdw1N9CtQOAxSgrsU2Uom3KjytiLFqbNGZT2srCyKDGmQtNoN/'\
         -s /bin/bash ros
 
-    sudo ./bin/set-ros-bashrc
+    sudo ./bin/set-mb6-bashrc
 fi
