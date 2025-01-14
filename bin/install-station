@@ -1,5 +1,8 @@
 #!/bin/bash
 
+### Configuration :
+export ROS_DISTRO=iron
+
 ## Some Softs:
 sudo apt update
 sudo apt upgrade -y
@@ -23,11 +26,9 @@ fi
 cd mb6-space
 
 ## Some softs not in the official Ubuntu repositories.
-
 sudo dpkg -i deps/code_1.79.2-1686734195_amd64.deb
 
 # Configure the user environemnt
-
 echo "
                     --- Git Configuration ---
 "
@@ -38,8 +39,7 @@ git config --global credential.helper cache
 git config --global http.sslVerify false
 git-lfs install
 
-### install ROS :
-export ROS_DISTRO=iron
+### Install ROS :
 ./bin/install-ros
 
 echo "
