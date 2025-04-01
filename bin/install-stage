@@ -10,4 +10,4 @@ git clone --branch ros2 https://github.com/tuw-robotics/Stage.git
 git clone --branch humble https://github.com/tuw-robotics/stage_ros2.git
 cd ..
 colcon build --cmake-args -DOpenGL_GL_PREFERENCE=LEGACY
-colcon build --packages-select stage_ros2        
+colcon build --packages-select stage_ros2
