@@ -1,0 +1,16 @@
+pkg-basic
+- origin: git@github.com:imt-mobisyst/pkg-basic
+pkg-interfaces
+- origin: git@github.com:imt-mobisyst/pkg-interfaces.git
+pkg-maraubot
+- origin: git@github.com:imt-mobisyst/pkg-maraubot.git
+pkg-multibot
+- origin: git@github.com:imt-mobisyst/pkg-multibot.git
+pkg-robulab
+- origin: git@github.com:imt-mobisyst/pkg-robulab.git
+pkg-tbot
+- origin: git@github.com:imt-mobisyst/pkg-tbot.git
+pkg-toons
+- origin: git@github.com:imt-mobisyst/pkg-toons.git
+pkg-tsim
+- origin: git@github.com:imt-mobisyst/pkg-tsim.git
