@@ -26,6 +26,11 @@ network:
           via: 10.89.0.1
       nameservers:
         addresses: [193.48.235.163] # everest.mines-douai.fr
+    wlan0:
+      access-points:
+        mobi-iot:
+          password: 'c1pass4!Mobi'
+      dhcp4: true
 EOF
 sudo mv -f /tmp/50-static-wlan0.yaml /etc/netplan/
 
