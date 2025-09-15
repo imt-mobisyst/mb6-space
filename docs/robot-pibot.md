@@ -4,20 +4,25 @@
 ros2 launch slam_toolbox online_sync_launch.py
 ```
 
-The mobile robot _Pibot_ is built on top of a [Kobuki](https://www.turtlebot.com/turtlebot2/) an [Hokuyo](https://hokuyo-usa.com/) laser range supervised with a raspberry-Pi3 computer card. 
+_Pibot_ is a mobile robot built on top of a [Kobuki](https://www.turtlebot.com/turtlebot2/) drivers and with [Hokuyo](https://hokuyo-usa.com/) laser range. 
+The robot is supervised with a raspberry-Pi3 computer card. 
 
-The [ROS2](https://docs.ros.org/) middleware is adapted to this configuration in the [pkg-tbot](https://github.com/imt-mobisyst/pkg-tbot) project.
+The [ROS2](https://docs.ros.org/) middleware is integrated to this configuration with the [pkg-tbot](https://github.com/imt-mobisyst/pkg-tbot) package.
 
 ![Picture of a Pibot](./figs/naked-pibot.png)
 
-A **pibotXX** is automaticaly configured on `IOT IMT Nord Europe` _WiFi_ with a fixed _IP_: `10.89.5.XX`.
+A **pibotXX** is automaticaly configured on `IOT IMT Nord Europe` _WiFi_ with a fixed _IP_: `10.89.5.XX` ; or to the `mobi-iot` _WiFi_.
 
-## Get Started.
+
+## Get Started
 
 After turning on the robot, the control software is started.
-At this point the robot is already ready to be controled. 
+At this point the robot is ready to be controled. 
 
 The operator from its computer station need to identify and configure the _Pibot_ domain identifier (Domain_ID) and then start a _teleop_ for instance.
+
+
+### Connecting a PC operator
 
 _Pibot_ is automaticly connected to `IOT IMT Nord Europe` _WiFi_ (be sure that your computer is on the same network) with a _Domain_ID_ matching its _Pibot_ number. 
 For instance `pibot22` is configured with `22`.
@@ -43,9 +48,10 @@ ros2 launch slam_toolbox online_sync_launch.py
 
 To notice that your autonomous control should send velocity messages to `multi/cmd_nav` (`/multi/cmd_teleop` is reserved to human teleoperation).
 
-## Get Started v2 (from _mb6_sapce_)
 
-From _mb6_sapce_ directory, it is possible to configure once for all the `ROS_DOMAIN_ID` by editing the `config.toml` and sourcing `./bin/run-commands.bash`
+### Recurent confiuration
+
+From _mb6_space_ directory, it is possible to configure once for all the `ROS_DOMAIN_ID` by editing the `config.toml` and sourcing `./bin/run-commands.bash`
 
 ```sh
 cd /path/to/mb6_space
@@ -71,7 +77,7 @@ rviz2 rviz-conf/pibot-with-map.rviz
 ```
 
 
-## Get Started v3 (hard linked)
+## Get Started (hard linked)
 
 
 
