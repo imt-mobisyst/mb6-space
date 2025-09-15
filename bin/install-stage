@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Go to the root directory of the workspace 
+cd `dirname $0`/..
+
+sudo apt install -y git cmake g++ libjpeg8-dev libpng-dev libglu1-mesa-dev libltdl-dev libfltk1.1-dev
+mkdir pkg-stage
+cd pkg-stage
+git clone --branch ros2 https://github.com/tuw-robotics/Stage.git
+git clone --branch humble https://github.com/tuw-robotics/stage_ros2.git
+cd ..
+colcon build --cmake-args -DOpenGL_GL_PREFERENCE=LEGACY
+colcon build --packages-select stage_ros2

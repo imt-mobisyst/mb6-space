@@ -2,17 +2,19 @@
 #-----------------
 ovh-*
 pkg-basic
+pkg-interfaces
+pkg-maraubot
+pkg-multibot
 pkg-robulab
+pkg-stage
 pkg-tbot
 pkg-tsim
 pkg-toons
 pkg-viscene
-pkg-maraubot
-pkg-multibot
 
 # Local config:
 #-----------------
-local-config.sh
+config.toml
 patches
 
 # System

@@ -1,7 +1,9 @@
 #!/bin/bash
 
-## Some Softs:
+### Configuration :
+export ROS_DISTRO=iron
 
+## Some Softs:
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y zsh git git-lfs davfs2 openssh-server ntpdate \
@@ -13,23 +15,20 @@ sudo apt install -y zsh git git-lfs davfs2 openssh-server ntpdate \
 	texlive-publishers texlive-bibtex-extra texlive-science texlive-luatex \
 	latexila pandoc wkhtmltopdf \
 	gimp steam inkscape
-pip install zmq tqdm pytest beautifulsoup4 matplotlib
+pip install zmq tqdm pytest beautifulsoup4 matplotlib toml toml-cli
 
 ## Clone  mb6-space
-
 cd
 if [ ! -d "mb6-space" ]; then
   git config --global http.sslverify false
-  git clone https://bitbucket.org/imt-mobisyst/mb6-space.git
+  git clone https://github.com/imt-mobisyst/mb6-space.git
 fi
 cd mb6-space
 
 ## Some softs not in the official Ubuntu repositories.
-
 sudo dpkg -i deps/code_1.79.2-1686734195_amd64.deb
 
 # Configure the user environemnt
-
 echo "
                     --- Git Configuration ---
 "
@@ -40,30 +39,41 @@ git config --global credential.helper cache
 git config --global http.sslVerify false
 git-lfs install
 
-### install ROS :
-./bin/install-ros-setup
+### Install ROS :
 ./bin/install-ros
 
+echo "
+                    --- Install ros default tools (ros-$ROS_DISTRO) ---
+"
+
+sudo apt install -y ros-$ROS_DISTRO-desktop \
+                    ros-$ROS_DISTRO-slam-toolbox \
+                    ros-$ROS_DISTRO-navigation2 \
+                    ros-$ROS_DISTRO-nav2-bringup \
+                    ros-$ROS_DISTRO-urg-node
+
+# Configure mb6-space environemnt
+./bin/set-mb6-bashrc
+source ~/.bashrc
+
 ### build empty mb6 :
-cp -f deps/config-ros.bash .
-source ./bin/station-run-commands.bash
-colcon build
+cd ~/mb6-space && colcon build
 
 ### install Robot elements :
 ./bin/install-gazebo
 ./bin/install-realsense
 
-### install mb6 pkg :
-git clone https://bitbucket.org/imt-mobisyst/pkg-basic
-git clone https://bitbucket.org/imt-mobisyst/pkg-tsim
+### install minimal mb6 pkg :
+git clone https://github.com/imt-mobisyst/pkg-basic
+git clone https://github.com/imt-mobisyst/pkg-tsim
 pkg-tsim/install
 
-source ./bin/run-commands.bash
 colcon build
+source ~/.bashrc
 
 # Activate services
-./bin/set-update-as-a-service
-./bin/set-parasit-as-a-service
+#./bin/set-update-as-a-service
+#./bin/set-parasit-as-a-service
 
 # Create non admin ros user
 if ! id 'ros' >/dev/null 2>&1; then
@@ -73,5 +83,5 @@ if ! id 'ros' >/dev/null 2>&1; then
         -p '$6$k./SdE0nf/6jNVfI$2t.Hem07Pe9GZXVkjNfttSSRotXtDUWSLPQOMdw1N9CtQOAxSgrsU2Uom3KjytiLFqbNGZT2srCyKDGmQtNoN/'\
         -s /bin/bash ros
 
-    sudo ./bin/set-ros-bashrc
+    sudo ./bin/set-mb6-bashrc
 fi
