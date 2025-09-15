@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# sudo cp deps/install-pi3-netplan-50-static-wlan0.yaml /etc/netplan/50-static-wlan0.yaml
+# sudo cp -f deps/install-pi3-networkd-wlan0-static.config /etc/systemd/network/wlan0-static.config
+
+HOSTNAMESTR=$(hostname)
+export PIBOTNUM=${HOSTNAMESTR:(-2)}
+
+# Update Netplan config
+cat >/tmp/50-wlan0-static.yaml <<EOF
+# Static Configuration
+network:
+  version: 2
+  wifis:
+    renderer: networkd
+    wlan0:
+      access-points:
+        mobi-iot:
+          password: 'c1pass4!Mobi'
+      dhcp4: true
+EOF
+
+sudo rm /etc/netplan/50-wlan0*
+sudo mv -f /tmp/50-wlan0-mobi-iot.yaml /etc/netplan/
+sudo netplan apply
+
+# Update Networkd config
+# cat >/tmp/wlan0-static.config <<EOF
+# # Update Networkd config
+# # Static Configuration
+# [Match]
+# Name=wlan0
+# 
+# # [Link]
+# # Name=wlan0
+# 
+# [Network]
+# Address=10.89.5.${PIBOTNUM}/16
+# Gateway=10.89.0.1
+# DNS=193.48.235.163
+# EOF
+# sudo mv -f /tmp/wlan0-static.config /etc/systemd/network/
