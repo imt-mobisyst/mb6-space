@@ -6,6 +6,9 @@
 HOSTNAMESTR=$(hostname)
 export PIBOTNUM=${HOSTNAMESTR:(-2)}
 
+# Remove Netplan config (wifi on priority 50)
+sudo rm /etc/netplan/50-*
+
 # Update Netplan config
 cat >/tmp/50-wlan0-iot.yaml <<EOF
 # Static Configuration
@@ -22,6 +25,5 @@ network:
       dhcp4: true
 EOF
 
-sudo rm /etc/netplan/50-wlan0*
 sudo mv -f /tmp/50-wlan0-iot.yaml /etc/netplan/
 sudo netplan apply
