@@ -3,8 +3,8 @@ nav:
   - MobiSyst <: '..'
   - Home: 'index.md'
   - Install:
-    - On Pi3: 'configure-pi3.md'
-    - On Pi4: 'configure-pi4.md'
+    - On Pi3:  'configure-pi3.md'
+    - On Pi4:  'configure-pi4.md'
     - Station: 'configure-station.md'
     - Manual Install: 'install.md'
   - Robots:
@@ -12,7 +12,8 @@ nav:
     - Ezbot: 'robot-ezbot.md'
     - Stage: 'robot-stage.md'
   - Packages:
-    - Basic: 'pkg-basic.md'
+    - Basic:    'pkg-basic.md'
+    - Multibot: 'pkg-multibot.md'
   - F.A.Q: 'f.a.q.md'
 
 markdown_extensions:
