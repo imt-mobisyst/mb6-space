@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# sudo cp deps/install-pi3-netplan-50-static-wlan0.yaml /etc/netplan/50-static-wlan0.yaml
+# sudo cp -f deps/install-pi3-networkd-wlan0-static.config /etc/systemd/network/wlan0-static.config
+
+HOSTNAMESTR=$(hostname)
+export PIBOTNUM=${HOSTNAMESTR:(-2)}
+
+# Remove Netplan config (wifi on priority 50)
+sudo rm /etc/netplan/50-*
+
+# Update Netplan config
+cat >/tmp/50-wlan0-iot.yaml <<EOF
+# Static Configuration
+network:
+  version: 2
+  wifis:
+    renderer: networkd
+    wlan0:
+      access-points:
+        mobi-iot:
+          password: 'c1pass4!Mobi'
+        IoT IMT Nord Europe:
+          password: c454079ec3ae4199b6bb654c299fa08a87c0923657e911a0c9be552e282a07eb
+      dhcp4: true
+EOF
+
+sudo mv -f /tmp/50-wlan0-iot.yaml /etc/netplan/
+sudo netplan apply
