@@ -49,7 +49,7 @@ ros2 launch slam_toolbox online_sync_launch.py
 To notice that your autonomous control should send velocity messages to `multi/cmd_nav` (`/multi/cmd_teleop` is reserved to human teleoperation).
 
 
-### Recurent confiuration
+### Classic Configuration
 
 From _mb6_space_ directory, it is possible to configure once for all the `ROS_DOMAIN_ID` by editing the `config.toml` and sourcing `./bin/run-commands.bash`
 
@@ -66,7 +66,7 @@ You can then, connect your __pibotXX_ with `rviz2`.
 rviz2 rviz-conf/simple-pibot.rviz
 ```
 
-you can also try _SLAM_: 
+you can also try a _SLAM_: 
 
 ```sh
 # Terminal 1
@@ -78,6 +78,14 @@ rviz2 rviz-conf/pibot-with-map.rviz
 
 
 ## Get Started (hard linked)
+
+It is possible to login with `ssh` on a pibotXX with `bot` user (administrator) or `ros` account.
+
+
+## Lancer un une configuration ROS
+
+`nohup`.
+
 
 
 
@@ -96,5 +104,4 @@ _Pibot_ relies on several ros packages:
 3. Wait to be sure the shutdown process is terminated.
 4. Switch-off the robot.
 5. Plug the robot to permit its recharge.
-
         
