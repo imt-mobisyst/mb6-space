@@ -17,21 +17,14 @@ alias diff='git difftool -t meld'
 # some other alias:
 alias mb6-build-pkg='colcon build --event-handlers console_direct+ --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON --packages-select'
 
-# User configurations:
-if [ ! -f $MB6_WORKSPACE/config.toml ]; then
-    cp $MB6_WORKSPACE/bin/default-config.toml $MB6_WORKSPACE/config.toml
-fi
-export ROS_AUTOMATIC_DISCOVERY_RANGE=`toml get --toml-path $MB6_WORKSPACE/config.toml ros2.discovery_range`
-export ROS_DOMAIN_ID=`toml get --toml-path $MB6_WORKSPACE/config.toml ros2.domain_id`
+# Pibot configurations:
+export ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET
+export ROS_DOMAIN_ID=`~/mb6-space/bin/pibot-number`
 
 #source ~/mb6-space/local-config.sh
 
 # Tunned prompt:
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:($ROS_AUTOMATIC_DISCOVERY_RANGE::$ROS_DOMAIN_ID)\[\033[01;34m\]\w\[\033[00m\].\n\$ '
-
-# Pibot configurations:
-export ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET
-export ROS_DOMAIN_ID=`~/mb6-space/bin/pibot-number`
 
 # Go message:
 echo "
