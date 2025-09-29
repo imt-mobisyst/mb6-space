@@ -1,11 +1,11 @@
-
-
 # Setup ROS command environment:
 if [ -e /opt/ros/iron/setup.bash ]; then
   source /opt/ros/iron/setup.bash
+  export ROS_WORKSPACE="iron"
 fi
 if [ -e ~/mb6-space/install/setup.bash ]; then
   source ~/mb6-space/install/setup.bash
+  export ROS_WORKSPACE="mb6-space"
 fi
 
 # some Git alias:
@@ -28,7 +28,12 @@ export ROS_DOMAIN_ID=`toml get --toml-path $MB6_WORKSPACE/config.toml ros2.domai
 
 # Tunned prompt:
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:($ROS_AUTOMATIC_DISCOVERY_RANGE::$ROS_DOMAIN_ID)\[\033[01;34m\]\w\[\033[00m\].\n\$ '
+
+# Pibot configurations:
+export ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET
+export ROS_DOMAIN_ID=`~/mb6-space/bin/pibot-number`
+
 # Go message:
 echo "
-  ---  `hostname`:$MB6_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
+  ---  `hostname`:$ROS_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
 "
