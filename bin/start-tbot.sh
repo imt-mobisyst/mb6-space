@@ -7,4 +7,4 @@ echo "#    I N I T I A L I Z E   R O S"
 source ./bin/run-commands.bash
 
 echo "#    R U N   T B O T"
-ros2 launch tbot_node pibot_launch.yaml
+ros2 launch basic_node tbot_launch.yaml
