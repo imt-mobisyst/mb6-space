@@ -1,6 +1,6 @@
 # MobiSyst ROS2 Workspace - Documentation
 
-Curent version: **Ubuntu-22.install04 LTS** / **ROS2 iron**
+Curent version: **Ubuntu-24.04 LTS** / **ROS2 jazzy**
 
 _mb6-space_ regroups elements for playing with the mobile robots of IMT Nord Europe.
 It is the master project on the top off sub-projects, dedicated to robots platform, software modules or scenario applications.
@@ -10,19 +10,19 @@ It does not include code but mostly documentation and command tools.
 
 ## Install
 
-You can first clone the mb6-space repo, and configure your shell...
+You have first to clone the mb6-space repo...
 
 ```sh
-pip install toml toml-cli
 git clone https://github.com/imt-mobisyst/mb6-space.git
 cd mb6-space
-./bin/set-mb6-bashrc
-source ./bin/run-commands.bash
 ```
 
 Then, you will mainlly need **ROS2**.
+You can rely on [install section](./install.md) to get specific instruction depending on the targeted machine.
+However the following scripts provide shortcuts.
 
-You can rely on install section in the navigation bar to get specific instruction depending on the targeted machine.
+
+
 
 On a _x86_ machine you also can get help from the communty: [official website](https://ubuntu.com/) - [french community](https://www.ubuntu-fr.org/)
 
@@ -33,6 +33,16 @@ Some install script for classical install:
 - [install-realsense](./bin/install-realsense) - install dev. environement: RealSense
 
 Otherwize, you can go through the manual instructions or execute the appropriate install scrips in [bin](./bin) directory:
+
+
+
+```sh
+pip install toml toml-cli
+./bin/set-mb6-bashrc
+source ./bin/run-commands.bash
+```
+
+
 
 ## Get started.
 
