@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### Configuration :
-export ROS_DISTRO=iron
+export ROS_DISTRO=jazzy
 
 ## Some Softs:
 sudo apt update
@@ -40,7 +40,8 @@ git config --global http.sslVerify false
 git-lfs install
 
 ### Install ROS :
-./bin/install-ros
+if [ ! -d "/opt/ros/$ROS_DISTRO" ]; then
+    ./bin/install-ros
 
 echo "
                     --- Install ros default tools (ros-$ROS_DISTRO) ---
@@ -76,12 +77,11 @@ source ~/.bashrc
 #./bin/set-parasit-as-a-service
 
 # Create non admin ros user
-if ! id 'ros' >/dev/null 2>&1; then
+if ! id 'ros' > /dev/null 2>&1; then
     # python3 -c 'import crypt; print(crypt.crypt("ros"))'
     sudo useradd -m \
         -g users -G dialout,cdrom,audio,video,plugdev,input,render,netdev\
         -p '$6$k./SdE0nf/6jNVfI$2t.Hem07Pe9GZXVkjNfttSSRotXtDUWSLPQOMdw1N9CtQOAxSgrsU2Uom3KjytiLFqbNGZT2srCyKDGmQtNoN/'\
         -s /bin/bash ros
-
     sudo ./bin/set-mb6-bashrc
 fi

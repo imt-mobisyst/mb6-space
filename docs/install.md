@@ -1,26 +1,42 @@
 
-### Manual Installation
+# Install Instructions (ROS2 Jazzy)
 
-This install process follows the instruction on [docs.ros.org](https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html)
+This install process follows the instruction on [docs.ros.org](https://docs.ros.org/en/jazzy/Installation.html)
 
-In short :
+In `bin` directory, severals scripts allow for automatic installs :
+
+- [install-ros] : Minimal configuration and install of ros.
+- [install-station] : To install a classic Mobi-Syst develloper configuration.
+
+## Install in short
 
 ```sh
+# Prepare for ROS2 :
 sudo apt install -y curl software-properties-common
 sudo add-apt-repository universe -y
-sudo curl -sSL https://raw.githubusercontent.com/ros/ROS_DISTRO/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
+# Configure apt :
+export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
+curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo ${UBUNTU_CODENAME:-${VERSION_CODENAME}})_all.deb"
+sudo dpkg -i /tmp/ros2-apt-source.deb
+
+# A final tool:
 sudo apt update
-sudo apt install -y ros-dev-tools # ament-cmake-python
+sudo apt install -y ros-dev-tools
 ```
 
 Then install (use one of the options): 
 
 ```sh
-sudo apt install -y ros-iron-ros-base # for minimal install
-sudo apt install -y ros-iron-desktop # for developers install (include visualtization etc.)
-sudo apt install -y ros-iron-desktop-full # for not missing anything
+sudo apt install -y ros-jazzy-ros-base # for minimal install
+sudo apt install -y ros-jazzy-desktop  # for developers install (include visualtization etc.)
+sudo apt install -y ros-jazzy-desktop-full # for not missing anything
+```
+
+## Configure your environment
+
+```sh
+sudo usermod -a -G dialout `whoami`
 ```
 
 You can setup your terminal with ROS2 environment: 
