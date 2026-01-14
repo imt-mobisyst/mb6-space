@@ -39,7 +39,7 @@ Otherwize, you can go through the manual instructions or execute the appropriate
 ```sh
 pip install toml toml-cli
 ./bin/set-mb6-bashrc
-source ./bin/run-commands.bash
+source ~/.bashrc
 ```
 
 
