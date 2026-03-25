@@ -36,7 +36,7 @@ The documentation is on [Markdown](https://en.wikipedia.org/wiki/Markdown) forma
 It can be served as a _HTML_ web site thanks to [MkDocs](https://www.mkdocs.org/).
 
 ```sh
-pip install mkdocs
+pip install mkdocs pyMdown-extensions
 mkdocs serve
 ```
 

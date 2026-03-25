@@ -3,17 +3,24 @@
 Those packages regroups simple and basic tools mostly for testing and illustrate `ROS2` features.
 
 - _basic_msg_: Dedicated to define specifics ROS2 messages.
-- _basic_node_: Simple robot processes
+- _basic_node_: Simple processes
 
-## Intall
+## Get Started
 
-Clone and install :
+It is possible to use simple clone and install script : 
 
 ```sh
-git clone https://github.com/imt-mobisyst/pkg-basic
-./pkg-basic/bin/install
-./pkg-basic/bin/build
+./bin/clone-basic
 source ./bin/run-commands.bash
 ```
 
-## Get Started
+To test the install you can try the `multiplexer` node :
+
+```sh
+ros2 run basic_node multiplexer
+```
+
+This node filter velocity commands from deverals source with a priority preferecny.
+A `ros2 topic list` commands should show the `/multi/cmd_nav` and `/multi/cmd_teleop` topics for input (`teleop` get the piority on `nav`) and an output topic `\cmd_vel`.
+
+

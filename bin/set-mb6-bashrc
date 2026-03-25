@@ -4,6 +4,7 @@ PROJECT_PATH=`dirname $0`/..
 echo `realpath $PROJECT_PATH`
 
 echo """
+
 #   L O C A L   B I N
 export PATH=\"$HOME/.local/bin:\"\$PATH
 
