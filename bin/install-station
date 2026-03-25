@@ -6,9 +6,15 @@ export ROS_DISTRO=jazzy
 ## Some Softs:
 sudo apt update
 sudo apt upgrade -y
+<<<<<<< HEAD
+sudo apt install -y zsh git davfs2 openssh-server ntpdate \
+    gnome-tweaks prusa-slicer diodon \
+	git meld \
+=======
 sudo apt install -y zsh git git-lfs davfs2 openssh-server ntpdate \
     gnome-tweaks prusa-slicer diodon \
 	git git-lfs meld \
+>>>>>>> e3a88b186cb508ebdcd3dee7b5fcce55900d97cb
 	build-essential check cmake default-jre \
 	python3 python3-pip spyder \
 	texlive texlive-base biber texlive-latex-recommended \
@@ -26,7 +32,11 @@ fi
 cd mb6-space
 
 ## Some softs not in the official Ubuntu repositories.
+<<<<<<< HEAD
+sudo dpkg -i deps/code_1.106.1-1763289752_amd64.deb
+=======
 sudo dpkg -i deps/code_1.79.2-1686734195_amd64.deb
+>>>>>>> e3a88b186cb508ebdcd3dee7b5fcce55900d97cb
 
 # Configure the user environemnt
 echo "
@@ -37,7 +47,10 @@ git config --global user.name bot
 git config --global user.email mobisyst@imt-nord-europe.fr
 git config --global credential.helper cache
 git config --global http.sslVerify false
-git-lfs install
+
+### Install ROS :
+if [ ! -d "/opt/ros/$ROS_DISTRO" ]; then
+    ./bin/install-ros
 
 ### Install ROS :
 if [ ! -d "/opt/ros/$ROS_DISTRO" ]; then

@@ -3,8 +3,7 @@
 Those packages regroups simple and basic tools mostly for testing and illustrate `ROS2` features.
 
 - _basic_msg_: Dedicated to define specifics ROS2 messages.
-- _basic_node_: 
-
+- _basic_node_: Simple robot processes
 
 ## Intall
 
@@ -17,4 +16,4 @@ git clone https://github.com/imt-mobisyst/pkg-basic
 source ./bin/run-commands.bash
 ```
 
-## Intall
+## Get Started
