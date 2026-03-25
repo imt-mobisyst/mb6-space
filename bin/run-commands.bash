@@ -9,7 +9,7 @@ if [ -e ~/mb6-space/install/setup.bash ]; then
 fi
 
 # some Git alias:
-alias status='git status -sb .'
+alias state='git status -sb .'
 alias log='git log -n 4'
 alias log-all='git log --all --decorate --oneline --graph'
 alias diff='git difftool -t meld'
@@ -30,5 +30,5 @@ export ROS_DOMAIN_ID=`toml get --toml-path $MB6_WORKSPACE/config.toml ros2.domai
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:($ROS_AUTOMATIC_DISCOVERY_RANGE::$ROS_DOMAIN_ID)\[\033[01;34m\]\w\[\033[00m\].\n\$ '
 # Go message:
 echo "
-  ---  `hostname`:$MB6_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
+  ---  `hostname` ready on ROS2-$ROS_DISTRO domain: $ROS_DOMAIN_ID  ---
 "

@@ -15,7 +15,7 @@ sudo apt install -y zsh git git-lfs davfs2 openssh-server ntpdate \
 	texlive-publishers texlive-bibtex-extra texlive-science texlive-luatex \
 	latexila pandoc wkhtmltopdf \
 	gimp inkscape
-pip install zmq tqdm pytest beautifulsoup4 matplotlib toml toml-cli
+pip install --break-system-packages zmq tqdm pytest beautifulsoup4 matplotlib toml toml-cli
 
 ## Clone  mb6-space
 cd
