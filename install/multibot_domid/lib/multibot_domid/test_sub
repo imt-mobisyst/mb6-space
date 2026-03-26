@@ -1,0 +1,48 @@
+#!/usr/bin/python3
+import rclpy
+from rclpy.node import Node
+from rclpy.context import Context
+from std_msgs.msg import String
+
+def main():
+    tester= Sub()
+    tester.process()
+
+class StringCallBack():
+    def __init__( self, domainId ):
+        self.domainId= domainId
+    
+    def __call__(self, aString):
+        print( f"{aString.data} (from {self.domainId})" )
+
+class Sub():
+    def __init__(self):
+        pass
+
+    def process(self):
+        # Ros initialization
+        rclpy.init()
+        executor= rclpy.get_global_executor()
+
+        self._nodes= []
+        self._test_publishers= []
+
+        for domId in [14, 42] :
+            rosContext = Context()
+            rosContext.init(domain_id= domId)
+            node= Node( f"test{domId}", context=rosContext )
+            node.create_subscription( String, "test", StringCallBack(domId), 10 )
+
+            executor.add_node( node )
+            self._nodes.append( node )
+
+        # Infinite loop:
+        executor.spin()
+
+        # Clean stop:
+        for node in self._nodes :
+            node.destroy_node()
+        rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()

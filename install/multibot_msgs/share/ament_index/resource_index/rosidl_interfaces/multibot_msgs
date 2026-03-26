@@ -1,0 +1,8 @@
+msg/AuctionBid.idl
+msg/AuctionBid.msg
+msg/Pulse.idl
+msg/Pulse.msg
+srv/WifiMeasure.idl
+srv/WifiMeasure.srv
+srv/WifiMeasure_Request.msg
+srv/WifiMeasure_Response.msg
