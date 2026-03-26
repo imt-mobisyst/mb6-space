@@ -27,6 +27,7 @@ sudo rm -f /etc/systemd/network/*
 # set network config
 ./bin/set-wlan0-static-ip
 ./bin/set-eth0-static-ip-dhcp-service
+./bin/set-parasit-as-a-service
 
 ### Disable the : networkd-wait-online.service
 sudo systemctl disable systemd-networkd-wait-online.service

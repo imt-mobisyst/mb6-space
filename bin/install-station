@@ -28,11 +28,7 @@ fi
 cd mb6-space
 
 ## Some softs not in the official Ubuntu repositories.
-<<<<<<< HEAD
-sudo dpkg -i deps/code_1.106.1-1763289752_amd64.deb
-=======
-sudo dpkg -i deps/code_1.79.2-1686734195_amd64.deb
->>>>>>> e3a88b186cb508ebdcd3dee7b5fcce55900d97cb
+#sudo dpkg -i deps/code_1.79.2-1686734195_amd64.deb
 
 # Configure the user environemnt
 echo "
@@ -83,7 +79,7 @@ source ~/.bashrc
 
 # Activate services
 #./bin/set-update-as-a-service
-./pkg-multibot/bin/set-parasit-as-a-service
+./bin/set-parasit-as-a-service
 
 # Create non admin ros user
 if ! id 'ros' > /dev/null 2>&1; then
