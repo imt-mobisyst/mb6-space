@@ -9,7 +9,7 @@ if [ -e ~/mb6-space/install/setup.bash ]; then
 fi
 
 # some Git alias:
-alias status='git status -sb .'
+alias state='git status -sb .'
 alias log='git log -n 4'
 alias log-all='git log --all --decorate --oneline --graph'
 alias diff='git difftool -t meld'
@@ -28,5 +28,9 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:($ROS_AU
 
 # Go message:
 echo "
+<<<<<<< HEAD
   ---  `hostname`:$ROS_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
+=======
+  ---  `hostname` ( `hostname -I`) is ready on ROS2-$ROS_DISTRO  ---
+>>>>>>> master
 "
