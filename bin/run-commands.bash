@@ -28,9 +28,5 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:($ROS_AU
 
 # Go message:
 echo "
-<<<<<<< HEAD
-  ---  `hostname`:$ROS_WORKSPACE ready on ROS domain: $ROS_DOMAIN_ID  ---
-=======
   ---  `hostname` ( `hostname -I`) is ready on ROS2-$ROS_DISTRO  ---
->>>>>>> master
 "
