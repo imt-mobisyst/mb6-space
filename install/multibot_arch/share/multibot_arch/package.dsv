@@ -1,0 +1,8 @@
+source;share/multibot_arch/hook/cmake_prefix_path.ps1
+source;share/multibot_arch/hook/cmake_prefix_path.dsv
+source;share/multibot_arch/hook/cmake_prefix_path.sh
+source;share/multibot_arch/local_setup.bash
+source;share/multibot_arch/local_setup.dsv
+source;share/multibot_arch/local_setup.ps1
+source;share/multibot_arch/local_setup.sh
+source;share/multibot_arch/local_setup.zsh
