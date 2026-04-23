@@ -1,9 +1,5 @@
 # Pibot Robot
 
-```sh
-ros2 launch slam_toolbox online_sync_launch.py
-```
-
 _Pibot_ is a mobile robot built on top of a [Kobuki](https://www.turtlebot.com/turtlebot2/) drivers and with [Hokuyo](https://hokuyo-usa.com/) laser range. 
 The robot is supervised with a raspberry-Pi3 computer card. 
 
@@ -11,7 +7,7 @@ The [ROS2](https://docs.ros.org/) middleware is integrated to this configuration
 
 ![Picture of a Pibot](./figs/naked-pibot.png)
 
-A **pibotXX** is automaticaly configured on `IOT IMT Nord Europe` _WiFi_ with a fixed _IP_: `10.89.5.XX` ; or to the `mobi-iot` _WiFi_.
+A **pibotXX** is automaticaly configured on `IoT IMT Nord Europe` _WiFi_ with a fixed _IP_ (DHCP) : `10.2.120.XX`.
 
 
 ## Get Started

@@ -1,0 +1,1 @@
+%users  ALL=NOPASSWD:/sbin/reboot,/sbin/poweroff,/sbin/shutdown,/usr/bin/systemctl,/usr/sbin/ntpdate

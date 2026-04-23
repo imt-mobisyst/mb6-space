@@ -7,6 +7,7 @@ It is the master project on the top off sub-projects, dedicated to robots platfo
 
 It does not include code but mostly documentation and command tools.
 
+- Repo github: [imt-mobisyst > mb6-space](https://github.com/imt-mobisyst/mb6-space)
 
 ## Install
 

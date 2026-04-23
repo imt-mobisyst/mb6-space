@@ -78,6 +78,8 @@ colcon build
 source ~/.bashrc
 
 # Activate services
+sudo cp deps/install-sudoers-shutdown /etc/sudoers.d/shutdown
+
 #./bin/set-update-as-a-service
 ./bin/set-parasit-as-a-service
 
