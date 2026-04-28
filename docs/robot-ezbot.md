@@ -5,123 +5,116 @@ The kit include an on-board computer runing a [ROS2](https://docs.ros.org/) cont
 
 ![Picture of a Ezbot](./figs/naked-ezbot.png)
 
-A **ezbot** is automaticaly configured on `IOT IMT Nord Europe` _WiFi_ with a fixed _IP_: `10.89.5.XX` ; or to the `mobi-iot` _WiFi_.
+## Get Started
 
-
-## Get Started (Wirred)
-
-Connect the robot with _RJ45_ cable and turn-on the robot, the control software is started in a docker.
-
-You have to configure a fixed ip-adress on your conputer :
-
-> Ip: 192.168.50.1 : 255.255.255.0 : 192.168.50.1
-
-The robot itself is on _192.168.50.2_.
-Then configure the appropriate _ROS_DOMAIN_ID_ and you are good to go.
-
-
-
-
-
-## Enter in the robot docker
-
-
-```sh
-ssh swd_sk@192.168.50.2
-docker exec -it -u swd_sk ros-humble bash
-docker restart ros-humble
-```
-
+After turning on the robot, the control software is started.
 At this point the robot is ready to be controled. 
 
-The operator from its computer station need to identify and configure the _Pibot_ domain identifier (Domain_ID) and then start a _teleop_ for instance.
+The operator from its computer station need to identify and configure the _Ezbot_ domain identifier (Domain_ID) and then start a _teleop_ for instance.
 
 
-
-
-
-
-
-### Connecting a PC operator
-
-_Pibot_ is automaticly connected to `IOT IMT Nord Europe` _WiFi_ (be sure that your computer is on the same network) with a _Domain_ID_ matching its _Pibot_ number. 
-For instance `pibot22` is configured with `22`.
-
-On your _ROS_ terminal:
+An _Ezbot_ is automaticaly configured on `IOT IMT Nord Europe` _WiFi_ with a fixed unique Ros domain identifier, allowing a _supervision-pc_ to connect.
+For instance `Ezbot 44` should be configured with environmment variable `ROS_DOAMIN_ID=44`.
+At this point, you can verify that laser is publishing data into the `/scan` and `/cmd_vel` topics.
 
 ```sh
-export ROS_DOMAIN_ID=22
-ros2 node list
+export ROS_DOMAIN_ID=44
 ros2 topic list 
+rviz2 rviz-conf/simple-scan.rviz
 ```
 
-At this point, you can verify that laser is publishing data into the `/scan` topic and that `multiplexer` node is started.
-The multiplexer from [basic_node](https://github.com/imt-mobisyst/pkg-basic) package, listen to several command sources to select the most appropriate one. 
-
-So you can take control with a classical _teleop_ node connected to the `multi/cmd_teleop` topic, start slam capability etc...
-
-```sh
-ros2 run teleop_twist_keyboard teleop_twist_keyboard cmd_vel:=/multi/cmd_teleop
-ros2 launch slam_toolbox online_sync_launch.py
-...
-```
-
-To notice that your autonomous control should send velocity messages to `multi/cmd_nav` (`/multi/cmd_teleop` is reserved to human teleoperation).
-
-
-### Classic Configuration
-
-From _mb6_space_ directory, it is possible to configure once for all the `ROS_DOMAIN_ID` by editing the `config.toml` and sourcing `./bin/run-commands.bash`
-
-```sh
-cd /path/to/mb6_space
-gedit config.toml
-source ./bin/run-commands.bash
-```
-
-Each new terminal will be open on the same configuration.
-You can then, connect your __pibotXX_ with `rviz2`.
-
-```sh
-rviz2 rviz-conf/simple-pibot.rviz
-```
-
-you can also try a _SLAM_: 
+You can also try a _SLAM_: 
 
 ```sh
 # Terminal 1
 ros2 launch slam_toolbox online_sync_launch.py
 
 # Terminal 2
-rviz2 rviz-conf/pibot-with-map.rviz
+rviz2 rviz-conf/slam-monitor.rviz
+```
+
+## Connect the robot :
+
+The _Ezbot_ integrates nativelly control software on a dockerized machine insite its small linux machine.
+The strngest way to connect this machine is to use ethernet.
+
+###  Eth configuation :
+
+Connect the robot with _RJ45_ cable and turn-on the robot
+You have to configure a fixed ip-adress on your conputer :
+> Ip: 192.168.50.1 : 255.255.255.0 : 192.168.50.1
+
+The robot itself is on _192.168.50.2_ with `swd_sk` user name :
+
+```sh
+ssh swd_sk@192.168.50.2
 ```
 
 
-## Get Started (hard linked)
+### Enter the robot docker
 
-It is possible to login with `ssh` on a pibotXX with `bot` user (administrator) or `ros` account.
+The _ROS2 Ezbot driver_ is running in a _docker_ named _ros-humble_
+
+```sh
+docker exec -it -u swd_sk ros-humble bash
+```
+
+Inside the docker, you can `stop`, and `start` the control software with : 
+
+```sh
+/opt/ezw/sbin/sce-swd-starter-kit-bringup.sh stop
+/opt/ezw/sbin/sce-swd-starter-kit-bringup.sh start
+```
+
+This way it is possible to launch specific launchfile rather than the default one.
+
+Outside you can typically restart the docker in its default saved configuration (errasing all your modifications).
+
+```sh
+exit
+docker restart ros-humble
+```
+
+> /!\ Attention the robot did not support verry well eth and wifi in the same time. In case of difficulty, shutdown the wifi...
+
+## IMT-MobySyst Configuration :
+
+The _starter_kit_ bringup is based on a the `starter_kit.launch.py` launch file in the `swd_starter_kit_bringup` ROS2 package installed in the `pkg-bbot/ros-humble_ws` workspace.
+The startegy is mainly to replace this launch file, the old one is saved as `starter_kit_default`.
+Attention, any modifition in ros-humble_ws is persistant after docker restart, in fact the docker directory match the one in the host machine.
+
+In facts, `Starter_kit_mb6` introduces a multiplexer, our parasit from our basic package and a specific joystic configuration.
+
+```sh
+docker exec -it -u swd_sk ros-humble bash
+#sudo chown -R swd_sk:swd_sk install
+# Clone basic packages
+cd pkg-bbot/ros-humble_ws/src
+git clone bot@192.168.50.1:mb6-space/pkg-basic
+# Get updated launch file
+cd ../swd_starter_kit_bringup/launch
+cp starter_kit.launch.py starter_kit_default.launch.py
+scp bot@192.168.50.1:mb6-space/launch/swd_starter_kit_mb6.launch.py .
+cp swd_starter_kit_mb6.launch.py starter_kit.launch.py
+cd
+cd pkg-bbot/ros-humble_ws
+colcon build
+/opt/ezw/sbin/sce-swd-starter-kit-bringup.sh start
+```
 
 
-## Lancer un une configuration ROS
+## Some memos :
 
-`nohup`.
+- Set the wifi down: `sudo ip link set wlan1 down`
+- Docker starter: based on _supervisor service_ see: `/etc/supervisor/conf.d/ezw-swd.conf`
 
 
 
 
-## Pibot Configuration
 
-_Pibot_ relies on several ros packages: 
 
-- [mb6-space] on the pibot branch for install and service configuration.
-- [pkg-tbot](https://github.com/imt-mobisyst/pkg-tbot) for _Kobuki_ + laser drivers and configurations.
-- [pkg-basic](https://github.com/imt-mobisyst/pkg-basic) to allow basic/simple controls and tools.
 
-## Shutdown Check List
 
-1. Connectect the _Pibot_ with _SSH_.
-2. `sudo poweroff` ou `sudo shutdown -h now`.
-3. Wait to be sure the shutdown process is terminated.
-4. Switch-off the robot.
-5. Plug the robot to permit its recharge.
-        
+
+
+
