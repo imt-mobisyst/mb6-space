@@ -20,7 +20,7 @@ At this point, you can verify that laser is publishing data into the `/scan` and
 ```sh
 export ROS_DOMAIN_ID=44
 ros2 topic list 
-rviz2 rviz-conf/simple-scan.rviz
+rviz2 -d rviz-conf/simple-scan.rviz
 ```
 
 You can also try a _SLAM_: 
@@ -30,7 +30,7 @@ You can also try a _SLAM_:
 ros2 launch slam_toolbox online_sync_launch.py
 
 # Terminal 2
-rviz2 rviz-conf/slam-monitor.rviz
+rviz2 -d rviz-conf/slam-monitor.rviz
 ```
 
 ## Connect the robot :
@@ -50,6 +50,9 @@ The robot itself is on _192.168.50.2_ with `swd_sk` user name :
 ssh swd_sk@192.168.50.2
 ```
 
+> /!\ Attention the robot did not support verry well eth and wifi in the same time. In case of difficulty, shutdown the wifi...
+
+Set the wifi down: `sudo ip link set wlan1 down`
 
 ### Enter the robot docker
 
@@ -75,46 +78,6 @@ exit
 docker restart ros-humble
 ```
 
-> /!\ Attention the robot did not support verry well eth and wifi in the same time. In case of difficulty, shutdown the wifi...
-
-## IMT-MobySyst Configuration :
-
-The _starter_kit_ bringup is based on a the `starter_kit.launch.py` launch file in the `swd_starter_kit_bringup` ROS2 package installed in the `pkg-bbot/ros-humble_ws` workspace.
-The startegy is mainly to replace this launch file, the old one is saved as `starter_kit_default`.
-Attention, any modifition in ros-humble_ws is persistant after docker restart, in fact the docker directory match the one in the host machine.
-
-In facts, `Starter_kit_mb6` introduces a multiplexer, our parasit from our basic package and a specific joystic configuration.
-
-```sh
-docker exec -it -u swd_sk ros-humble bash
-#sudo chown -R swd_sk:swd_sk install
-# Clone basic packages
-cd pkg-bbot/ros-humble_ws/src
-git clone bot@192.168.50.1:mb6-space/pkg-basic
-# Get updated launch file
-cd ../swd_starter_kit_bringup/launch
-cp starter_kit.launch.py starter_kit_default.launch.py
-scp bot@192.168.50.1:mb6-space/launch/swd_starter_kit_mb6.launch.py .
-cp swd_starter_kit_mb6.launch.py starter_kit.launch.py
-cd
-cd pkg-bbot/ros-humble_ws
-colcon build
-/opt/ezw/sbin/sce-swd-starter-kit-bringup.sh start
-```
-
-
-## Some memos :
-
-- Set the wifi down: `sudo ip link set wlan1 down`
-- Docker starter: based on _supervisor service_ see: `/etc/supervisor/conf.d/ezw-swd.conf`
-
-
-
-
-
-
-
-
-
+> /!\ Attention, any modifition in ros-humble_ws is persistant after docker restart, in fact the docker directory match the one in the host machine.
 
 
