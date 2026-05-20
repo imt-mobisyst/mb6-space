@@ -12,8 +12,9 @@ nav:
     - Ezbot: 'robot-ezbot.md'
     - Stage: 'robot-stage.md'
   - Packages:
-    - Basic:    'pkg-basic.md'
-    - Multibot: 'pkg-multibot.md'
+    - Overview: 'pkg-index.md'
+    - pkg Basic:    'pkg-basic.md'
+    - pkg Multibot: 'pkg-multibot.md'
   - F.A.Q: 'f.a.q.md'
 
 markdown_extensions:
