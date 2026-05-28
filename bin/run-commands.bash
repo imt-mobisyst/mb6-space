@@ -1,11 +1,12 @@
-
+DIRECTORY="`pwd`/`dirname ${BASH_SOURCE[0]}`"
+WORKSPACE=`realpath $DIRECTORY/..`
 
 # Setup ROS command environment:
-if [ -e /opt/ros/iron/setup.bash ]; then
-  source /opt/ros/iron/setup.bash
+if [ -e /opt/ros/$ROS_DISTRO/setup.bash ]; then
+  source /opt/ros/$ROS_DISTRO/setup.bash
 fi
-if [ -e ~/mb6-space/install/setup.bash ]; then
-  source ~/mb6-space/install/setup.bash
+if [ -e $WORKSPACE/install/setup.bash ]; then
+  source $WORKSPACE/install/setup.bash
 fi
 
 # some Git alias:
@@ -18,11 +19,11 @@ alias diff='git difftool -t meld'
 alias mb6-build-pkg='colcon build --event-handlers console_direct+ --cmake-args -DCMAKE_VERBOSE_MAKEFILE=ON --packages-select'
 
 # User configurations:
-if [ ! -f $MB6_WORKSPACE/config.toml ]; then
-    cp $MB6_WORKSPACE/bin/default-config.toml $MB6_WORKSPACE/config.toml
+if [ ! -f $WORKSPACE/config.toml ]; then
+    cp $WORKSPACE/bin/default-config.toml $WORKSPACE/config.toml
 fi
-export ROS_AUTOMATIC_DISCOVERY_RANGE=`toml get --toml-path $MB6_WORKSPACE/config.toml ros2.discovery_range`
-export ROS_DOMAIN_ID=`toml get --toml-path $MB6_WORKSPACE/config.toml ros2.domain_id`
+export ROS_AUTOMATIC_DISCOVERY_RANGE=`toml get --toml-path $WORKSPACE/config.toml ros2.discovery_range`
+export ROS_DOMAIN_ID=`toml get --toml-path $WORKSPACE/config.toml ros2.domain_id`
 
 #source ~/mb6-space/local-config.sh
 
