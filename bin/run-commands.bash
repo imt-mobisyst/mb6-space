@@ -31,5 +31,6 @@ export ROS_DOMAIN_ID=`toml get --toml-path $WORKSPACE/config.toml ros2.domain_id
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:($ROS_AUTOMATIC_DISCOVERY_RANGE::$ROS_DOMAIN_ID)\[\033[01;34m\]\w\[\033[00m\].\n\$ '
 # Go message:
 echo "
-  ---  `hostname` ( `hostname -I`) is ready on ROS2-$ROS_DISTRO  ---
+  ---  `hostname` is ready on ROS2-$ROS_DISTRO  ---
+  `hostname -I`
 "
