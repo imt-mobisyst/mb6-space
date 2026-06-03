@@ -1,8 +1,7 @@
 # ROS2 Workspace in a Docker 
 
-ROS consortium provide serveral docker image on [docker hub](https://hub.docker.com/_/ros).
-
-Typically you can pull and run the humble base version :
+ROS consortium provide serveral docker image on [docker hub](https://hub.docker.com/_/ros) for ready to use environments.
+Typically you can pull and run the _humble_ base version :
 
 ```shell
 docker pull ros:humble-ros-base
@@ -21,7 +20,7 @@ Connect this container (`-it`), and do any required modifications..
 
 ```shell
 docker exec -it humble bash
-# For instance : 
+# Then for instance : 
 apt update
 apt install -y python3-pip nano \
     ros-$ROS_DISTRO-slam-toolbox

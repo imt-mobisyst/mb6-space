@@ -6,6 +6,7 @@ nav:
     - On Pi3:  'configure-pi3.md'
     - On Pi4:  'configure-pi4.md'
     - Station: 'configure-station.md'
+    - Docker: 'docker-ws.md'
     - Manual Install: 'install.md'
   - Robots:
     - Pibot: 'robot-pibot.md'
