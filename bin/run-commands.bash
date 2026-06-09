@@ -1,5 +1,12 @@
-DIRECTORY="`pwd`/`dirname ${BASH_SOURCE[0]}`"
-WORKSPACE=`realpath $DIRECTORY/..`
+DIRECTORY="`dirname ${BASH_SOURCE[0]}`"
+
+if [[ $DIRECTORY == /* ]];
+then
+  WORKSPACE=`realpath $DIRECTORY/..`;
+else
+  DIRECTORY="`pwd`/`dirname ${BASH_SOURCE[0]}`"
+  WORKSPACE=`realpath $DIRECTORY/..`;
+fi
 
 # Setup ROS command environment:
 if [ -e /opt/ros/$ROS_DISTRO/setup.bash ]; then
