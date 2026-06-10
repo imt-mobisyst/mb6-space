@@ -34,7 +34,7 @@ colcon build
 Potentially you can modify the default entry point: 
 
 ```shell
-cp /workspace/docker/basic-entrypoint.sh /ros_entrypoint.sh
+cp /workspace/deps/docker-basic-entrypoint.sh /ros_entrypoint.sh
 ```
 
 Create a new image from this running containter.
