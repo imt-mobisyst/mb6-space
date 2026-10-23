@@ -1,12 +1,7 @@
 # To-Do Board of Mb6-Space project:
 
-## PLay with 2D sims...
+- PLay with 2D sims...
 
-1. PyRoboSim - [docs](https://pyrobosim.readthedocs.io) - [git](https://github.com/sea-bass/pyrobosim)
-2. MVSim     - [docs](https://mvsim.readthedocs.io/) - [git](https://github.com/MRPT/mvsim) - il est pas si 2D que ça (2.5D) - 
-3. Flatland  - [git](https://github.com/avidbots/flatland - Me semble mort 
-4. MAES      - [git](https://github.com/DEIS-Tools/MAES - pas beaucoup plus vivant.
-5. ir-sim    - [docs](https://ir-sim.readthedocs.io/en/stabl)
 
 
 ## Studient Vsit : Color-Zone Game

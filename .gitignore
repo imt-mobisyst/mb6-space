@@ -12,6 +12,7 @@ pkg-tsim
 pkg-tiled
 pkg-toons
 pkg-viscene
+pkg-extern
 
 # Local config:
 #-----------------
