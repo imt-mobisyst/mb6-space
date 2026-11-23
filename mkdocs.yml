@@ -12,6 +12,10 @@ nav:
     - Pibot: 'robot-pibot.md'
     - Ezbot: 'robot-ezbot.md'
     - Stage: 'robot-stage.md'
+  - Simulations:
+    - 2D Simulator Review: 'soa-simulation2d.md'
+    - PyRoboSim Custom World: 'sim2d-pyrobosim.md'
+    - IR-SIM Custom World: 'sim2d-irsim.md'
   - Packages:
     - Overview: 'pkg-index.md'
     - pkg Basic:    'pkg-basic.md'

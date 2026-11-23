@@ -1,0 +1,73 @@
+# A small world with two rooms, a hallway, and one lidar-equipped robot.
+params:
+  name: simple_lidar_world
+  inflation_radius: 0.05
+
+robots:
+  - name: robot
+    radius: 0.15
+    location: lab
+    pose:
+      position:
+        x: -1.0
+        y: 0.0
+      rotation_eul:
+        yaw: 0.0
+        angle_units: degrees
+    max_linear_velocity: 0.5
+    max_angular_velocity: 1.5
+    max_linear_acceleration: 1.0
+    max_angular_acceleration: 3.0
+    path_planner:
+      type: astar
+      grid_resolution: 0.1
+      grid_inflation_radius: 0.2
+      diagonal_motion: true
+      compress_path: true
+    path_executor:
+      type: constant_velocity
+      linear_velocity: 0.5
+      max_angular_velocity: 1.5
+      dt: 0.1
+    sensors:
+      lidar:
+        type: lidar
+        update_rate_s: 0.1  # Period in seconds: 0.1 means 10 Hz.
+        angle_units: degrees
+        min_angle: -180.0
+        max_angle: 180.0
+        angular_resolution: 2.0
+        max_range_m: 6.0
+    start_sensor_threads: true
+
+rooms:
+  - name: lab
+    footprint:
+      type: polygon
+      coords:
+        - [-2.0, -2.0]
+        - [2.0, -2.0]
+        - [2.0, 2.0]
+        - [-2.0, 2.0]
+    wall_width: 0.1
+    color: "#DCEEFF"
+
+  - name: office
+    footprint:
+      type: box
+      dims: [3.0, 3.0]
+    pose:
+      position:
+        x: 4.5
+        y: 0.0
+    wall_width: 0.1
+    color: "#E8F5E9"
+
+hallways:
+  - room_start: lab
+    room_end: office
+    width: 0.8
+    conn_method: auto
+    is_open: true
+    is_locked: false
+    color: "#EEEEEE"

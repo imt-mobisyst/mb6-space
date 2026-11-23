@@ -11,27 +11,30 @@ Initial overview:
 
 Solution  | Docs | Repo | First impression 
 ----------|------|------|-------------------
-PyRoboSim | [readthedocs.io](https://pyrobosim.readthedocs.io) | [github](https://github.com/sea-bass/pyrobosim) | Nice 
-MVSim     | [readthedocs.io](https://mvsim.readthedocs.io/) | [github](https://github.com/MRPT/mvsim) | Nice (3D Rendering)  
-Flatland  |  | [github](https://github.com/avidbots/flatland) | Seems dead 
-MAES      |  | [github](https://github.com/DEIS-Tools/MAES)  | Seems dead
-ir-sim    | [docs](https://ir-sim.readthedocs.io/en/stable) | [github](https://github.com/hanruihua/ir-sim) | Nice
-stage ?   | | | 
-gazebo    | [gazebosim](https://gazebosim.org/home) | | Heavy solution
-Webots    | [cyberbotics](https://cyberbotics.com) | | Heavy solution
-VRX       | | [github](https://github.com/osrf/vrx) | Focuses on aquatic, based on Gazebo
+PyRoboSim | [readthedocs.io](https://pyrobosim.readthedocs.io)  | [github](https://github.com/sea-bass/pyrobosim)   | Nice 
+MVSim     | [readthedocs.io](https://mvsim.readthedocs.io/)     | [github](https://github.com/MRPT/mvsim)           | Nice (3D Rendering)  
+Flatland  |                                                     | [github](https://github.com/avidbots/flatland)    | Seems dead 
+MAES      |                                                     | [github](https://github.com/DEIS-Tools/MAES)      | Seems dead
+ir-sim    | [docs](https://ir-sim.readthedocs.io/en/stable)     | [github](https://github.com/hanruihua/ir-sim)     | Nice
+stage ?   |                                                     |                                                   | 
+gazebo    | [gazebosim](https://gazebosim.org/home)             |                                                   | Heavy solution
+Webots    | [cyberbotics](https://cyberbotics.com)              |                                                   | Heavy solution
+VRX       |                                                     | [github](https://github.com/osrf/vrx)             | Focuses on aquatic, based on Gazebo
 
 From documentation:
 
-Solution  | Philosophy                    | Installation         | ROS2
-----------|--------------------------------|---------------------|-------------------
-MVSim     | 3D, multi-vehicle              | via `apt`           | Preferred Option
-ir-sim    | multi-robot, integrates features like cameras | via `pip`           | Only in philosophy, no reference in docs.
-PyRoboSim | Polygon-Based, oriented behavior, complement to Gazebo | via `pip` (limited) or cloned as a _ROS2_ package | On demand
+Solution  | Philosophy                                              | Installation          | ROS2
+----------|---------------------------------------------------------|-----------------------|-------------------
+MVSim     | 3D, multi-vehicle                                       | via `apt`             | Preferred Option
+ir-sim    | multi-robot, integrates features like cameras           | via `pip`             | ROS-shaped odometry/scan messages; external ROS2 bridge required
+PyRoboSim | Polygon-Based, oriented behavior, complement to Gazebo  | via `pip` (limited) or cloned as a _ROS2_ package | On demand
 
 From this list, _PyRoboSim_ meets the most criteria, including a good (though not required) _ROS2_ integration. _ir-sim_ and _MVSim_ are two other alternatives to test.
 
+
 ## Getting Started
+
+Install and hello world with _PyRoboSim_, _ir-sim_ and _MVSim_
 
 ### With PyRoboSim
 
@@ -70,7 +73,7 @@ sudo apt install ros-jazzy-mvsim
 ros2 launch mvsim demo_warehouse.launch.py
 ```
 
-It works well. Compared to its competitors, it is...
+It works well. Compared to its competitors, it is heavy
 
 ### With ir-sim
 
@@ -79,7 +82,8 @@ Simple to install via `pip install ir-sim` and use:
 From the [Grid Map](https://ir-sim.readthedocs.io/en/stable/usage/configure_grid_map.html) example, copy-paste the _Python_ code into an `irsim-demo.py` file and the config YAML code into an `irsim-demo.yaml` file. 
 Then run it: `python3 irsim-demo.py`. The vehicle is driven using _WSAD_ keys.
 
-The documentation is quite complete, and the UI is based on `MatPlotLib`. At this stage, it is not clear how to generate custom robot behavior, and connecting the simulator to existing ROS2 packages (like SLAM capabilities) does not seem trivial.
+The documentation is quite complete, and the UI is based on `MatPlotLib`. Custom differential-drive, omnidirectional, and Ackermann robots can be controlled through the Python API or keyboard.
+Version 2.12.1 also provides dependency-free ROS-shaped odometry and lidar snapshots through `env.get_msg()`, but no built-in ROS2 node or topics; connecting SLAM still requires a custom bridge for native messages, velocity commands, TF, and time handling.
 
 ### Conclusion 
 
@@ -95,5 +99,14 @@ Finally, _ir-sim_ remains a viable option for step 1 (POC in full _Python_ envir
 ## Playing with PyRoboSim
 
 The goal is to set up a specific environment and to take control of the robot (1. no ROS2, 2. with ROS2).
+See the [custom world with a lidar-equipped robot](sim2d-pyrobosim.md) tutorial for a complete YAML example, standalone and ROS2 launchers, and instructions for reading lidar measurements in Python.
 
-> - Work In Progress -
+The investigation also highlights an important limitation of PyRoboSim 5.0.1: the lidar is simulated and displayed in the web UI, but the ROS2 wrapper does not publish standard `sensor_msgs/msg/LaserScan` or `nav_msgs/msg/Odometry` messages.
+A bridge providing scans, odometry, TF transforms, and consistent frames is still required before connecting a conventional SLAM stack.
+
+## Playing with IR-SIM
+
+See the [IR-SIM custom world with a lidar-equipped robot](sim2d-irsim.md) tutorial for a complete YAML scene, a runnable simulation loop, headless and keyboard control, and Python lidar access.
+
+The investigation with IR-SIM 2.12.1 confirms that `env.get_msg()` simplifies access to ROS-shaped odometry and `LaserScan` data, including REP-117 range handling.
+However, these objects are not native ROS2 messages and the package has no built-in ROS2 bridge, so a conventional SLAM setup still requires custom middleware integration.

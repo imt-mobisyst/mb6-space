@@ -1,0 +1,61 @@
+# A 10 x 6 m world with two areas, a doorway, and a lidar-equipped robot.
+world:
+  width: 10.0
+  height: 6.0
+  step_time: 0.1
+  sample_time: 0.1
+  offset: [0.0, 0.0]
+  control_mode: auto
+  collision_mode: stop
+  plot:
+    figure_pixels: [1000, 650]
+
+robot:
+  - name: robot
+    kinematics: {name: diff}
+    shape: {name: circle, radius: 0.2}
+    state: [1.5, 3.0, 0.0]  # [x, y, yaw], with yaw in radians.
+    goal: [8.5, 3.0, 0.0]
+    vel_min: [-0.5, -1.5]  # [linear m/s, angular rad/s]
+    vel_max: [0.5, 1.5]
+    acce: [1.0, 3.0]
+    goal_threshold: 0.1
+    behavior: {name: dash}
+    plot:
+      show_goal: true
+      show_trajectory: true
+    sensors:
+      - name: lidar2d
+        range_min: 0.05
+        range_max: 6.0
+        angle_range: 6.283185307179586  # Full 360-degree scan, in radians.
+        number: 181
+        scan_time: 0.1
+        noise: false
+        std: 0.02  # Range standard deviation in metres when noise is true.
+        angle_std: 0.0  # Beam-direction standard deviation in radians.
+        offset: [0.0, 0.0, 0.0]  # Sensor [x, y, yaw] relative to the robot.
+        plot:
+          alpha: 0.25
+
+obstacle:
+  # Two wall segments leave a doorway from y=2 to y=4 at x=5.
+  - name: wall_lower
+    shape:
+      name: linestring
+      vertices: [[5.0, 0.0], [5.0, 2.0]]
+    state: [0.0, 0.0, 0.0]
+
+  - name: wall_upper
+    shape:
+      name: linestring
+      vertices: [[5.0, 4.0], [5.0, 6.0]]
+    state: [0.0, 0.0, 0.0]
+
+  - name: pillar
+    shape: {name: circle, radius: 0.4}
+    state: [3.0, 1.2, 0.0]
+
+  - name: cabinet
+    shape: {name: rectangle, length: 1.0, width: 0.6}
+    state: [7.5, 4.8, 0.2]
